@@ -79,6 +79,6 @@ app.use(function (err, req, res, next) {
   res.json({ error: err });
 });
 
-app.listen(PORT, () => {
+/*app.listen(PORT, () => {
   console.log('Server started')
-});
+});*/
