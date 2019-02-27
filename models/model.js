@@ -39,4 +39,13 @@ UserSchema.methods.isValidPassword = async function (password) {
 
 const UserModel = mongoose.model('user', UserSchema);
 
+UserModel.associate = function (models) {
+   UserModel.hasMany(models.Requests, {
+      onDelete: "cascade"
+   });
+   UserModel.hasMany(models.Visits, {
+      onDelete: "cascade"
+   });
+};
+
 module.exports = UserModel;
