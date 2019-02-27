@@ -1,17 +1,25 @@
-var db = require("../models");
+var model = require("../models");
 
 module.exports = function(app) {
-  // Get all examples
-  app.get("/api/examples", function(req, res) {
-    db.Example.findAll({}).then(function(dbExamples) {
-      res.json(dbExamples);
+  // Get all residents info
+  app.get("/api/residents", function(req, res) {
+    model.Residents.findAll({}).then(function(dbdata) {
+      res.json(dbdata);
     });
   });
 
-  // Create a new example
-  app.post("/api/examples", function(req, res) {
-    db.Example.create(req.body).then(function(dbExample) {
-      res.json(dbExample);
+  // Updating visitors info to request table
+  app.post("/api/requests", function(req, res) {
+    model.Requests.create({
+      availabilityStart: req.body.availabilityStart,
+      availabilityEnd: req.body.availabilityEnd,
+      visitDuration: req.body.visitDuration,
+      activityPreferences: req.body.activityPreferences,
+      additionalInfo: req.body.additionalInfo,
+      communityServiceForm: req.body.communityServiceForm
+
+    }).then(function(dbdata) {
+      res.json(dbdata);
     });
   });
 
