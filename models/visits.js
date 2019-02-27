@@ -8,10 +8,6 @@ module.exports = function (sequelize, DataTypes) {
          type: DataTypes.TIME,
          allowNull: false
       },
-      visitDuration: {
-         type: DataTypes.INT,
-         defaultValue: 60
-      },
       activities: {
          type: DataTypes.STRING
       },
