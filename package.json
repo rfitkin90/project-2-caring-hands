@@ -32,5 +32,17 @@
     "eslint-plugin-prettier": "^2.6.2",
     "mocha": "^5.2.0",
     "prettier": "^1.13.7"
-  }
+  },
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rfitkin90/project-2-placeholdername.git"
+  },
+  "author": "",
+  "bugs": {
+    "url": "https://github.com/rfitkin90/project-2-placeholdername/issues"
+  },
+  "homepage": "https://github.com/rfitkin90/project-2-placeholdername#readme"
 }
