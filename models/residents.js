@@ -1,6 +1,5 @@
 module.exports = function (sequelize, DataTypes) {
    var Residents = sequelize.define("Residents", {
-      // Giving the Author model a name of type STRING
       firstName: {
          type: DataTypes.STRING,
          allowNull: false
@@ -17,8 +16,6 @@ module.exports = function (sequelize, DataTypes) {
    });
 
    Residents.associate = function (models) {
-      // Associating Author with Posts
-      // When an Author is deleted, also delete any associated Posts
       Residents.hasMany(models.Visits, {
          onDelete: "cascade"
       });

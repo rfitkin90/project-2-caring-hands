@@ -1,16 +1,5 @@
-// CREATE TABLE requests (
-//    id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
-//    availabilityStart TIMESTAMP NOT NULL,
-//    availabilityEnd TIMESTAMP NOT NULL,
-//    activities TEXT,
-//    additionalInfo TEXT,
-//    communityServiceFormRequest BOOLEAN NOT NULL,
-//    usersId INT NOT NULL,
-// );
-
 module.exports = function (sequelize, DataTypes) {
-   var Residents = sequelize.define("Residents", {
-      // Giving the Author model a name of type STRING
+   var Requests = sequelize.define("Requests", {
       availabilityStart: {
          type: DataTypes.TIME,
          allowNull: false
@@ -18,6 +7,10 @@ module.exports = function (sequelize, DataTypes) {
       availabilityEnd: {
          type: DataTypes.TIME,
          allowNull: false
+      },
+      visitDuration: {
+         type: DataTypes.INT,
+         defaultValue: 60
       },
       activityPreferences: {
          type: DataTypes.STRING
@@ -31,13 +24,15 @@ module.exports = function (sequelize, DataTypes) {
       }
    });
 
-   Residents.associate = function (models) {
+   Requests.associate = function (models) {
       // Associating Author with Posts
       // When an Author is deleted, also delete any associated Posts
-      Residents.hasMany(models.Visits, {
-         onDelete: "cascade"
+      Requests.belongsTo(models.UserModel, {
+         foreignKey: {
+            allowNull: false
+         }
       });
    };
 
-   return Residents;
+   return Requests;
 };
