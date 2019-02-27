@@ -7,10 +7,10 @@ module.exports = function (sequelize, DataTypes) {
       age: {
          type: DataTypes.INT
       },
-      additionalnfo: {
+      activityPreferences: {
          type: DataTypes.STRING
       },
-      activityPreferences: {
+      additionalnfo: {
          type: DataTypes.STRING
       }
    });
