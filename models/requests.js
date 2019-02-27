@@ -1,13 +1,3 @@
-// CREATE TABLE requests (
-//    id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
-//    availabilityStart TIMESTAMP NOT NULL,
-//    availabilityEnd TIMESTAMP NOT NULL,
-//    activities TEXT,
-//    additionalInfo TEXT,
-//    communityServiceFormRequest BOOLEAN NOT NULL,
-//    usersId INT NOT NULL,
-// );
-
 var Requests = sequelize.define("Requests", {
    availabilityStart: {
       type: DataTypes.TIME,
