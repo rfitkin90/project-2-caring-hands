@@ -13,14 +13,17 @@ module.exports = function(app) {
 
   //Load request page
   app.get("/", function(req, res) {
-    models.Example.findAll({}).then(function(dbExamples) {
-     res.render("request", {
-       msg: "Welcome!",
-       examples: dbExamples
-     });
+    models.Requests.findAll({}).then(function(dbRequests) {
+     res.render("request", {Requests : dbRequests});
    });
   });
-
+  
+  //Load residents page
+  app.get("/", function(req, res) {
+    models.Residents.findAll({}).then(function(dbResidents) {
+     res.render("residents", {Residents : dbResidents});
+   });
+  });
 
   // Load example page and pass in an example by id
   app.get("/example/:id", function(req, res) {
