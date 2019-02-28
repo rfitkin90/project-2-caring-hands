@@ -2,6 +2,9 @@ var model = require("../models");
 
 
 module.exports = function(app) {
+
+  // get id of user currently logged in
+
   // Get all residents info
   app.get("/api/residents", function(req, res) {
     model.Residents.findAll({})
