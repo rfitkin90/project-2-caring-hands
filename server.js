@@ -47,10 +47,6 @@ db.sequelize.sync(syncOptions).then(function () {
 module.exports = app;
 
 
-
-
-
-
 // ------------------------------------ User Authentication -------------------------------------- //
 
 const mongoose = require('mongoose');
@@ -58,7 +54,7 @@ const bodyParser = require('body-parser');
 const passport = require('passport');
 const UserModel = require('./models/model');
 
-mongoose.connect('mongodb://127.0.0.1:27017/passport-jwt', { useMongoClient: true });
+mongoose.connect('mongodb://127.0.0.1:27017/passport-jwt');
 mongoose.connection.on('error', error => console.log(error));
 mongoose.Promise = global.Promise;
 

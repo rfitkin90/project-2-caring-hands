@@ -21,18 +21,18 @@ module.exports = function (sequelize, DataTypes) {
       }
    });
 
-   Visits.associate = function (models) {
-      Visits.belongsToMany(models.UserModel, {
-         foreignKey: {
-            allowNull: false
-         }
-      });
-      Visits.belongsToMany(models.Residents, {
-         foreignKey: {
-            allowNull: false
-         }
-      });
-   };
+   // Visits.associate = function (models) {
+   //    Visits.belongsToMany(models.UserModel, {
+   //       foreignKey: {
+   //          allowNull: false
+   //       }
+   //    });
+   //    Visits.belongsToMany(models.Residents, {
+   //       foreignKey: {
+   //          allowNull: false
+   //       }
+   //    });
+   // };
 
    return Visits;
 };
