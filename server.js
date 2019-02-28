@@ -21,14 +21,19 @@ var db = require("./models");
 var app = express();
 var PORT = process.env.PORT || 3000;
 
+//console.log('JWT_SECRET', process.env.JWT_SECRET);
+
 const auth = jwt({
   secret: process.env.JWT_SECRET,
   userProperty: 'payload'
 });
+
 // Middleware
+app.use(auth);
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(express.static("public"));
+
 
 // Handlebars
 app.engine(
@@ -44,7 +49,7 @@ app.use(htmlRoutes);
 app.use("/auth", authRoutes);
 app.use(auth);
 app.use("/api", apiRoutes);
-app.use(expressJwt('/api',{secret: 'my secret'}));
+// app.use(expressJwt('/api',{secret: 'my secret'}));
 var syncOptions = { force: false };
 
 // If running a test, set syncOptions.force to true
