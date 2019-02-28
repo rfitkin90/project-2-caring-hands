@@ -1,5 +1,6 @@
 var model = require("../models");
 
+
 module.exports = function(app) {
   // Get all residents info
   app.get("/api/residents", function(req, res) {
