@@ -1,15 +1,33 @@
+/**
+ * NODE_ENV: The current node enviorment, values must be testing, development,
+ *  or production
+ * secret: The JWT secret to encrypt our applications jwts
+ */
 require("dotenv").config();
+// REQUIRES =====================================
+// PACKAGES
 var express = require("express");
+var bodyParser = require("body-parser");
 var exphbs = require("express-handlebars");
+var jwt = require('express-jwt');
 
+// ROUTES
+var apiRoutes = require("./routes/apiRoutes");
+var htmlRoutes = require("./routes/htmlRoutes");
+var authRoutes = require("./routes/authRoutes");
 var db = require("./models");
+// END REQUIRES ==================================
 
 var app = express();
 var PORT = process.env.PORT || 3000;
 
+const auth = jwt({
+  secret: process.env.JWT_SECRET,
+  userProperty: 'payload'
+});
 // Middleware
-app.use(express.urlencoded({ extended: false }));
-app.use(express.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 app.use(express.static("public"));
 
 // Handlebars
@@ -22,9 +40,11 @@ app.engine(
 app.set("view engine", "handlebars");
 
 // Routes
-require("./routes/apiRoutes")(app);
-require("./routes/htmlRoutes")(app);
-
+app.use(htmlRoutes);
+app.use("/auth", authRoutes);
+app.use(auth);
+app.use("/api", apiRoutes);
+app.use(expressJwt('/api',{secret: 'my secret'}));
 var syncOptions = { force: false };
 
 // If running a test, set syncOptions.force to true
@@ -33,9 +53,13 @@ if (process.env.NODE_ENV === "test") {
   syncOptions.force = true;
 }
 
+// Render 404 page for any unmatched routes
+app.get("*", function (req, res) {
+  res.render("404");
+});
 // Starting the server, syncing our models ------------------------------------/
-db.sequelize.sync(syncOptions).then(function () {
-  app.listen(PORT, function () {
+db.sequelize.sync(syncOptions).then(function() {
+  app.listen(PORT, function() {
     console.log(
       "==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.",
       PORT,
@@ -45,37 +69,3 @@ db.sequelize.sync(syncOptions).then(function () {
 });
 
 module.exports = app;
-
-
-
-
-
-
-// ------------------------------------ User Authentication -------------------------------------- //
-
-const mongoose = require('mongoose');
-const bodyParser = require('body-parser');
-const passport = require('passport');
-const UserModel = require('./models/model');
-
-mongoose.connect('mongodb://127.0.0.1:27017/passport-jwt', { useMongoClient: true });
-mongoose.connection.on('error', error => console.log(error));
-mongoose.Promise = global.Promise;
-
-require('./auth/auth');
-
-app.use(bodyParser.urlencoded({ extended: false }));
-
-const routes = require('./routes/authRoutes');
-const secureRoute = require('./routes/secure-routes');
-
-app.use('/', routes);
-//We plugin our jwt strategy as a middleware so only verified users can access this route
-app.use('/user', passport.authenticate('jwt', { session: false }), secureRoute);
-
-//Handle errors
-app.use(function (err, req, res, next) {
-  res.status(err.status || 500);
-  res.json({ error: err });
-});
-
