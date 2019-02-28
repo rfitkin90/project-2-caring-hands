@@ -1,3 +1,48 @@
 .list-group-item {
   line-height: 2.5;
 }
+
+body {
+  background-color: #E2D5C4;
+}
+
+.card-text {
+  height: 66px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
+.container-fluid {
+  background-color: #E2D5C4;
+  height: 80px;
+  
+  
+  }
+  
+  .navbar-dark .navbar-nav .show>.nav-link, .navbar-dark .navbar-nav .active>.nav-link, .navbar-dark .navbar-nav .nav-link.show, .navbar-dark .navbar-nav .nav-link.active {
+    color: black; 
+  }
+  .navbar-dark .navbar-nav .nav-link {
+  color: black;
+  }
+  
+  button.submit {
+    float: right;
+  }
+
+form#cms {
+  margin-top: 50px;
+}
+
+#cms textarea {
+  resize: none;
+}
+
+.card-header button.delete,
+button.edit {
+  float: right;
+  margin: 5px;
+}
