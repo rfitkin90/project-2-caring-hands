@@ -1,7 +1,5 @@
 var models = require("../models");
 
-
-
 module.exports = function(app) {
   // Load index page
   app.get("/", function(req, res) {
@@ -14,14 +12,14 @@ module.exports = function(app) {
   });
 
   //Load request page
-  app.get("/", function(req, res) {
+  app.get("/requests", function(req, res) {
     models.Requests.findAll({}).then(function(dbRequests) {
      res.render("request", {Requests : dbRequests});
    });
   });
   
   //Load residents page
-  app.get("/", function(req, res) {
+  app.get("/residents", function(req, res) {
     models.Residents.findAll({}).then(function(dbResidents) {
      res.render("residents", {Residents : dbResidents});
    });
