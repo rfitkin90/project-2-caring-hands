@@ -3,58 +3,189 @@
 
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Meet the Residents</title>
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+    integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+  <link rel="stylesheet" href="./styles/nav.login.css">
+  <link rel="stylesheet" href="styles/styles.css" media="screen" title="no title">
+  <!-- Scripts -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+  <style>
+    .card-body {
+      border: 1px solid black
+    }
+
+    .card {
+      margin-top: 20px
+    }
+  </style>
+
+
+  <!-- <meta charset="UTF-8">
+  <title>Meet the Residents</title> -->
   <!-- Latest compiled and minified CSS & JS -->
 
-  <link href="https://maxcdn.bootstrapcdn.com/bootswatch/4.0.0/flatly/bootstrap.min.css" rel="stylesheet">
+  <!-- <link href="https://maxcdn.bootstrapcdn.com/bootswatch/4.0.0/flatly/bootstrap.min.css" rel="stylesheet">
 
   <script src="https://code.jquery.com/jquery.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-  <link rel="stylesheet" href="styles/styles.css" media="screen" title="no title">
-
+  <link rel="stylesheet" href="styles/styles.css" media="screen" title="no title"> -->
 </head>
 
 <body>
+
+  <!-- =============================================== Navbar =============================================== -->
+  <nav class="navbar navbar-expand-md navbar-dark">
+    <span class="navbar-brand">
+      <h3>Go Go Granny</h3>
+    </span>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link current-page-link" href="#">Approve Requests</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Schedule Visit</a>
+        </li>
+        <li class="nav-item">
+          <span class="nav-link current-page-link">Resident Info</span>
+        </li>
+        <li class="nav-item">
+          <a onclick="document.getElementById('id01').style.display='block'" class="nav-link" href="#"><i
+              class="fas fa-user"></i> Sign Up</a>
+        </li>
+        <li class="nav-item">
+          <a onclick="document.getElementById('id02').style.display='block'" class="nav-link" href="#"><i
+              class="fas fa-sign-in-alt"></i> Login</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- =============================================== Modals =============================================== -->
+  <!-- Signup Modal -->
+  <div id="id01" class="modal">
+    <form class="modal-content animate" action="/action_page.php">
+      <div class="imgcontainer">
+        <span onclick="document.getElementById('id01').style.display='none'" class="close"
+          title="Close Modal">&times;</span>
+        <!-- <img src="img_avatar2.png" alt="Avatar" class="avatar"> -->
+      </div>
+
+      <div class="container">
+        <label for="fname"><b>First Name</b></label>
+        <input type="text" placeholder="Jimbo" name="fname" required>
+
+        <label for="lname"><b>Last Name</b></label>
+        <input type="text" placeholder="Smith" name="lname" required>
+
+        <label for="email"><b>Email</b></label>
+        <input type="text" placeholder="jimbo.smith@gmail.com" name="email" required>
+
+        <label for="psw"><b>Password</b></label>
+        <input type="password" placeholder="Enter Password" name="psw" required>
+
+        <label for="cpsw"><b>Confirm Password</b></label>
+        <input type="password" placeholder="Enter Password Again" name="cpsw" required>
+
+        <button type="submit">Login</button>
+        <label>
+          <input type="checkbox" checked="checked" name="remember"> Remember me
+        </label>
+      </div>
+
+      <div class="container" style="background-color:#f1f1f1">
+        <button type="button" onclick="document.getElementById('id01').style.display='none'"
+          class="cancelbtn">Cancel</button>
+        <span class="psw">Forgot <a href="#">password?</a></span>
+      </div>
+    </form>
+  </div>
+
+  <!-- Login Modal -->
+  <div id="id02" class="modal">
+    <form class="modal-content animate" action="/action_page.php">
+      <div class="imgcontainer">
+        <span onclick="document.getElementById('id02').style.display='none'" class="close"
+          title="Close Modal">&times;</span>
+        <!-- <img src="img_avatar2.png" alt="Avatar" class="avatar"> -->
+      </div>
+
+      <div class="container"><label for="email"><b>Email</b></label>
+        <input type="text" placeholder="jimbo.smith@gmail.com" name="email" required>
+
+        <label for="psw"><b>Password</b></label>
+        <input type="password" placeholder="Enter Password" name="psw" required>
+
+        <button type="submit">Login</button>
+        <label>
+          <input type="checkbox" checked="checked" name="remember"> Remember me
+        </label>
+      </div>
+
+      <div class="container" style="background-color:#f1f1f1">
+        <button type="button" onclick="document.getElementById('id02').style.display='none'"
+          class="cancelbtn">Cancel</button>
+        <span class="psw">Forgot <a href="#">password?</a></span>
+      </div>
+    </form>
+  </div>
+
+
   <div class="container">
-      <nav class="navbar navbar-expand-lg navbar-dark sticky-top" style="background-color: #E2D5C4;">
-          <a class="navbar-brand" href="index.html">
-          </a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-              <li class="nav-item active">
-                <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
-              </li>
-              
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="nav-dropdown-about" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                About Us
-              </a>
-            
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="nav-dropdown-accounts" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Login/Register
-              </a>
-              <div class="dropdown-menu" aria-labelledby="nav-dropdown-accounts">
-                <a class="dropdown-item" href="#">Logout</a>
-                <a class="dropdown-item" href="#">Profile</a>
-                <div class="dropdown-divider"></div>
-            
-              </div>
-            </li>
-            </ul>
-          </div>
-        </nav>
+    <!-- <nav class="navbar navbar-expand-lg navbar-dark sticky-top" style="background-color: #E2D5C4;">
+      <a class="navbar-brand" href="index.html">
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item active">
+            <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="nav-dropdown-about" role="button" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">
+              About Us
+            </a>
+
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="nav-dropdown-accounts" role="button" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">
+              Login/Register
+            </a>
+            <div class="dropdown-menu" aria-labelledby="nav-dropdown-accounts">
+              <a class="dropdown-item" href="#">Logout</a>
+              <a class="dropdown-item" href="#">Profile</a>
+              <div class="dropdown-divider"></div>
+
+            </div>
+          </li>
+        </ul>
+      </div>
+    </nav> -->
 
     <!----background image here-->
-   
+
     <div class="row">
       <div class="col-md-4">
         <div class="card" style="width: 18rem;">
-          <img class="card-img-top" src="https://www.catholiccharitiesusa.org/wp-content/uploads/2018/04/Story_Meals-on-Wheels-for-Senior-Citizens-1024x512.jpg"
+          <img class="card-img-top"
+            src="https://www.catholiccharitiesusa.org/wp-content/uploads/2018/04/Story_Meals-on-Wheels-for-Senior-Citizens-1024x512.jpg"
             height="150" alt="Card image cap">
           <div class="card-body">
             <h5 class="card-title">Maggie</h5>
@@ -66,8 +197,9 @@
       </div>
       <div class="col-md-4">
         <div class="card" style="width: 18rem;">
-          <img class="card-img-top" src="http://www.commage.org/wp-content/uploads/2016/05/image-for-swiss-report-600x400.jpg"
-            height="150" alt="Card image cap">
+          <img class="card-img-top"
+            src="http://www.commage.org/wp-content/uploads/2016/05/image-for-swiss-report-600x400.jpg" height="150"
+            alt="Card image cap">
           <div class="card-body">
             <h5 class="card-title">Beverly</h5>
             <p class="card-text">Beverly is a retired school teacher. She is a little forgetful but loves to play gin.
@@ -78,7 +210,8 @@
       </div>
       <div class="col-md-4">
         <div class="card" style="width: 18rem;">
-          <img class="card-img-top" src="https://i.kinja-img.com/gawker-media/image/upload/s--jXrLJTPF--/c_scale,dpr_2.0,f_auto,fl_progressive,q_80,w_800/wlp86dc2o5pimlgkxldb.jpg"
+          <img class="card-img-top"
+            src="https://i.kinja-img.com/gawker-media/image/upload/s--jXrLJTPF--/c_scale,dpr_2.0,f_auto,fl_progressive,q_80,w_800/wlp86dc2o5pimlgkxldb.jpg"
             height="150" alt="Card image cap">
           <div class="card-body">
 
@@ -116,7 +249,8 @@
       </div>
       <div class="col-md-4">
         <div class="card" style="width: 18rem;">
-          <img class="card-img-top" src="http://static-38.sinclairstoryline.com/resources/media/e92b09cb-1574-4817-a030-921d70601415-large16x9_Still1205_00000.jpg?1544066201296"
+          <img class="card-img-top"
+            src="http://static-38.sinclairstoryline.com/resources/media/e92b09cb-1574-4817-a030-921d70601415-large16x9_Still1205_00000.jpg?1544066201296"
             height="150" alt="Card image cap">
           <div class="card-body">
 
@@ -158,14 +292,21 @@
 
 </body>
 
-<style>
-  .card-body {
-    border: 1px solid black
-  }
 
-  .card {
-    margin-top: 20px
+
+<script>
+  // Get the modal
+  var modal = document.getElementById('id01');
+  var modal2 = document.getElementById('id02');
+
+  // When the user clicks anywhere outside of the modal, close it
+  window.onclick = function (event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    } else if (event.target == modal2) {
+      modal2.style.display = "none";
+    }
   }
-</style>
+</script>
 
 </html>
