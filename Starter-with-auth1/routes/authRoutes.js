@@ -64,8 +64,8 @@ router.post("/register", function (req, res) {
     }
     var user = {
         email: req.body.email,
-        password: req.body.password,
-        name: req.body.name
+        name: req.body.name,
+        password: req.body.password
     }
     var salt = helpers.getSalt();
 

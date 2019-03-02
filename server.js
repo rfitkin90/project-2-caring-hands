@@ -41,10 +41,10 @@ app.engine(
 app.set("view engine", "handlebars");
 
 // Routes
-app.use(htmlRoutes);
-// app.use(auth);
 app.use("/auth", authRoutes);
-app.use("/api", apiRoutes);
+// app.use(auth);
+// app.use("/api", apiRoutes);
+// app.use(htmlRoutes);
 
 
 var syncOptions = { force: false };
