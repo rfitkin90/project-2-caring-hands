@@ -5,21 +5,21 @@ module.exports = function (sequelize, DataTypes) {
          allowNull: false
       },
       age: {
-         type: DataTypes.INT
-      },
-      additionalnfo: {
-         type: DataTypes.STRING
+         type: DataTypes.INTEGER
       },
       activityPreferences: {
+         type: DataTypes.STRING
+      },
+      additionalnfo: {
          type: DataTypes.STRING
       }
    });
 
-   Residents.associate = function (models) {
-      Residents.hasMany(models.Visits, {
-         onDelete: "cascade"
-      });
-   };
+   // Residents.associate = function (models) {
+   //    Residents.hasMany(models.Visits, {
+   //       onDelete: "cascade"
+   //    });
+   // };
 
    return Residents;
 };

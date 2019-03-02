@@ -1,3 +1,4 @@
+module.exports = function(sequelize, DataTypes) {
 var Requests = sequelize.define("Requests", {
    availabilityStart: {
       type: DataTypes.TIME,
@@ -8,7 +9,7 @@ var Requests = sequelize.define("Requests", {
       allowNull: false
    },
    visitDuration: {
-      type: DataTypes.INT,
+      type: DataTypes.INTEGER,
       defaultValue: 60
    },
    activityPreferences: {
@@ -23,12 +24,14 @@ var Requests = sequelize.define("Requests", {
    }
 });
 
-Requests.associate = function (models) {
-   // Associating Author with Posts
-   // When an Author is deleted, also delete any associated Posts
-   Requests.belongsTo(models.UserModel, {
-      foreignKey: {
-         allowNull: false
-      }
-   });
-};
+// Requests.associate = function (models) {
+//    // Associating Author with Posts
+//    // When an Author is deleted, also delete any associated Posts
+//    Requests.belongsTo(models.UserModel, {
+//       foreignKey: {
+//          allowNull: false
+//       }
+//    });
+// };
+return Requests;
+}

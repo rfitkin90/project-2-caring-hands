@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <title>Approve Requests</title>
+   <!-- Stylesheets -->
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+      integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+   <link rel="stylesheet" href="./styles/nav.login.css">
+   <!-- Scripts -->
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+   <style>
+      html,
+      body {
+         background-color: #E2D5C4;
+      }
+
+      /* ================================= Pending Requests ================================= */
+      .pending-requests-card {
+         margin-top: 30px;
+         border: 2px solid rgb(136, 136, 136);
+      }
+
+      .pending-requests-card>.card-header {
+         background-color: rgb(194, 159, 113);
+         color: white;
+         text-align: center;
+      }
+
+      .pending-requests-card>.card-body {
+         background-color: rgb(231, 231, 231);
+      }
+
+
+      .individual-request:not(:last-child) {
+         margin-bottom: 10px;
+      }
+
+      .individual-request>.card-body {
+         color: black;
+         text-align: left;
+      }
+
+      @media screen and (min-width: 768px) {
+         .pending-requests-card>.card-body {
+            max-height: 606px;
+            overflow-y: scroll;
+         }
+      }
+   </style>
+
+</head>
+
+<body>
+
+   <!-- =============================================== Navbar =============================================== -->
+   <nav class="navbar navbar-expand-md navbar-dark">
+      <span class="navbar-brand">
+         <h3>Go Go Granny</h3>
+      </span>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+         <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="collapsibleNavbar">
+         <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+               <span class="nav-link current-page-link">Approve Requests</span>
+            </li>
+            <li class="nav-item">
+               <a class="nav-link" href="#">Schedule Visit</a>
+            </li>
+            <li class="nav-item">
+               <a class="nav-link" href="#">Resident Info</a>
+            </li>
+            <li class="nav-item">
+               <a onclick="document.getElementById('id01').style.display='block'" class="nav-link" href="#"><i
+                     class="fas fa-user"></i> Sign Up</a>
+            </li>
+            <li class="nav-item">
+               <a onclick="document.getElementById('id02').style.display='block'" class="nav-link" href="#"><i
+                     class="fas fa-sign-in-alt"></i> Login</a>
+            </li>
+         </ul>
+      </div>
+   </nav>
+
+   <!-- =============================================== Modals =============================================== -->
+   <!-- Signup Modal -->
+   <div id="id01" class="modal">
+      <form class="modal-content animate" action="/action_page.php">
+         <div class="imgcontainer">
+            <span onclick="document.getElementById('id01').style.display='none'" class="close"
+               title="Close Modal">&times;</span>
+            <!-- <img src="img_avatar2.png" alt="Avatar" class="avatar"> -->
+         </div>
+
+         <div class="container">
+            <label for="fname"><b>First Name</b></label>
+            <input type="text" placeholder="Jimbo" name="fname" required>
+
+            <label for="lname"><b>Last Name</b></label>
+            <input type="text" placeholder="Smith" name="lname" required>
+
+            <label for="email"><b>Email</b></label>
+            <input type="text" placeholder="jimbo.smith@gmail.com" name="email" required>
+
+            <label for="psw"><b>Password</b></label>
+            <input type="password" placeholder="Enter Password" name="psw" required>
+
+            <label for="cpsw"><b>Confirm Password</b></label>
+            <input type="password" placeholder="Enter Password Again" name="cpsw" required>
+
+            <button type="submit">Login</button>
+            <label>
+               <input type="checkbox" checked="checked" name="remember"> Remember me
+            </label>
+         </div>
+
+         <div class="container" style="background-color:#f1f1f1">
+            <button type="button" onclick="document.getElementById('id01').style.display='none'"
+               class="cancelbtn">Cancel</button>
+            <span class="psw">Forgot <a href="#">password?</a></span>
+         </div>
+      </form>
+   </div>
+
+   <!-- Login Modal -->
+   <div id="id02" class="modal">
+      <form class="modal-content animate" action="/action_page.php">
+         <div class="imgcontainer">
+            <span onclick="document.getElementById('id02').style.display='none'" class="close"
+               title="Close Modal">&times;</span>
+            <!-- <img src="img_avatar2.png" alt="Avatar" class="avatar"> -->
+         </div>
+
+         <div class="container"><label for="email"><b>Email</b></label>
+            <input type="text" placeholder="jimbo.smith@gmail.com" name="email" required>
+
+            <label for="psw"><b>Password</b></label>
+            <input type="password" placeholder="Enter Password" name="psw" required>
+
+            <button type="submit">Login</button>
+            <label>
+               <input type="checkbox" checked="checked" name="remember"> Remember me
+            </label>
+         </div>
+
+         <div class="container" style="background-color:#f1f1f1">
+            <button type="button" onclick="document.getElementById('id02').style.display='none'"
+               class="cancelbtn">Cancel</button>
+            <span class="psw">Forgot <a href="#">password?</a></span>
+         </div>
+      </form>
+   </div>
+
+   <!-- main page container -->
+   <div class="container">
+
+      <div class="card pending-requests-card">
+         <div class="card-header">
+            <h2>Approve Visits</h2>
+         </div>
+         <div class="card-body">
+
+            <!-- example visit request -->
+            <button class="card individual-request">
+               <div class="card-body">
+                  <p>
+                     <h4>John Smith</h4>
+                  </p>
+                  <p>Availability Start: 2019-04-22 09:00:00</p>
+                  <p>Availability End: 2019-04-22 12:00:00</p>
+               </div>
+            </button>
+            <!-- example visit request -->
+            <button class="card individual-request">
+               <div class="card-body">
+                  <p>
+                     <h4>Jimbo John</h4>
+                  </p>
+                  <p>Availability Start: 2019-04-22 09:00:00</p>
+                  <p>Availability End: 2019-04-22 12:00:00</p>
+               </div>
+            </button>
+            <!-- example visit request -->
+            <button class="card individual-request">
+               <div class="card-body">
+                  <p>
+                     <h4>James Johnson</h4>
+                  </p>
+                  <p>Availability Start: 2019-04-22 09:00:00</p>
+                  <p>Availability End: 2019-04-22 12:00:00</p>
+               </div>
+            </button>
+            <!-- example visit request -->
+            <button class="card individual-request">
+               <div class="card-body">
+                  <p>
+                     <h4>David Davidson</h4>
+                  </p>
+                  <p>Availability Start: 2019-04-22 09:00:00</p>
+                  <p>Availability End: 2019-04-22 12:00:00</p>
+               </div>
+            </button>
+
+         </div>
+      </div>
+
+   </div>
+
+
+   <script>
+
+      // Get the modal
+      var modal = document.getElementById('id01');
+      var modal2 = document.getElementById('id02');
+
+      // When the user clicks anywhere outside of the modal, close it
+      window.onclick = function (event) {
+         if (event.target == modal) {
+            modal.style.display = "none";
+         } else if (event.target == modal2) {
+            modal2.style.display = "none";
+         }
+      }
+   </script>
+
+</body>
+
+</html>

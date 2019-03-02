@@ -4,45 +4,25 @@ CREATE DATABASE info_db;
 DROP DATABASE IF EXISTS testdb;
 CREATE DATABASE testdb;
 
-DROP TABLE IF EXISTS users;
-CREATE TABLE users (
-   id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
-   firstName VARCHAR(40) NOT NULL,
-   lastName VARCHAR(40) NOT NULL,
-   email VARCHAR(40) NOT NULL,
-   password VARCHAR(40) NOT NULL,
-   administrator BOOLEAN NOT NULL
-);
+-- EXAMPLE USERS
 
-DROP TABLE IF EXISTS residents;
-CREATE TABLE residents (
-   id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
-   firstName VARCHAR(40) NOT NULL,
-   age INT,
-   additionalnfo TEXT,
-   activityPreferences TEXT
-);
+-- EXAMPLE RESIDENTS
+INSERT INTO Residents (firstName, age, activityPreferences, additionalInfo)
+VALUES ("Barbara", 76, "crocheting, reading, gardening", "Has dimentia.");
 
-DROP TABLE IF EXISTS request;
-CREATE TABLE requests (
-   id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
-   availabilityStart TIMESTAMP NOT NULL,
-   availabilityEnd TIMESTAMP NOT NULL,
-   activities TEXT,
-   additionalInfo TEXT,
-   communityServiceFormRequest BOOLEAN NOT NULL,
-   usersId INT NOT NULL,
-);
+INSERT INTO Residents (firstName, age, activityPreferences, additionalInfo)
+VALUES ("Debra", 81, "knitting, bingo", "Has alzheimer's.");
 
-DROP TABLE IF EXISTS scheduledVisits;
-CREATE TABLE scheduledVisits (
-   id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
-   visitStart TIMESTAMP NOT NULL,
-   visitEnd TIMESTAMP NOT NULL,
-   activities TEXT,
-   additionalInfo TEXT,
-   communityServiceFormRequest BOOLEAN NOT NULL,
-   confirmed BOOLEAN NOT NULL,
-   usersId INT NOT NULL,
-   residentsId INT NOT NULL
-);
+-- EXAMPLE REQUESTS
+INSERT INTO Requests (availabilityStart, availabilityEnd, visitDuration, activityPreferences, additionalInfo, communityServiceForm, UserModelId)
+VALUES ("2019-03-15 13:00:00", "2019-03-15 17:00:00", 60, "animals, music performance, gardening", "", false, 1);
+
+INSERT INTO Requests (availabilityStart, availabilityEnd, visitDuration, activityPreferences, additionalInfo, communityServiceForm, UserModelId)
+VALUES ("2019-04-22 09:00:00", "2019-04-22 12:00:00", 90, "crocheting, knitting", "Requesting to see Barbara.", true, 2);
+
+-- EXAMPLE VISITS
+INSERT INTO Visits (visitStart, visitEnd, activities, communityServiceForm, confirmed, UserModelId, ResidentId)
+Values ("2019-03-09 09:00:00", "2019-03-09 10:00:00", "knitting", false, false, 2, 1);
+
+INSERT INTO Visits (visitStart, visitEnd, activities, communityServiceForm, confirmed, UserModelId, ResidentId)
+Values ("2019-03-09 09:00:00", "2019-03-09 10:00:00", "gardening", true, false, 1, 2);
