@@ -8,7 +8,8 @@ module.exports = function (sequelize, DataTypes) {
                 isEmail: true
             }
         },
-        name: DataTypes.STRING,
+        firstName: DataTypes.STRING,
+        lastName: DataTypes.STRING,
         salt: DataTypes.STRING,
         hash: DataTypes.STRING
     });
