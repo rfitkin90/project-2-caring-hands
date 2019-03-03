@@ -16,6 +16,8 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
+
 
 </head>
 <style>
@@ -47,13 +49,19 @@
         <li class="nav-item">
           <a class="nav-link" href="./resident.html">Resident Info</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item visible-anonymous">
           <a onclick="document.getElementById('id01').style.display='block'" class="nav-link" href="#"><i
               class="fas fa-user"></i> Sign Up</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item visible-anonymous">
           <a onclick="document.getElementById('id02').style.display='block'" class="nav-link" href="#"><i
               class="fas fa-sign-in-alt"></i> Login</a>
+        </li>
+        <li class="nav-item visible-authenticated">
+          <span id="nav-welcome-msg">Welcome user!</span>
+        </li>
+        <li class="nav-item visible-authenticated">
+          <a href="#" id="logout-btn">Logout</a>
         </li>
       </ul>
     </div>
@@ -63,7 +71,7 @@
   <!-- =============================================== Modals =============================================== -->
   <!-- Signup Modal -->
   <div id="id01" class="modal">
-    <form class="modal-content animate" action="/action_page.php">
+    <form class="modal-content animate">
       <div class="imgcontainer">
         <span onclick="document.getElementById('id01').style.display='none'" class="close"
           title="Close Modal">&times;</span>
@@ -72,21 +80,21 @@
 
       <div class="container">
         <label for="fname"><b>First Name</b></label>
-        <input type="text" placeholder="Jimbo" name="fname" required>
+        <input id="fname" type="text" placeholder="Jimbo" name="fname" required>
 
         <label for="lname"><b>Last Name</b></label>
-        <input type="text" placeholder="Smith" name="lname" required>
+        <input id="lname" type="text" placeholder="Smith" name="lname" required>
 
         <label for="email"><b>Email</b></label>
-        <input type="text" placeholder="jimbo.smith@gmail.com" name="email" required>
+        <input id="email" type="text" placeholder="jimbo.smith@gmail.com" name="email" required>
 
         <label for="psw"><b>Password</b></label>
-        <input type="password" placeholder="Enter Password" name="psw" required>
+        <input id="password" type="password" placeholder="Enter Password" name="psw" required>
 
         <label for="cpsw"><b>Confirm Password</b></label>
-        <input type="password" placeholder="Enter Password Again" name="cpsw" required>
+        <input id="confirmPassword" type="password" placeholder="Enter Password Again" name="cpsw" required>
 
-        <button type="submit">Login</button>
+        <button id="register-submit" type="submit">Register</button>
         <label>
           <input type="checkbox" checked="checked" name="remember"> Remember me
         </label>
@@ -102,7 +110,7 @@
 
   <!-- Login Modal -->
   <div id="id02" class="modal">
-    <form class="modal-content animate" action="/action_page.php">
+    <form class="modal-content animate">
       <div class="imgcontainer">
         <span onclick="document.getElementById('id02').style.display='none'" class="close"
           title="Close Modal">&times;</span>
@@ -110,12 +118,12 @@
       </div>
 
       <div class="container"><label for="email"><b>Email</b></label>
-        <input type="text" placeholder="jimbo.smith@gmail.com" name="email" required>
+        <input id="login-email" type="text" placeholder="jimbo.smith@gmail.com" name="email" required>
 
         <label for="psw"><b>Password</b></label>
-        <input type="password" placeholder="Enter Password" name="psw" required>
+        <input id="login-pass" type="password" placeholder="Enter Password" name="psw" required>
 
-        <button type="submit">Login</button>
+        <button id="login-submit" type="submit">Login</button>
         <label>
           <input type="checkbox" checked="checked" name="remember"> Remember me
         </label>
@@ -185,10 +193,9 @@
 
 
 
-  <!-- =============================================== End of Carousel =============================================== -->
+  <!-- ========================================== End of Carousel ========================================== -->
 
   <script>
-
     // Get the modal
     var modal = document.getElementById('id01');
     var modal2 = document.getElementById('id02');
@@ -202,6 +209,12 @@
       }
     }
   </script>
+
+  <!-- ========================================== Application Scripts ========================================== -->
+
+  <script src="/js/cookies.js"></script>
+  <script src="/js/authentication.js"></script>
+  <script src="/js/signupAuthorisation.js"></script>
 </body>
 
 

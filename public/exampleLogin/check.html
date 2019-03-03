@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+      integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+   <title>Document</title>
+</head>
+
+<body>
+   CHECK
+   <div class="login">
+      email:
+      <input id="email" />
+      pass:
+      <input id="password" />
+      <button id="submit"></button>
+   </div>
+
+   <div class="redirect">
+      <i class="fab fa-accessible-icon"></i>
+   </div>
+
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+   <script>
+      var token = window.localStorage.getItem('token');
+      // gets the users information from the token
+      var payload = JSON.parse(window.atob(token.split('.')[1]));
+      var currentTime = new Date();
+      // checks expiration date on front end; unnecessary since backend already does this
+      console.log(currentTime.getTime() / 1000 < payload.exp);
+      if (!token) {
+         // check token expiration
+         window.location.assign('/login.html');
+      }
+      console.log(JSON.parse(window.btoa(token.split('.')[1])));
+   </script>
+</body>
+
+</html>
