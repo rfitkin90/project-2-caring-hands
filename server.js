@@ -8,7 +8,7 @@ require("dotenv").config();
 // PACKAGES
 var express = require("express");
 var bodyParser = require("body-parser");
-var exphbs = require("express-handlebars");
+// var exphbs = require("express-handlebars");
 var jwt = require('express-jwt');
 
 // ROUTES
@@ -26,24 +26,18 @@ const auth = jwt({
   userProperty: 'payload'
 });
 
+
 // Middleware
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(express.static("public"));
 
-// Handlebars
-app.engine(
-  "handlebars",
-  exphbs({
-    defaultLayout: "main"
-  })
-);
-app.set("view engine", "handlebars");
+app.set('view engine', 'jade');
 
 // Routes
 app.use("/auth", authRoutes);
-// app.use(auth);
-// app.use("/api", apiRoutes);
+app.use(auth);
+app.use("/api", apiRoutes);
 // app.use(htmlRoutes);
 
 
@@ -55,10 +49,10 @@ if (process.env.NODE_ENV === "test") {
   syncOptions.force = true;
 }
 
-// Render 404 page for any unmatched routes
-app.get("*", function (req, res) {
-  res.render("404");
-});
+// // Render 404 page for any unmatched routes
+// app.get("*", function (req, res) {
+//   res.render("404");
+// });
 // Starting the server, syncing our models ------------------------------------/
 db.sequelize.sync(syncOptions).then(function() {
   app.listen(PORT, function() {
