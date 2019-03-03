@@ -10,6 +10,10 @@ module.exports = function (sequelize, DataTypes) {
         },
         firstName: DataTypes.STRING,
         lastName: DataTypes.STRING,
+        role: {
+            type: DataTypes.STRING,
+            default: 'visitor'
+        },
         salt: DataTypes.STRING,
         hash: DataTypes.STRING
     });

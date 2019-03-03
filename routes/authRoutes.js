@@ -7,10 +7,10 @@ var routeHelpers = require("./helpers/route.helper");
 
 router.post("/login", function (req, res) {
 
-    if(!req.body.password|| !req.body.email){
-        return(res.status(400).json({msg: new Error("Please put all data on the body.")}));
+    if (!req.body.password || !req.body.email) {
+        return (res.status(400).json({ msg: new Error("Please put all data on the body.") }));
     }
-     // when the http://localhost:3000/auth/login request is sent from the client, to the server
+    // when the http://localhost:3000/auth/login request is sent from the client, to the server
     // it lands here.
     var user = {
         email: req.body.email,
@@ -35,23 +35,28 @@ router.post("/login", function (req, res) {
                 expiry.setDate(expiry.getDate() + 7);
 
                 res.json({
+                    userID: resp.id,
+                    firstName: resp.firstName,
+                    lastName: resp.lastName,
+                    email: resp.email,
                     token: jwt.sign({
                         exp: parseInt(expiry.getTime() / 1000),
                         userID: resp.id,
-                        name: resp.name,
+                        firstName: resp.firstName,
+                        lastName: resp.lastName,
                         email: resp.email,
-                        scaryStuff: "OOGA BOOOGA"
+                        role: resp.role
                     }, process.env.JWT_SECRET)
                 });
             }
             else {
-                 // If password doesn't match, then send back 401
+                // If password doesn't match, then send back 401
                 routeHelpers.sendJsonError(res, new Error("WRONG PASSWORD"), 401);
             }
         })
         .catch(function (err) {
-             // If any other exception occurs, then send a 400 (default) back.
-             console.log(err);
+            // If any other exception occurs, then send a 400 (default) back.
+            console.log(err);
             routeHelpers.sendJsonError(res, err);
         })
 });
@@ -59,8 +64,8 @@ router.post("/login", function (req, res) {
 // Create a new example
 router.post("/signup", function (req, res) {
     // console.log("register");
-    if(!req.body.firstName|| !req.body.lastName||!req.body.password|| !req.body.email){  
-        return(res.status(400).json({msg: new Error("Please put all data on the body.")}));
+    if (!req.body.firstName || !req.body.lastName || !req.body.password || !req.body.email) {
+        return (res.status(400).json({ msg: new Error("Please put all data on the body.") }));
     }
     var user = {
         email: req.body.email,
@@ -81,11 +86,28 @@ router.post("/signup", function (req, res) {
 
     models.User.create(userInstance)
         .then(function (resp) {
-            res.status(201).json({ message: "Creation Sucess!", id: resp.id })
+            var expiry = new Date();
+            expiry.setDate(expiry.getDate() + 7);
+            console.log('user.create.resp', resp);
+            res.status(201).json({
+                message: "Creation Sucess!",
+                userID: resp.id,
+                firstName: resp.firstName,
+                lastName: resp.lastName,
+                email: resp.email,
+                token: jwt.sign({
+                    exp: parseInt(expiry.getTime() / 1000),
+                    userID: resp.id,
+                    firstName: resp.firstName,
+                    lastName: resp.lastName,
+                    email: resp.email,
+                    role: resp.role
+                }, process.env.JWT_SECRET)
+            })
         })
         .catch(function (err) {
-            res.status(400).json({msg: err.toString()});
-            routeHelpers.sendJsonError(res, err);
+            res.status(400).json({ msg: err.toString() });
+            // routeHelpers.sendJsonError(res, err);
         })
 });
 

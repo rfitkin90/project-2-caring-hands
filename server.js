@@ -10,6 +10,8 @@ var express = require("express");
 var bodyParser = require("body-parser");
 // var exphbs = require("express-handlebars");
 var jwt = require('express-jwt');
+var jwtMiddleware = require('express-jwt-middleware');
+var jwtCheck = jwtMiddleware(process.env.JWT_SECRET);
 
 // ROUTES
 var apiRoutes = require("./routes/apiRoutes");
@@ -31,6 +33,7 @@ const auth = jwt({
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(express.static("public"));
+app.use(jwtCheck);
 
 
 app.set('view engine', 'jade');
@@ -55,8 +58,8 @@ if (process.env.NODE_ENV === "test") {
 //   res.render("404");
 // });
 // Starting the server, syncing our models ------------------------------------/
-db.sequelize.sync(syncOptions).then(function() {
-  app.listen(PORT, function() {
+db.sequelize.sync(syncOptions).then(function () {
+  app.listen(PORT, function () {
     console.log(
       "==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.",
       PORT,
