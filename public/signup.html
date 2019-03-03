@@ -124,12 +124,12 @@
             </div>
 
             <div class="container"><label for="email"><b>Email</b></label>
-                <input type="text" placeholder="jimbo.smith@gmail.com" name="email" required>
+                <input id= "login-email" type="text" placeholder="jimbo.smith@gmail.com" name="email" required>
 
                 <label for="psw"><b>Password</b></label>
-                <input type="password" placeholder="Enter Password" name="psw" required>
+                <input id = "login-pass" type="password" placeholder="Enter Password" name="psw" required>
 
-                <button type="submit">Login</button>
+                <button id= "login-submit" type="submit">Login</button>
                 <label>
                     <input type="checkbox" checked="checked" name="remember"> Remember me
                 </label>
@@ -243,76 +243,8 @@
 
 </body>
 
-<script>
 
-    // (function () {
-    //     'use strict';
-    //     window.addEventListener('load', function () {
-    //         var forms = document.getElementsByClassName('needs-validation');
-    //         var validation = Array.prototype.filter.call(forms, function (form) {
-    //             form.addEventListener('submit', function (event) {
-    //                 if (form.checkValidity() === false) {
-    //                     event.preventDefault();
-    //                     event.stopPropagation();
-    //                 }
-    //                 form.classList.add('was-validated');
-    //             }, false);
-    //         });
-    //     }, false);
-    // })();
-
-    // Get the modal
-    var modal = document.getElementById('id01');
-    var modal2 = document.getElementById('id02');
-
-    // When the user clicks anywhere outside of the modal, close it
-    window.onclick = function (event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
-        } else if (event.target == modal2) {
-            modal2.style.display = "none";
-        }
-    }
-
-    $("#submit").on("click", function (e) {
-        e.preventDefault();
-        var firstName = $("#fname").val().trim();
-        var lastName = $("#lname").val().trim();
-        var email = $("#email").val().trim();
-        var password = $("#password").val().trim();
-        var confirmPassword = $("#confirmPassword").val().trim();
-
-        if (password === confirmPassword) {
-            console.log("password match");
-            axios.post("/auth/signup", {
-                firstName,
-                lastName,
-                email,
-                password
-            }).then(function (resp) {
-                console.log(resp);
-            }).catch(function (err) {
-                console.error(err);
-            });
-        }
-        else {
-            $("#password").append("<strong>Wrong Password</strong>");
-        }
-
-        // axios.post("/auth/register", {
-        //     email: $("#email").val(),
-        //     password: $("#password").val(),
-        //     name: $("#name").val(),
-        // })
-        // .then(function(resp) {
-        //     console.log(resp)
-        //    // window.location.assign("/login");
-        // })
-        // .catch(function(err) {
-        //     console.error(err);
-        // })
-    });
-</script>
+<script src = "js/signupAuthorisation.js"></script>
 
 </html>
 

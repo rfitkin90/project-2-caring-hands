@@ -59,7 +59,7 @@ router.post("/login", function (req, res) {
 // Create a new example
 router.post("/signup", function (req, res) {
     // console.log("register");
-    if(!req.body.name|| !req.body.password|| !req.body.email){  
+    if(!req.body.firstName|| !req.body.lastName||!req.body.password|| !req.body.email){  
         return(res.status(400).json({msg: new Error("Please put all data on the body.")}));
     }
     var user = {
@@ -74,7 +74,8 @@ router.post("/signup", function (req, res) {
         salt: salt,
         email: user.email,
         hash: helpers.getHash(salt, user.password),
-        name: user.name
+        firstName: user.firstName,
+        lastName: user.lastName
     }
     console.log(userInstance.salt, userInstance.hash);
 
