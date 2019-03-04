@@ -81,7 +81,7 @@ span.psw {
    /* Hidden by default */
    position: fixed;
    /* Stay in place */
-   z-index: 1;
+   z-index: 2;
    /* Sit on top */
    left: 0;
    top: 0;
@@ -149,6 +149,39 @@ span.psw {
       transform: scale(1)
    }
 }
+
+/* ======================================== User Authentication ======================================== */
+.visible-anonymous {
+   visibility: visible;
+   display: initial;
+ }
+ 
+ .visible-authenticated {
+   visibility: hidden;
+   display: none;
+ }
+ 
+ body.authenticated .visible-anonymous {
+   visibility: hidden;
+   display: none;
+ }
+ 
+ body.authenticated .visible-authenticated {
+   visibility: visible;
+   display: initial;
+ }
+
+ #nav-welcome-msg {
+    color: white !important;
+ }
+
+#approve-requests-li {
+   visibility: hidden;
+}
+ 
+ body.authenticated.role-admin {
+   
+ }
 
 /* Change styles for span and cancel button on extra small screens */
 @media screen and (max-width: 300px) {

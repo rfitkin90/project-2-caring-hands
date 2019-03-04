@@ -16,8 +16,10 @@ $(document).ready(function () {
       if(payload.role && payload.role === 'admin') {
          // Do admin things!
          updateBodyClass('role-admin');
+         $('#approve-requests-li').css({ 'visibility': 'visible'});
 
          
+      } else if (payload.role !== 'admin') {
       }
 
    }
@@ -39,7 +41,7 @@ function updateBodyClass(newClass) {
 }
 
 function updateNavigation(firstName) {
-   $('#nav-welcome-msg').text(`Welcome ${firstName}`);
+   $('#nav-welcome-msg').text(`Welcome, ${firstName}!`);
 }
 
 function clearUserCookie() {

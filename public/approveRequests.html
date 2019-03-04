@@ -11,16 +11,14 @@
    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
       integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
    <link rel="stylesheet" href="./styles/nav.login.css">
+   <link rel="stylesheet" href="styles/styles.css" media="screen" title="no title">
    <!-- Scripts -->
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
 
    <style>
-      html,
-      body {
-         background-color: #E2D5C4;
-      }
 
       /* ================================= Pending Requests ================================= */
       .pending-requests-card {
@@ -70,7 +68,7 @@
       </button>
       <div class="collapse navbar-collapse" id="collapsibleNavbar">
          <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
+            <li class="nav-item" id="approve-requests-li">
                <span class="nav-link current-page-link">Approve Requests</span>
             </li>
             <li class="nav-item">
@@ -79,13 +77,19 @@
             <li class="nav-item">
                <a class="nav-link" href="./resident.html">Resident Info</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item visible-anonymous">
                <a onclick="document.getElementById('id01').style.display='block'" class="nav-link" href="#"><i
                      class="fas fa-user"></i> Sign Up</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item visible-anonymous">
                <a onclick="document.getElementById('id02').style.display='block'" class="nav-link" href="#"><i
                      class="fas fa-sign-in-alt"></i> Login</a>
+            </li>
+            <li class="nav-item visible-authenticated">
+               <span class="nav-link" id="nav-welcome-msg">Welcome user!</span>
+            </li>
+            <li class="nav-item visible-authenticated">
+               <a class="nav-link" href="#" id="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</a>
             </li>
          </ul>
       </div>
@@ -231,6 +235,12 @@
          }
       }
    </script>
+
+   <!-- ========================================== Application Scripts ========================================== -->
+
+   <script src="/js/cookies.js"></script>
+   <script src="/js/authentication.js"></script>
+   <script src="/js/signupAuthorisation.js"></script>
 
 </body>
 

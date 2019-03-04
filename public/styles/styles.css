@@ -2,8 +2,9 @@
   line-height: 2.5;
 }
 
-body {
+body,html {
   background-color: #E2D5C4;
+  min-height: 100vh !important;
 }
 
 .card-text {
@@ -65,30 +66,7 @@ button.edit {
   vertical-align: middle;
 }
 
-/* ======================================== User Authentication ======================================== */
-.visible-anonymous {
-  visibility: visible;
-  display: initial;
-}
 
-.visible-authenticated {
-  visibility: hidden;
-  display: none;
-}
-
-body.authenticated .visible-anonymous {
-  visibility: hidden;
-  display: none;
-}
-
-body.authenticated .visible-authenticated {
-  visibility: visible;
-  display: initial;
-}
-
-body.authenticated.role-admin {
-  
-}
 
 /* Responsive layout - makes a two column-layout instead of four columns */
 @media screen and (max-width: 800px) {

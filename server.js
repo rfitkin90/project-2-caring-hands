@@ -29,21 +29,20 @@ const auth = jwt({
 });
 
 
+
 // Middleware
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(express.static("public"));
-// app.use(jwtCheck);
-
 
 app.set('view engine', 'jade');
-
 // Routes
 app.use("/auth", authRoutes);
 app.use(auth);
 app.use("/api", apiRoutes);
 // app.use(htmlRoutes);
 
+app.use(jwtCheck);
 
 var syncOptions = { force: false };
 
