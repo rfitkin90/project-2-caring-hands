@@ -33,7 +33,7 @@ const auth = jwt({
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(express.static("public"));
-app.use(jwtCheck);
+// app.use(jwtCheck);
 
 
 app.set('view engine', 'jade');
