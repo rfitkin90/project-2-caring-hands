@@ -1,3 +1,8 @@
+
+.responsive {
+  height: 84px;
+  width: 134px; 
+}
 .list-group-item {
   line-height: 2.5;
 }
@@ -65,6 +70,24 @@ button.edit {
   vertical-align: middle;
 }
 
+
+.carousel-item {
+  position: relative;
+  text-align: center;
+}
+
+.promoQuotes {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.colom-md-6 {
+
+  position: center;
+}
+
 /* Responsive layout - makes a two column-layout instead of four columns */
 @media screen and (max-width: 800px) {
   .column {
@@ -80,3 +103,18 @@ button.edit {
     max-width: 100%;
   }
 }
+
+@media screen and (max-width: 760px) {
+  .navbar-brand {
+    max-width: 100%;
+    max-height: 80px;
+    position: center;
+    padding-bottom: 80px;
+    margin-left: 350px;
+  }
+
+  /* .navbar {
+    align-content: center;
+  } */
+}
+
