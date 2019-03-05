@@ -13,6 +13,61 @@ VALUES ("Barbara", 76, "crocheting, reading, gardening", "Has dimentia.");
 INSERT INTO Residents (firstName, age, activityPreferences, additionalInfo)
 VALUES ("Debra", 81, "knitting, bingo", "Has alzheimer's.");
 
+INSERT INTO Residents (firstName, age, activityPreferences, additionalInfo)
+VALUES ("Josie", 76, "puzzles, bingo, music", "Non ambulatory, very alert.");
+
+INSERT INTO Residents (firstName, age, activityPreferences, additionalInfo)
+VALUES ("Delfin", 70, "music, reading", "Had stroke.  Limited mobility.");
+
+INSERT INTO Residents (firstName, age, activityPreferences, additionalInfo)
+VALUES ("Charlie", 93, "reading, puzzles, bingo", "Has alzheimer's. Loves sweets but has diabetes.");
+
+INSERT INTO Residents (firstName, age, activityPreferences, additionalInfo)
+VALUES ("Rose", 90, "knitting", "Has dimentia.");
+
+INSERT INTO Residents (firstName, age, activityPreferences, additionalInfo)
+VALUES ("Carol", 88, "bingo", "Does not like loud noises.");
+
+INSERT INTO Residents (firstName, age, activityPreferences, additionalInfo)
+VALUES ("Susie", 91, "crocheting, reading, music", "Non ambulatory.");
+
+INSERT INTO Residents (firstName, age, activityPreferences, additionalInfo)
+VALUES ("Randy", 79, "reading", "Has alzheimer's.");
+
+INSERT INTO Residents (firstName, age, activityPreferences, additionalInfo)
+VALUES ("Miwa", 90, "music", "Hospice");
+
+INSERT INTO Residents (firstName, age, activityPreferences, additionalInfo)
+VALUES ("Georgia", 95, "music", "Hospice");
+
+INSERT INTO Residents (firstName, age, activityPreferences, additionalInfo)
+VALUES ("Samuel", 74, "reading, puzzles", "Limited mobility.");
+
+INSERT INTO Residents (firstName, age, activityPreferences, additionalInfo)
+VALUES ("Linda", 88, "knitting, crocheting, reading", "Has alzheimer's.");
+
+INSERT INTO Residents (firstName, age, activityPreferences, additionalInfo)
+VALUES ("Laura", 96, "reading, puzzles", "Non ambulatory.");
+
+INSERT INTO Residents (firstName, age, activityPreferences, additionalInfo)
+VALUES ("Morty", 81, "bingo, reading, music", "Has alzheimer's. Loves to talk.");
+
+INSERT INTO Residents (firstName, age, activityPreferences, additionalInfo)
+VALUES ("Joanna", 79, "knitting, puzzles", "Non ambulatory.");
+
+INSERT INTO Residents (firstName, age, activityPreferences, additionalInfo)
+VALUES ("Roxie", 91, "music", "Has alzheimer's.");
+
+INSERT INTO Residents (firstName, age, activityPreferences, additionalInfo)
+VALUES ("Rocky", 84, "bingo, music", "Has dimentia. Non ambulatory.  Has diabetes.");
+
+INSERT INTO Residents (firstName, age, activityPreferences, additionalInfo)
+VALUES ("Sally", 76, "gardening, reading", "Has dimentia. Gets aggitated easy.");
+
+INSERT INTO Residents (firstName, age, activityPreferences, additionalInfo)
+VALUES ("Barbara", 80, "music", "Hospice");
+
+
 -- EXAMPLE REQUESTS
 INSERT INTO Requests (availabilityStart, availabilityEnd, visitDuration, activityPreferences, additionalInfo, communityServiceForm, UserModelId)
 VALUES ("2019-03-15 13:00:00", "2019-03-15 17:00:00", 60, "animals, music performance, gardening", "", false, 1);
