@@ -13,11 +13,12 @@ body {
 
 .card-text {
   height: 66px;
+  font-size: 13px;
   text-overflow: ellipsis;
-  overflow: hidden;
+  overflow: break-word;
   display: -webkit-box;
   -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
+  
 }
 
 .container-fluid {

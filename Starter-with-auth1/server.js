@@ -8,10 +8,10 @@ require("dotenv").config();
 // PACKAGES
 var express = require("express");
 var bodyParser = require("body-parser");
-// var exphbs = require("express-handlebars");
+var exphbs = require("express-handlebars");
 var jwt = require('express-jwt');
-var jwtMiddleware = require('express-jwt-middleware');
-var jwtCheck = jwtMiddleware(process.env.JWT_SECRET);
+
+//console.log(process.env.corgi);
 
 // ROUTES
 var apiRoutes = require("./routes/apiRoutes");
@@ -27,22 +27,26 @@ const auth = jwt({
   secret: process.env.JWT_SECRET,
   userProperty: 'payload'
 });
-
-
-
 // Middleware
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(express.static("public"));
 
-app.set('view engine', 'jade');
+// Handlebars
+app.engine(
+  "handlebars",
+  exphbs({
+    defaultLayout: "main"
+  })
+);
+app.set("view engine", "handlebars");
+
 // Routes
+app.use(htmlRoutes);
 app.use("/auth", authRoutes);
 app.use(auth);
 app.use("/api", apiRoutes);
-// app.use(htmlRoutes);
 
-app.use(jwtCheck);
 
 var syncOptions = { force: false };
 
@@ -52,13 +56,13 @@ if (process.env.NODE_ENV === "test") {
   syncOptions.force = true;
 }
 
-// // Render 404 page for any unmatched routes
-// app.get("*", function (req, res) {
-//   res.render("404");
-// });
+// Render 404 page for any unmatched routes
+app.get("*", function (req, res) {
+  res.render("404");
+});
 // Starting the server, syncing our models ------------------------------------/
-db.sequelize.sync(syncOptions).then(function () {
-  app.listen(PORT, function () {
+db.sequelize.sync(syncOptions).then(function() {
+  app.listen(PORT, function() {
     console.log(
       "==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.",
       PORT,

@@ -8,13 +8,10 @@ module.exports = function (sequelize, DataTypes) {
                 isEmail: true
             }
         },
-        firstName: DataTypes.STRING,
-        lastName: DataTypes.STRING,
-        role: {
-            type: DataTypes.STRING,
-            default: 'visitor'
-        },
+        name: DataTypes.STRING,
+        //hexadecimal numbers
         salt: DataTypes.STRING,
+        //binary numbers
         hash: DataTypes.STRING
     });
     return User;

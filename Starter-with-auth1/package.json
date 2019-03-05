@@ -1,5 +1,5 @@
 {
-  "name": "project-2-placeholdername.git",
+  "name": "handlebars-boilerplate",
   "version": "1.0.0",
   "description": "Project 2 Starter",
   "main": "server.js",
@@ -11,20 +11,13 @@
   },
   "license": "ISC",
   "dependencies": {
-    "bcrypt": "^3.0.4",
     "body-parser": "^1.18.3",
     "dotenv": "^6.0.0",
-    "express": "^4.16.4",
+    "express": "^4.16.3",
     "express-handlebars": "^3.0.0",
     "express-jwt": "^5.3.1",
-    "express-jwt-middleware": "^1.0.3",
-    "jade": "^1.11.0",
-    "jsonwebtoken": "^8.5.0",
-    "mongoose": "^5.4.15",
+    "jsonwebtoken": "^8.3.0",
     "mysql2": "^1.5.3",
-    "passport": "^0.4.0",
-    "passport-jwt": "^4.0.0",
-    "passport-local": "^1.0.0",
     "sequelize": "^4.38.0"
   },
   "devDependencies": {
@@ -39,13 +32,5 @@
   "directories": {
     "test": "test"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/rfitkin90/project-2-placeholdername.git"
-  },
-  "author": "",
-  "bugs": {
-    "url": "https://github.com/rfitkin90/project-2-placeholdername/issues"
-  },
-  "homepage": "https://github.com/rfitkin90/project-2-placeholdername#readme"
+  "author": ""
 }

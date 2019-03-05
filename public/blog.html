@@ -16,7 +16,6 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
 
   <!-- <meta charset="UTF-8">
   <title>CMS - Express</title>
@@ -32,35 +31,29 @@
   <!-- =============================================== Navbar =============================================== -->
   <nav class="navbar navbar-expand-md navbar-dark">
     <span class="navbar-brand">
-      <h3><a class="nav-link" href="./index.html">Go Go Granny</a></h3>
+      <h3>Go Go Granny</h3>
     </span>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="collapsibleNavbar">
       <ul class="navbar-nav ml-auto">
-        <li class="nav-item" id="approve-requests-li">
-          <a class="nav-link" href="./approveRequests.html">Approve Requests</a>
+        <li class="nav-item">
+          <a class="nav-link current-page-link" href="approveRequests">Approve Requests</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="./submission.html">Schedule Visit</a>
+          <a class="nav-link" href="#">Schedule Visit</a>
         </li>
         <li class="nav-item">
-          <span class="nav-link" href="./resident.html">Resident Info</span>
+          <span class="nav-link current-page-link">Resident Info</span>
         </li>
-        <li class=" nav-item visible-anonymous">
-            <a onclick="document.getElementById('id01').style.display='block'" class="nav-link" href="#"><i
-                class="fas fa-user"></i> Sign Up</a>
+        <li class="nav-item">
+          <a onclick="document.getElementById('id01').style.display='block'" class="nav-link" href="#"><i
+              class="fas fa-user"></i> Sign Up</a>
         </li>
-        <li class="nav-item visible-anonymous">
+        <li class="nav-item">
           <a onclick="document.getElementById('id02').style.display='block'" class="nav-link" href="#"><i
               class="fas fa-sign-in-alt"></i> Login</a>
-        </li>
-        <li class="nav-item visible-authenticated">
-          <span class="nav-link" id="nav-welcome-msg">Welcome user!</span>
-        </li>
-        <li class="nav-item visible-authenticated">
-          <a class="nav-link" href="#" id="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</a>
         </li>
       </ul>
     </div>
@@ -146,11 +139,11 @@
       <div class="col-md-5 offset-md-3">
         <form id="cms">
           <div class="form-group">
-            <label for="title">Your Name:</label>
+            <label for="title">Title:</label>
             <input type="text" class="form-control" id="title">
             <br />
-            <label for="body">Leave a comment:</label>
-            <textarea class="form-control" placeholder="Positive vibes only." rows="10" id="body"></textarea>
+            <label for="body">Body:</label>
+            <textarea class="form-control" rows="10" id="body"></textarea>
             <div class="form-group">
               <label for="category">Experiences:</label>
               <select class="custom-select" id="category">
@@ -183,12 +176,6 @@
       }
     }
   </script>
-
-  <!-- ========================================== Application Scripts ========================================== -->
-
-  <script src="/js/cookies.js"></script>
-  <script src="/js/authentication.js"></script>
-  <script src="/js/signupAuthorisation.js"></script>
 
 </body>
 
