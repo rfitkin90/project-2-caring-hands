@@ -1,3 +1,8 @@
+.checkbox {
+   display: block;
+}
+
+
 .checkcontainer {
    max-width: 640px;
    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;

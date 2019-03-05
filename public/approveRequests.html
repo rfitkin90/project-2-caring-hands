@@ -19,7 +19,6 @@
    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
 
    <style>
-
       /* ================================= Pending Requests ================================= */
       .pending-requests-card {
          margin-top: 30px;
@@ -171,7 +170,7 @@
          <div class="card-header">
             <h2>Approve Visits</h2>
          </div>
-         <div class="card-body">
+         <div class="card-body" id="approve-body">
 
             <!-- example visit request -->
             <button class="card individual-request">
@@ -183,8 +182,9 @@
                   <p>Availability End: 2019-04-22 12:00:00</p>
                </div>
             </button>
+
             <!-- example visit request -->
-            <button class="card individual-request">
+            <!-- <button class="card individual-request">
                <div class="card-body">
                   <p>
                      <h4>Jimbo John</h4>
@@ -192,9 +192,9 @@
                   <p>Availability Start: 2019-04-22 09:00:00</p>
                   <p>Availability End: 2019-04-22 12:00:00</p>
                </div>
-            </button>
+            </button> -->
             <!-- example visit request -->
-            <button class="card individual-request">
+            <!-- <button class="card individual-request">
                <div class="card-body">
                   <p>
                      <h4>James Johnson</h4>
@@ -202,9 +202,9 @@
                   <p>Availability Start: 2019-04-22 09:00:00</p>
                   <p>Availability End: 2019-04-22 12:00:00</p>
                </div>
-            </button>
+            </button> -->
             <!-- example visit request -->
-            <button class="card individual-request">
+            <!-- <button class="card individual-request">
                <div class="card-body">
                   <p>
                      <h4>David Davidson</h4>
@@ -212,7 +212,7 @@
                   <p>Availability Start: 2019-04-22 09:00:00</p>
                   <p>Availability End: 2019-04-22 12:00:00</p>
                </div>
-            </button>
+            </button> -->
 
          </div>
       </div>
@@ -241,6 +241,7 @@
    <script src="/js/cookies.js"></script>
    <script src="/js/authentication.js"></script>
    <script src="/js/signupAuthorisation.js"></script>
+   <script src="/js/approveRequests.js"></script>
 
 </body>
 

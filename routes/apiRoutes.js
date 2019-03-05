@@ -18,11 +18,11 @@ router.get("/residents", function (req, res) {
 });
 
 // Updating visitors info to request table
-router.post("/requests", function (req, res) {
-  if (!req.tokenData) {
-    // restricting route to only autheticated users
-    res.status(403).send('Unauthorized');
-  }
+router.post("/submissions", function (req, res) {
+  // console.log('req.body', req.body);
+
+  console.log(req.payload);
+
 
   model.Requests.create({
     availabilityStart: req.body.availabilityStart,
@@ -31,7 +31,7 @@ router.post("/requests", function (req, res) {
     activityPreferences: req.body.activityPreferences,
     additionalInfo: req.body.additionalInfo,
     communityServiceForm: req.body.communityServiceForm,
-    userID: req.tokenData.id
+    UserId: req.payload.userID
   })
     .then(function (dbData) {
       res.json(dbData);
@@ -43,8 +43,9 @@ router.post("/requests", function (req, res) {
 });
 
 //Get visitors info from the request table =====>from administrator perspective
-router.get("/requests", function (req, res) {
-  model.Requests.findAll({ where: { userID: req.tokenData.userID } }).then(function (dbData) {
+router.get("/submissions", function (req, res) {
+  console.log(req);
+  model.Requests.findAll({ /* where: { userID: req.tokenData.userID } */ }).then(function (dbData) {
     res.json(dbData);
   })
     .catch(function (err) {
@@ -52,6 +53,8 @@ router.get("/requests", function (req, res) {
       throw err;
     });
 });
+
+// router.get('/submissions/', function (req,res))
 
 //Update visits table ======> after administrator posts
 router.post("/visits", function (req, res) {
