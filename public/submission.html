@@ -142,20 +142,20 @@
                <!-- earliest availability-->
                <div class="form-group">
                   <label for="earliest-availability">Earliest Availability</label>
-                  <input type="datetime-local" name="earliest-availability" class="form-control">
+                  <input type="datetime-local" id="availabilityStart" name="earliest-availability" class="form-control">
                </div>
 
                <!-- latest availability -->
                <div class="form-group">
                   <label for="latest-availability">Latest Availability</label>
-                  <input type="datetime-local" name="latest-availability" class="form-control">
+                  <input type="datetime-local" id="availabilityEnd" name="latest-availability" class="form-control">
                </div>
 
                <!-- visit duration -->
                <div class="form-group">
-                  <label for="visit-duration">Visit Duration</label>
-                  <input type="number" class="form-control" id="visit-duration" placeholder="Enter number of minutes"
-                     name="visit-duration" min="1" max="120">
+                  <label for="visit-duration">Visit Duration(min)</label>
+                  <input type="number" class="form-control" id="visitDuration" placeholder="Enter number of minutes"
+                     name="visitDuration" min="1" max="120">
                </div>
             </div>
 
@@ -167,33 +167,34 @@
                   <!-- check boxes -->
                   <div class="checkcontainer">
                      <ul class="ks-cboxtags">
-                        <li><input type="checkbox" id="checkboxOne" value="Walking"><label
-                              for="checkboxOne">Walking</label>
+                        <li><input type="checkbox" id="checkboxOne" value="Walking"><label for="checkboxOne"
+                              class="checkbox unchecked" id="checkbox1">Walking</label>
                         </li>
-                        <li><input type="checkbox" id="checkboxTwo" value="Games"><label for="checkboxTwo">Games</label>
+                        <li><input type="checkbox" id="checkboxTwo" value="Games"><label for="checkboxTwo"
+                              class="checkbox unchecked" id="checkbox2">Games</label>
                         </li>
-                        <li><input type="checkbox" id="checkboxThree" value="Convserational"><label
-                              for="checkboxThree">Have a
-                              chat</label></li>
-                        <li><input type="checkbox" id="checkboxFour" value="Music"><label
-                              for="checkboxFour">Music</label>
+                        <li><input type="checkbox" id="checkboxThree" value="Convserational"><label for="checkboxThree"
+                              class="checkbox unchecked" id="checkbox3">Have a chat</label></li>
+                        <li><input type="checkbox" id="checkboxFour" value="Music"><label for="checkboxFour"
+                              class="checkbox unchecked" id="checkbox4">Music</label>
                         </li>
-                        <li><input type="checkbox" id="checkboxFive" value="Reading"><label
-                              for="checkboxFive">Reading</label>
+                        <li><input type="checkbox" id="checkboxFive" value="Reading"><label for="checkboxFive"
+                              class="checkbox unchecked" id="checkbox5">Reading</label>
                         </li>
-                        <li><input type="checkbox" id="checkboxSix" value="Movie"><label
-                              for="checkboxSix">Movies</label>
+                        <li><input type="checkbox" id="checkboxSix" value="Movie"><label for="checkboxSix"
+                              class="checkbox unchecked" id="checkbox6">Movies</label>
                         </li>
-                        <li><input type="checkbox" id="checkboxSeven" value="Cook"><label
-                              for="checkboxSeven">Cooking</label>
+                        <li><input type="checkbox" id="checkboxSeven" value="Cook"><label for="checkboxSeven"
+                              class="checkbox unchecked" id="checkbox7">Cooking</label>
                         </li>
-                        <li><input type="checkbox" id="checkboxEight" value="Tech"><label for="checkboxEight">Teach
-                              Technogoly</label></li>
-                        <li><input type="checkbox" id="checkboxNine" value="Pet"><label for="checkboxNine">Bring your
-                              Pet</label>
+                        <li><input type="checkbox" id="checkboxEight" id="checkbox8" value="Tech"><label
+                              for="checkboxEight" class="checkbox unchecked" id="checkbox8">Teach Technology</label>
                         </li>
-                        <li><input type="checkbox" id="checkboxTen" value="Sew"><label
-                              for="checkboxTen">Sew/Knitting</label>
+                        <li><input type="checkbox" id="checkboxNine" value="Pet"><label for="checkboxNine"
+                              class="checkbox unchecked" id="checkbox9">Bring your Pet</label>
+                        </li>
+                        <li><input type="checkbox" id="checkboxTen" value="Sew"><label for="checkboxTen"
+                              class="checkbox unchecked" id="checkbox10">Sew/Knitting</label>
                         </li>
                      </ul>
                   </div>
@@ -206,12 +207,13 @@
          <!-- additional info -->
          <div class="form-group">
             <label for="additional-comments">Add any additional comments or requests regarding your visit.</label>
-            <textarea class="form-control" id="additional-comments" rows="5"></textarea>
+            <textarea class="form-control" id="additionalInfo" rows="5"></textarea>
          </div>
 
          <div class="form-group form-check">
             <label class="form-check-label">
-               <input class="form-check-input" type="checkbox" name="remember"> Request signed community service form
+               <input class="form-check-input" id="communityServiceForm" type="checkbox" name="remember"> Request signed
+               community service form
             </label>
          </div>
 
@@ -227,5 +229,6 @@
 <script src="js/cookies.js"></script>
 <script src="/js/authentication.js"></script>
 <script src="js/signupAuthorisation.js"></script>
+<script src="js/submissionForm.js"></script>
 
 </html>

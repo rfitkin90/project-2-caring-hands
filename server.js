@@ -8,6 +8,7 @@ require("dotenv").config();
 // PACKAGES
 var express = require("express");
 var bodyParser = require("body-parser");
+const authHelpers = require("./routes/helpers/auth.helpers");
 // var exphbs = require("express-handlebars");
 var jwt = require('express-jwt');
 var jwtMiddleware = require('express-jwt-middleware');
@@ -42,7 +43,7 @@ app.use(auth);
 app.use("/api", apiRoutes);
 // app.use(htmlRoutes);
 
-app.use(jwtCheck);
+// app.use(jwtCheck);
 
 var syncOptions = { force: false };
 
@@ -58,13 +59,26 @@ if (process.env.NODE_ENV === "test") {
 // });
 // Starting the server, syncing our models ------------------------------------/
 db.sequelize.sync(syncOptions).then(function () {
-  app.listen(PORT, function () {
-    console.log(
-      "==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.",
-      PORT,
-      PORT
-    );
+  var salt = authHelpers.getSalt();
+  var hash = authHelpers.getHash(salt, "123");
+  return db.User.create({
+    email: 'jimbus@gmail.com',
+    firstName: "jimbo",
+    salt: salt,
+    hash: hash,
+    lastName: "scrimbo",
+    role: "admin"
+  })
+})
+  .then(function (resp) {
+    app.listen(PORT, function () {
+      console.log(
+        "==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.",
+        PORT,
+        PORT
+      );
+    });
   });
-});
+;
 
 module.exports = app;

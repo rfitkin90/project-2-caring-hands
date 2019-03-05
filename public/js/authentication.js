@@ -2,6 +2,8 @@ $(document).ready(function () {
    console.log("authentication.js loaded!");
 
    var token = getCookie('token');
+   // Store
+   localStorage.setItem("token", token);
    var firstName = getCookie('firstName');
    console.log(`token: ${token}`);
    console.log(`firstName: ${firstName}`);
@@ -10,15 +12,15 @@ $(document).ready(function () {
       updateBodyClass('authenticated');
       updateNavigation(firstName);
 
-      
+
       var payload = JSON.parse(window.atob(token.split('.')[1]));
       console.log('payload', payload);
-      if(payload.role && payload.role === 'admin') {
+      if (payload.role && payload.role === 'admin') {
          // Do admin things!
          updateBodyClass('role-admin');
-         $('#approve-requests-li').css({ 'visibility': 'visible'});
+         $('#approve-requests-li').css({ 'visibility': 'visible' });
 
-         
+
       } else if (payload.role !== 'admin') {
       }
 

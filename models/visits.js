@@ -22,7 +22,7 @@ module.exports = function (sequelize, DataTypes) {
    });
 
    // Visits.associate = function (models) {
-   //    Visits.belongsToMany(models.UserModel, {
+   //    Visits.belongsToMany(models.User, {
    //       foreignKey: {
    //          allowNull: false
    //       }

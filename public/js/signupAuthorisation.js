@@ -89,27 +89,28 @@ $(document).ready(function () {
     //jwt authorisation
     // var token = window.localStorage.getItem("token");
     var token = getCookie('token');
-    if (token) {
-        var payload = JSON.parse(window.atob(token.split('.')[1]));
-        console.log('payload', payload);
-    }
-    console.log('checking for token');
-    if (token) {
-        console.log('token found');
-        axios({
-            url: "/api/protect",
-            headers: {
-                "Authorization": "Bearer " + (token)
-            }
-        })
-            .then(function (resp) {
-                console.log('api/protected.resp', resp);
+    // if (token) {
+    //     var payload = JSON.parse(window.atob(token.split('.')[1]));
+    //     console.log('payload', payload);
+    // }
+    // console.log('checking for token');
+    // if (token) {
+    //     console.log('token found');
+    //     axios({
+    //         url: "/api/protect",
+    //         headers: {
+    //             "Authorization": "Bearer " + (token)
+    //         }
+    //     })
+    //         .then(function (resp) {
+    //             console.log('api/protected.resp', resp);
 
-            })
-            .catch(function (err) {
-                console.error('api/protected.err', err);
-            })
-    }
+    //         })
+    //         .catch(function (err) {
+    //             console.error('api/protected.err', err);
+    //         });
+    //     ;
+    // }
 });
 
 
