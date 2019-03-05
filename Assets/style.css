@@ -1,0 +1,90 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    background-color: #DECDC0;
+  }
+  #slider {
+    width: 720px;
+    height: 400px;
+    overflow: hidden;
+}
+
+#slider .slides {
+    display: block;
+    width: 600px;
+    height: 400px;
+    margin: 0;
+    padding: 0;
+
+}
+
+#slider.slide {
+    float: left;
+    list-style-type: none;
+    width: 720px;
+    height: 400px
+}
+
+
+
+.container-fluid {
+background-color: #E2D5C4;
+height: 80px;
+
+
+}
+
+.navbar-inverse {
+    background-color: #E2D5C4;
+    border-color: #E2D5C4;
+    height:100px ;
+    margin-bottom: 0;
+}
+
+.mainImage { 
+width: 1020px;
+height: 400px;
+opacity: 100rem;
+
+}
+
+.navbar-nav {
+    
+    display: inline;
+    
+}
+.navbar-collapse {
+    
+    padding-bottom: 500px;
+    
+}
+
+#myNavbar {
+    margin-top: -15px;
+}
+
+.navbar-header { 
+     text-align: center;
+    
+}
+
+.navbar-brand {
+    
+    margin-right:550px;
+}
+
+
+.bgContainer {
+    
+    background-image:  url("../Assets/Images/dan-interview_volunteers.jpg");
+    height: 100%;
+    margin-top: 0;
+
+
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    opacity: 0.2 ;
+}
+
+
