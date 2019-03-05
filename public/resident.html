@@ -16,8 +16,6 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
-
 
   <style>
     .card-body {
@@ -46,35 +44,31 @@
   <!-- =============================================== Navbar =============================================== -->
   <nav class="navbar navbar-expand-md navbar-dark">
     <span class="navbar-brand">
-      <h3><a class="nav-link" href="./index.html">Go Go Granny</a></h3>
+      <a href="index.html">
+        <h3>Go Go Granny</h3>
+      </a>
     </span>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="collapsibleNavbar">
       <ul class="navbar-nav ml-auto">
-        <li class="nav-item" id="approve-requests-li">
-          <a class="nav-link current-page-link" href="./approveRequests.html">Approve Requests</a>
+        <li class="nav-item">
+          <a class="nav-link current-page-link" href="#">Approve Requests</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="./submission.html">Schedule Visit</a>
+          <a class="nav-link" href="#">Schedule Visit</a>
         </li>
         <li class="nav-item">
           <span class="nav-link current-page-link">Resident Info</span>
         </li>
-        <li class="nav-item visible-anonymous">
+        <li class="nav-item">
           <a onclick="document.getElementById('id01').style.display='block'" class="nav-link" href="#"><i
               class="fas fa-user"></i> Sign Up</a>
         </li>
-        <li class="nav-item visible-anonymous">
+        <li class="nav-item">
           <a onclick="document.getElementById('id02').style.display='block'" class="nav-link" href="#"><i
               class="fas fa-sign-in-alt"></i> Login</a>
-        </li>
-        <li class="nav-item visible-authenticated">
-          <span class="nav-link" id="nav-welcome-msg">Welcome user!</span>
-        </li>
-        <li class="nav-item visible-authenticated">
-          <a class="nav-link" href="#" id="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</a>
         </li>
       </ul>
     </div>
@@ -83,7 +77,7 @@
   <!-- =============================================== Modals =============================================== -->
   <!-- Signup Modal -->
   <div id="id01" class="modal">
-    <form class="modal-content animate">
+    <form class="modal-content animate" action="/action_page.php">
       <div class="imgcontainer">
         <span onclick="document.getElementById('id01').style.display='none'" class="close"
           title="Close Modal">&times;</span>
@@ -92,21 +86,21 @@
 
       <div class="container">
         <label for="fname"><b>First Name</b></label>
-        <input id="fname" type="text" placeholder="Jimbo" name="fname" required>
+        <input type="text" placeholder="Jimbo" name="fname" required>
 
         <label for="lname"><b>Last Name</b></label>
-        <input id="lname" type="text" placeholder="Smith" name="lname" required>
+        <input type="text" placeholder="Smith" name="lname" required>
 
         <label for="email"><b>Email</b></label>
-        <input id="email" type="text" placeholder="jimbo.smith@gmail.com" name="email" required>
+        <input type="text" placeholder="jimbo.smith@gmail.com" name="email" required>
 
         <label for="psw"><b>Password</b></label>
-        <input id="password" type="password" placeholder="Enter Password" name="psw" required>
+        <input type="password" placeholder="Enter Password" name="psw" required>
 
         <label for="cpsw"><b>Confirm Password</b></label>
-        <input id="confirmPassword" type="password" placeholder="Enter Password Again" name="cpsw" required>
+        <input type="password" placeholder="Enter Password Again" name="cpsw" required>
 
-        <button id="register-submit" type="submit">Register</button>
+        <button type="submit">Login</button>
         <label>
           <input type="checkbox" checked="checked" name="remember"> Remember me
         </label>
@@ -122,7 +116,7 @@
 
   <!-- Login Modal -->
   <div id="id02" class="modal">
-    <form class="modal-content animate">
+    <form class="modal-content animate" action="/action_page.php">
       <div class="imgcontainer">
         <span onclick="document.getElementById('id02').style.display='none'" class="close"
           title="Close Modal">&times;</span>
@@ -130,12 +124,12 @@
       </div>
 
       <div class="container"><label for="email"><b>Email</b></label>
-        <input id="login-email" type="text" placeholder="jimbo.smith@gmail.com" name="email" required>
+        <input type="text" placeholder="jimbo.smith@gmail.com" name="email" required>
 
         <label for="psw"><b>Password</b></label>
-        <input id="login-pass" type="password" placeholder="Enter Password" name="psw" required>
+        <input type="password" placeholder="Enter Password" name="psw" required>
 
-        <button id="login-submit" type="submit">Login</button>
+        <button type="submit">Login</button>
         <label>
           <input type="checkbox" checked="checked" name="remember"> Remember me
         </label>
@@ -238,7 +232,7 @@
           <div class="card-body">
             <h5 class="card-title">Kimi</h5>
             <p class="card-text">Kimi is a little forgetful due to her dimentia but she is very sweet and loves to
-              talk. She is a chatter box. She also loves puzzles and music.</p>
+              talk. She is a chatter box, loves puzzles and music.</p>
             <a href="#" class="btn btn-primary">Schedule Visit</a>
           </div>
         </div>
@@ -283,7 +277,7 @@
           </div>
         </div>
         <div class="col-md-6">
-          <a class="btn btn-light" href="./cms.html">Comments</a>
+          <a class="btn btn-light" href="/cms">Comments</a>
         </div>
       </div>
     </div>
@@ -316,11 +310,5 @@
     }
   }
 </script>
-
-<!-- ========================================== Application Scripts ========================================== -->
-
-<script src="/js/cookies.js"></script>
-<script src="/js/authentication.js"></script>
-<script src="/js/signupAuthorisation.js"></script>
 
 </html>
