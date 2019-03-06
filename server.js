@@ -112,10 +112,12 @@ db.sequelize.sync(syncOptions).then(function () {
   .then(function (resp) {
     // adds example resident to database
     return db.Residents.create({
-      firstName: 'Barbara',
+      firstName: 'Maggie',
       age: 70,
-      activityPreferences: 'Reading,Teach Technology',
-      additionalInfo: 'Has dimentia.'
+      activityPreferences: 'Music,Reading',
+      additionalInfo: 'Maggie loves to listen to music and hear a good story. ' +
+        'She is very pleasant to sit with and enjoys books.',
+      photo: 'https://www.catholiccharitiesusa.org/wp-content/uploads/2018/04/Story_Meals-on-Wheels-for-Senior-Citizens-1024x512.jpg'
     })
   })
   .then(function (resp) {

@@ -12,6 +12,9 @@ module.exports = function (sequelize, DataTypes) {
       },
       additionalnfo: {
          type: DataTypes.STRING
+      },
+      photo: {
+         type: DataTypes.STRING
       }
    });
 

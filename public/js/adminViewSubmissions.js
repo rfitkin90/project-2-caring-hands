@@ -1,7 +1,7 @@
 $(document).ready(function () {
 
 
-   console.log('approveRequests.js loaded');
+   console.log('adminViewSubmissions.js loaded');
 
    var token = localStorage.getItem("token");
    console.log('token:', token);
@@ -92,7 +92,7 @@ $(document).ready(function () {
 $(document).on('click', '.individual-request', function (e) {
    e.preventDefault();
    window.location.href = `
-      ./scheduleVisit.html?u=${$(this).attr('data-userId')}&s=${$(this).attr('data-submissionId')}
+      ./adminScheduleVisit.html?u=${$(this).attr('data-userId')}&s=${$(this).attr('data-submissionId')}
    `;
 });
 

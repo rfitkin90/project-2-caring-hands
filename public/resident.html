@@ -12,6 +12,7 @@
     integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
   <link rel="stylesheet" href="./styles/nav.login.css">
   <link rel="stylesheet" href="styles/styles.css" media="screen" title="no title">
+  <link rel="stylesheet" href="styles/resident.css" media="screen" title="no title">
   <!-- Scripts -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
@@ -54,10 +55,10 @@
     <div class="collapse navbar-collapse" id="collapsibleNavbar">
       <ul class="navbar-nav ml-auto">
         <li class="nav-item" id="approve-requests-li">
-          <a class="nav-link current-page-link" href="./approveRequests.html">Approve Requests</a>
+          <a class="nav-link current-page-link" href="./adminViewSubmissions.html">Approve Requests</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="./submission.html">Schedule Visit</a>
+          <a class="nav-link" href="./submissionForm.html">Schedule Visit</a>
         </li>
         <li class="nav-item">
           <span class="nav-link current-page-link">Resident Info</span>
@@ -190,7 +191,11 @@
     <!----background image here-->
 
     <div class="row">
-      <div class="col-md-4">
+
+      <!-- <div class="col-md-4"> -->
+
+      <div class="residents-flexbox">
+
         <div class="card" style="width: 18rem;">
           <img class="card-img-top"
             src="https://www.catholiccharitiesusa.org/wp-content/uploads/2018/04/Story_Meals-on-Wheels-for-Senior-Citizens-1024x512.jpg"
@@ -202,8 +207,12 @@
             <a href="#" class="btn btn-primary">Schedule Visit</a>
           </div>
         </div>
+
       </div>
-      <div class="col-md-4">
+
+      <!-- </div> -->
+
+      <!-- <div class="col-md-4">
         <div class="card" style="width: 18rem;">
           <img class="card-img-top"
             src="http://www.commage.org/wp-content/uploads/2016/05/image-for-swiss-report-600x400.jpg" height="150"
@@ -228,9 +237,11 @@
             <a href="#" class="btn btn-primary">Schedule visit</a>
           </div>
         </div>
-      </div>
+      </div> -->
+
     </div>
-    <div class="row">
+
+    <!-- <div class="row">
       <div class="col-md-4">
         <div class="card" style="width: 18rem;">
           <img class="card-img-top" src="https://ak4.picdn.net/shutterstock/videos/19553224/thumb/8.jpg" height="150"
@@ -286,7 +297,7 @@
           <a class="btn btn-light" href="./cms.html">Comments</a>
         </div>
       </div>
-    </div>
+    </div> -->
 
 
     <div class="row">
@@ -296,31 +307,15 @@
   </div>
   <!-- Custom Script -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.0/moment.min.js" type="text/javascript"></script>
-  <script src="js/blog.js" type="text/javascript"></script>
+  <!-- <script src="js/blog.js" type="text/javascript"></script> -->
 
 </body>
-
-
-
-<script>
-  // Get the modal
-  var modal = document.getElementById('id01');
-  var modal2 = document.getElementById('id02');
-
-  // When the user clicks anywhere outside of the modal, close it
-  window.onclick = function (event) {
-    if (event.target == modal) {
-      modal.style.display = "none";
-    } else if (event.target == modal2) {
-      modal2.style.display = "none";
-    }
-  }
-</script>
 
 <!-- ========================================== Application Scripts ========================================== -->
 
 <script src="/js/cookies.js"></script>
 <script src="/js/authentication.js"></script>
 <script src="/js/signupAuthorisation.js"></script>
+<script src="/js/resident.js"></script>
 
 </html>

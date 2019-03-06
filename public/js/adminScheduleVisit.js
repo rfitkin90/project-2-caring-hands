@@ -1,7 +1,7 @@
 $(document).ready(function () {
 
    // check if this file is loaded
-   console.log('approveRequests.js loaded');
+   console.log('adminScheduleVisit.js loaded');
 
    // get token from local storage
    var token = localStorage.getItem("token");
