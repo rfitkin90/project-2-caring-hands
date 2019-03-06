@@ -2,18 +2,18 @@
   line-height: 2.5;
 }
 
-body {
+body,html {
   background-color: #E2D5C4;
+  min-height: 100vh !important;
 }
 
 .card-text {
   height: 66px;
-  font-size: 13px;
   text-overflow: ellipsis;
-  overflow: break-word;
+  overflow: hidden;
   display: -webkit-box;
   -webkit-line-clamp: 3;
-  
+  -webkit-box-orient: vertical;
 }
 
 .container-fluid {
@@ -65,6 +65,8 @@ button.edit {
   margin-top: 8px;
   vertical-align: middle;
 }
+
+
 
 /* Responsive layout - makes a two column-layout instead of four columns */
 @media screen and (max-width: 800px) {
