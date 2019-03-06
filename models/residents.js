@@ -15,11 +15,11 @@ module.exports = function (sequelize, DataTypes) {
       }
    });
 
-   // Residents.associate = function (models) {
-   //    Residents.hasMany(models.Visits, {
-   //       onDelete: "cascade"
-   //    });
-   // };
+   Residents.associate = function (models) {
+      Residents.hasMany(models.Visits, {
+         onDelete: "cascade"
+      });
+   };
 
    return Residents;
 };

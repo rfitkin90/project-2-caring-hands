@@ -61,6 +61,7 @@ if (process.env.NODE_ENV === "test") {
 db.sequelize.sync(syncOptions).then(function () {
   var salt = authHelpers.getSalt();
   var hash = authHelpers.getHash(salt, "123");
+  // ================================= example users ================================= //
   return db.User.create({
     email: 'jimbus@gmail.com',
     firstName: "jimbo",
@@ -70,6 +71,88 @@ db.sequelize.sync(syncOptions).then(function () {
     role: "admin"
   })
 })
+  .then(function (resp) {
+    var salt = authHelpers.getSalt();
+    var hash = authHelpers.getHash(salt, "123");
+    return db.User.create({
+      email: 'jimbus2@gmail.com',
+      firstName: "jimbo2",
+      salt: salt,
+      hash: hash,
+      lastName: "scrimbo2",
+      role: "user"
+    })
+  })
+  // ================================= example appointment requests ================================= //
+  .then(function (resp) {
+    // adds example appointment request to database
+    return db.Requests.create({
+      availabilityStart: "2019-03-15T15:00",
+      availabilityEnd: "2019-03-15T18:00",
+      visitDuration: 60,
+      activityPreferences: "Reading,Teach Technology,Sew/Knitting",
+      additionalInfo: "Hello",
+      communityServiceForm: true,
+      UserId: 1
+    })
+  })
+  .then(function (resp) {
+    // adds example appointment request to database
+    return db.Requests.create({
+      availabilityStart: "2019-04-15T16:00",
+      availabilityEnd: "2019-04-15T19:00",
+      visitDuration: 120,
+      activityPreferences: "Walking,Games,Music",
+      additionalInfo: "Hello2",
+      communityServiceForm: true,
+      UserId: 2
+    })
+  })
+  // ================================= example residents ================================= //
+  .then(function (resp) {
+    // adds example resident to database
+    return db.Residents.create({
+      firstName: 'Barbara',
+      age: 70,
+      activityPreferences: 'Reading,Teach Technology',
+      additionalInfo: 'Has dimentia.'
+    })
+  })
+  .then(function (resp) {
+    // adds example resident to database
+    return db.Residents.create({
+      firstName: 'Barbara2',
+      age: 72,
+      activityPreferences: 'Reading,Sew/Knitting',
+      additionalInfo: 'Has alzheimers.'
+    })
+  })
+  // ================================= example visits ================================= //
+  .then(function (resp) {
+    // adds example visit to database
+    return db.Visits.create({
+      visitStart: '2019-03-15T15:00',
+      visitEnd: '2019-03-15T16:00',
+      activities: 'Sew/Knitting',
+      communityServiceForm: false,
+      confirmed: false,
+      UserId: 1,
+      ResidentId: 1
+    })
+  })
+  .then(function (resp) {
+    // adds example visit to database
+    return db.Visits.create({
+      visitStart: '2019-04-15T16:00',
+      visitEnd: '2019-04-15T17:00',
+      activities: 'Music',
+      communityServiceForm: false,
+      confirmed: false,
+      UserId: 2,
+      ResidentId: 2
+    })
+  })
+  // ================================= start server ================================= //
   .then(function (resp) {
     app.listen(PORT, function () {
       console.log(

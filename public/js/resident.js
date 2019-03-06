@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(document).ready(function () {
   // blogContainer holds all of our posts
   var blogContainer = $(".blog-container");
   var postCategorySelect = $("#category");
@@ -14,7 +14,7 @@ $(document).ready(function() {
     if (categoryString) {
       categoryString = "/category/" + categoryString;
     }
-    $.get("/api/posts" + categoryString, function(data) {
+    $.get("/api/posts" + categoryString, function (data) {
       console.log("Posts", data);
       posts = data;
       if (!posts || !posts.length) {
@@ -32,7 +32,7 @@ $(document).ready(function() {
       method: "DELETE",
       url: "/api/posts/" + id
     })
-      .then(function() {
+      .then(function () {
         getPosts(postCategorySelect.val());
       });
   }
@@ -70,7 +70,7 @@ $(document).ready(function() {
       float: "right",
       "font-weight": "700",
       "margin-top":
-      "-15px"
+        "-15px"
     });
     var newPostCardBody = $("<div>");
     newPostCardBody.addClass("card-body");

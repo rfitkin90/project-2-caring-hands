@@ -24,11 +24,11 @@ module.exports = function (sequelize, DataTypes) {
         });
     };
 
-    // User.associate = function (models) {
-    //     User.hasMany(models.Visits, {
-    //         onDelete: "cascade"
-    //     });
-    // };
+    User.associate = function (models) {
+        User.hasMany(models.Visits, {
+            onDelete: "cascade"
+        });
+    };
 
     return User;
 };
