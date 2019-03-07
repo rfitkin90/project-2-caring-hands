@@ -18,11 +18,11 @@ router.get("/residents", function (req, res) {
 });
 
 // Updating visitors info to request table
-router.post("/requests", function (req, res) {
-  if (!req.tokenData) {
-    // restricting route to only autheticated users
-    res.status(403).send('Unauthorized');
-  }
+router.post("/submissions", function (req, res) {
+  // console.log('req.body', req.body);
+
+  console.log(req.payload);
+
 
   model.Requests.create({
     availabilityStart: req.body.availabilityStart,
@@ -31,7 +31,7 @@ router.post("/requests", function (req, res) {
     activityPreferences: req.body.activityPreferences,
     additionalInfo: req.body.additionalInfo,
     communityServiceForm: req.body.communityServiceForm,
-    userID: req.tokenData.id
+    UserId: req.payload.userID
   })
     .then(function (dbData) {
       res.json(dbData);
@@ -43,15 +43,17 @@ router.post("/requests", function (req, res) {
 });
 
 //Get visitors info from the request table =====>from administrator perspective
-router.get("/requests", function (req, res) {
-  model.Requests.findAll({ where: { userID: req.tokenData.userID } }).then(function (dbData) {
+router.get("/submissions", function (req, res) {
+  model.Requests.findAll({ /* where: { userID: req.tokenData.userID } */ }).then(function (dbData) {
     res.json(dbData);
   })
     .catch(function (err) {
-      console.log(err);
+      console.log('submissions.get route err', err);
       throw err;
     });
 });
+
+// router.get('/submissions/', function (req,res))
 
 //Update visits table ======> after administrator posts
 router.post("/visits", function (req, res) {
@@ -97,15 +99,12 @@ router.get("/protect", function (req, res) {
     // restricting route to only autheticated users
     res.status(403).send('Unauthorized');
   }
-
   // populate filter
   // use on get visits, delete visits, and update visits
   // where.userID = req.tokenData.userID;
 
   // // populate user foreign key
   // visit.userID = req.tokenData.userID;
-
-
 
   console.log("api/protected.request.tokenData", req.tokenData);
   res.json({
@@ -114,89 +113,44 @@ router.get("/protect", function (req, res) {
   });
 });
 
+// find user by id
+router.get('/user/:id', function (req, res) {
+  model.User.findOne({ where: { id: req.params.id } }).then(function (dbData) {
+    res.json(dbData);
+    console.log('user info:', dbData);
+  })
+    .catch(function (err) {
+      console.log('user.get route err', err);
+      throw err;
+    });
+  ;
+});
+
+// find appointment request by id
+router.get('/submissions/:id', function (req, res) {
+  model.Requests.findOne({ where: { id: req.params.id } }).then(function (dbData) {
+    res.json(dbData);
+    console.log('appointment request info:', dbData);
+  })
+    .catch(function (err) {
+      console.log('submissions.get route err', err);
+      throw err;
+    });
+  ;
+});
+
+// find visits by resident id
+router.get('/visits/:id', function (req, res) {
+  model.Visits.findAll({ where: { id: req.params.id } }).then(function (dbData) {
+    res.json(dbData);
+    console.log('appointment request info:', dbData);
+  })
+    .catch(function (err) {
+      console.log('submissions.get route err', err);
+      throw err;
+    });
+  ;
+});
+
 module.exports = router;
 
-// module.exports = function(app) {
-
-//   // GET route for getting all of the posts
-//   app.get("/api/posts/", function(req, res) {
-//     db.Post.findAll({})
-//       .then(function(dbPost) {
-//         res.json(dbPost);
-//       });
-//   });
-
-  // Get route for returning posts of a specific category
-//   module.exports = function(app) {
-
-//     // GET route for getting all of the posts
-//     app.get("/api/posts/", function(req, res) {
-//       db.Post.findAll({})
-//         .then(function(dbPost) {
-//           res.json(dbPost);
-//         });
-//     });
-
-//     // Get route for returning posts of a specific category
-//     app.get("/api/posts/category/:category", function(req, res) {
-//       db.Post.findAll({
-//         where: {
-//           category: req.params.category
-//         }
-//       })
-//         .then(function(dbPost) {
-//           res.json(dbPost);
-//         });
-//     });
-
-//     // Get route for retrieving a single post
-//     app.get("/api/posts/:id", function(req, res) {
-//       db.Post.findOne({
-//         where: {
-//           id: req.params.id
-//         }
-//       })
-//         .then(function(dbPost) {
-//           res.json(dbPost);
-//         });
-//     });
-
-//     // POST route for saving a new post
-//     app.post("/api/posts", function(req, res) {
-//       console.log(req.body);
-//       db.Post.create({
-//         title: req.body.title,
-//         body: req.body.body,
-//         category: req.body.category
-//       })
-//         .then(function(dbPost) {
-//           res.json(dbPost);
-//         });
-//     });
-
-//     // DELETE route for deleting posts
-//     app.delete("/api/posts/:id", function(req, res) {
-//       db.Post.destroy({
-//         where: {
-//           id: req.params.id
-//         }
-//       })
-//         .then(function(dbPost) {
-//           res.json(dbPost);
-//         });
-//     });
-
-//     // PUT route for updating posts
-//     app.put("/api/posts", function(req, res) {
-//       db.Post.update(req.body,
-//         {
-//           where: {
-//             id: req.body.id
-//           }
-//         })
-//         .then(function(dbPost) {
-//           res.json(dbPost);
-//         });
-//     });
-//   };
-// }

@@ -17,5 +17,18 @@ module.exports = function (sequelize, DataTypes) {
         salt: DataTypes.STRING,
         hash: DataTypes.STRING
     });
+
+    User.associate = function (models) {
+        User.hasMany(models.Requests, {
+            onDelete: "cascade"
+        });
+    };
+
+    User.associate = function (models) {
+        User.hasMany(models.Visits, {
+            onDelete: "cascade"
+        });
+    };
+
     return User;
 };

@@ -5,22 +5,55 @@
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-   <title>Schedule Visit</title>
+   <title>Approve Requests</title>
    <!-- Stylesheets -->
    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
       integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
    <link rel="stylesheet" href="./styles/nav.login.css">
    <link rel="stylesheet" href="styles/styles.css" media="screen" title="no title">
-   <link rel="stylesheet" href="styles/submissionForm.css" media="screen" title="no title">
    <!-- Scripts -->
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
 
-</head>
+   <style>
+      /* ================================= Pending Requests ================================= */
+      .pending-requests-card {
+         margin-top: 30px;
+         border: 2px solid rgb(136, 136, 136);
+      }
 
+      .pending-requests-card>.card-header {
+         background-color: rgb(194, 159, 113);
+         color: white;
+         text-align: center;
+      }
+
+      .pending-requests-card>.card-body {
+         background-color: rgb(231, 231, 231);
+      }
+
+
+      .individual-request:not(:last-child) {
+         margin-bottom: 10px;
+      }
+
+      .individual-request>.card-body {
+         color: black;
+         text-align: left;
+      }
+
+      @media screen and (min-width: 768px) {
+         .pending-requests-card>.card-body {
+            max-height: 606px;
+            overflow-y: scroll;
+         }
+      }
+   </style>
+
+</head>
 
 <body>
 
@@ -35,10 +68,10 @@
       <div class="collapse navbar-collapse" id="collapsibleNavbar">
          <ul class="navbar-nav ml-auto">
             <li class="nav-item" id="approve-requests-li">
-               <a class="nav-link" href="./approveRequests.html">Approve Requests</a>
+               <span class="nav-link current-page-link">Approve Requests</span>
             </li>
             <li class="nav-item">
-               <span class="nav-link current-page-link">Schedule Visit</span>
+               <a class="nav-link" href="./submissionForm.html">Schedule Visit</a>
             </li>
             <li class="nav-item">
                <a class="nav-link" href="./resident.html">Resident Info</a>
@@ -130,101 +163,30 @@
       </form>
    </div>
 
-
+   <!-- main page container -->
    <div class="container">
-      <h2>Submit Visit Request</h2>
-      <form>
-         <!-- availability/activity row -->
-         <div class="row">
 
-            <!-- availability column -->
-            <div class="col-md-6">
-               <!-- earliest availability-->
-               <div class="form-group">
-                  <label for="earliest-availability">Earliest Availability</label>
-                  <input type="datetime-local" name="earliest-availability" class="form-control">
-               </div>
+      <div class="card pending-requests-card">
+         <div class="card-header">
+            <h2>Approve Visits</h2>
+         </div>
+         <div class="card-body" id="approve-body">
 
-               <!-- latest availability -->
-               <div class="form-group">
-                  <label for="latest-availability">Latest Availability</label>
-                  <input type="datetime-local" name="latest-availability" class="form-control">
-               </div>
-
-               <!-- visit duration -->
-               <div class="form-group">
-                  <label for="visit-duration">Visit Duration</label>
-                  <input type="number" class="form-control" id="visit-duration" placeholder="Enter number of minutes"
-                     name="visit-duration" min="1" max="120">
-               </div>
-            </div>
-
-            <!-- activity column -->
-            <div class="col-md-6">
-               <!-- activity preferences -->
-               <div class="form-group">
-                  <label for="activity-preferences">Activity Preferences</label>
-                  <!-- check boxes -->
-                  <div class="checkcontainer">
-                     <ul class="ks-cboxtags">
-                        <li><input type="checkbox" id="checkboxOne" value="Walking"><label
-                              for="checkboxOne">Walking</label>
-                        </li>
-                        <li><input type="checkbox" id="checkboxTwo" value="Games"><label for="checkboxTwo">Games</label>
-                        </li>
-                        <li><input type="checkbox" id="checkboxThree" value="Convserational"><label
-                              for="checkboxThree">Have a
-                              chat</label></li>
-                        <li><input type="checkbox" id="checkboxFour" value="Music"><label
-                              for="checkboxFour">Music</label>
-                        </li>
-                        <li><input type="checkbox" id="checkboxFive" value="Reading"><label
-                              for="checkboxFive">Reading</label>
-                        </li>
-                        <li><input type="checkbox" id="checkboxSix" value="Movie"><label
-                              for="checkboxSix">Movies</label>
-                        </li>
-                        <li><input type="checkbox" id="checkboxSeven" value="Cook"><label
-                              for="checkboxSeven">Cooking</label>
-                        </li>
-                        <li><input type="checkbox" id="checkboxEight" value="Tech"><label for="checkboxEight">Teach
-                              Technogoly</label></li>
-                        <li><input type="checkbox" id="checkboxNine" value="Pet"><label for="checkboxNine">Bring your
-                              Pet</label>
-                        </li>
-                        <li><input type="checkbox" id="checkboxTen" value="Sew"><label
-                              for="checkboxTen">Sew/Knitting</label>
-                        </li>
-                     </ul>
-                  </div>
-               </div>
-            </div>
+            <!-- visit requests go here -->
 
          </div>
+      </div>
 
-
-         <!-- additional info -->
-         <div class="form-group">
-            <label for="additional-comments">Add any additional comments or requests regarding your visit.</label>
-            <textarea class="form-control" id="additional-comments" rows="5"></textarea>
-         </div>
-
-         <div class="form-group form-check">
-            <label class="form-check-label">
-               <input class="form-check-input" type="checkbox" name="remember"> Request signed community service form
-            </label>
-         </div>
-
-         <button type="submit" class="btn btn-primary" id="submit-visit-request" style="width:76px">Submit</button>
-      </form>
    </div>
 
 
+   <!-- ========================================== Application Scripts ========================================== -->
+
+   <script src="/js/cookies.js"></script>
+   <script src="/js/authentication.js"></script>
+   <script src="/js/signupAuthorisation.js"></script>
+   <script src="/js/adminViewSubmissions.js"></script>
 
 </body>
-
-<script src="js/cookies.js"></script>
-<script src="/js/authentication.js"></script>
-<script src="js/signupAuthorisation.js"></script>
 
 </html>

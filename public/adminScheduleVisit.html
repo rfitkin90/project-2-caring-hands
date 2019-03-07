@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <title>Schedule Visit</title>
+   <!-- Stylesheets -->
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+      integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+   <link rel="stylesheet" href="./styles/nav.login.css">
+   <link rel="stylesheet" href="styles/styles.css" media="screen" title="no title">
+   <link rel="stylesheet" href="styles/adminScheduleVisit.css" media="screen" title="no title">
+   <!-- Scripts -->
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
+
+
+</head>
+
+<body>
+
+   <!-- =============================================== Navbar =============================================== -->
+   <nav class="navbar navbar-expand-md navbar-dark">
+      <span class="navbar-brand">
+         <h3><a class="nav-link" href="./index.html">Go Go Granny</a></h3>
+      </span>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+         <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="collapsibleNavbar">
+         <ul class="navbar-nav ml-auto">
+            <li class="nav-item" id="approve-requests-li">
+               <span class="nav-link current-page-link">Approve Requests</span>
+            </li>
+            <li class="nav-item">
+               <a class="nav-link" href="./submissionForm.html">Schedule Visit</a>
+            </li>
+            <li class="nav-item">
+               <a class="nav-link" href="./resident.html">Resident Info</a>
+            </li>
+            <li class="nav-item visible-anonymous">
+               <a onclick="document.getElementById('id01').style.display='block'" class="nav-link" href="#"><i
+                     class="fas fa-user"></i> Sign Up</a>
+            </li>
+            <li class="nav-item visible-anonymous">
+               <a onclick="document.getElementById('id02').style.display='block'" class="nav-link" href="#"><i
+                     class="fas fa-sign-in-alt"></i> Login</a>
+            </li>
+            <li class="nav-item visible-authenticated">
+               <span class="nav-link" id="nav-welcome-msg">Welcome user!</span>
+            </li>
+            <li class="nav-item visible-authenticated">
+               <a class="nav-link" href="#" id="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            </li>
+         </ul>
+      </div>
+   </nav>
+
+   <!-- =============================================== Modals =============================================== -->
+   <!-- Signup Modal -->
+   <div id="id01" class="modal">
+      <form class="modal-content animate">
+         <div class="imgcontainer">
+            <span onclick="document.getElementById('id01').style.display='none'" class="close"
+               title="Close Modal">&times;</span>
+            <!-- <img src="img_avatar2.png" alt="Avatar" class="avatar"> -->
+         </div>
+
+         <div class="container">
+            <label for="fname"><b>First Name</b></label>
+            <input id="fname" type="text" placeholder="Jimbo" name="fname" required>
+
+            <label for="lname"><b>Last Name</b></label>
+            <input id="lname" type="text" placeholder="Smith" name="lname" required>
+
+            <label for="email"><b>Email</b></label>
+            <input id="email" type="text" placeholder="jimbo.smith@gmail.com" name="email" required>
+
+            <label for="psw"><b>Password</b></label>
+            <input id="password" type="password" placeholder="Enter Password" name="psw" required>
+
+            <label for="cpsw"><b>Confirm Password</b></label>
+            <input id="confirmPassword" type="password" placeholder="Enter Password Again" name="cpsw" required>
+
+            <button id="register-submit" type="submit">Register</button>
+            <label>
+               <input type="checkbox" checked="checked" name="remember"> Remember me
+            </label>
+         </div>
+
+         <div class="container" style="background-color:#f1f1f1">
+            <button type="button" onclick="document.getElementById('id01').style.display='none'"
+               class="cancelbtn">Cancel</button>
+            <span class="psw">Forgot <a href="#">password?</a></span>
+         </div>
+      </form>
+   </div>
+
+   <!-- Login Modal -->
+   <div id="id02" class="modal">
+      <form class="modal-content animate">
+         <div class="imgcontainer">
+            <span onclick="document.getElementById('id02').style.display='none'" class="close"
+               title="Close Modal">&times;</span>
+            <!-- <img src="img_avatar2.png" alt="Avatar" class="avatar"> -->
+         </div>
+
+         <div class="container"><label for="email"><b>Email</b></label>
+            <input id="login-email" type="text" placeholder="jimbo.smith@gmail.com" name="email" required>
+
+            <label for="psw"><b>Password</b></label>
+            <input id="login-pass" type="password" placeholder="Enter Password" name="psw" required>
+
+            <button id="login-submit" type="submit">Login</button>
+            <label>
+               <input type="checkbox" checked="checked" name="remember"> Remember me
+            </label>
+         </div>
+
+         <div class="container" style="background-color:#f1f1f1">
+            <button type="button" onclick="document.getElementById('id02').style.display='none'"
+               class="cancelbtn">Cancel</button>
+            <span class="psw">Forgot <a href="#">password?</a></span>
+         </div>
+      </form>
+   </div>
+
+   <!-- main page container -->
+   <div class="container">
+
+      <!-- user/submission request info -->
+      <div class="row">
+         <div class="card">
+            <div class="card-body" id="appointment-request-info">
+               <!-- appointment request info appends here from api request -->
+            </div>
+         </div>
+      </div>
+
+      <!-- residents and their visits -->
+      <div class="row">
+         <div id="residents-div">
+            <!-- all resident cards appended here from api request -->
+         </div>
+      </div>
+
+   </div>
+
+
+   <!-- ========================================== Application Scripts ========================================== -->
+
+   <script src="/js/cookies.js"></script>
+   <script src="/js/authentication.js"></script>
+   <script src="/js/signupAuthorisation.js"></script>
+   <script src="/js/adminScheduleVisit.js"></script>
+
+</body>
+
+</html>
