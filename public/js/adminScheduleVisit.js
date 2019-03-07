@@ -18,6 +18,7 @@ $(document).ready(function () {
    // set variable for to be populated with API responses
    var chosenResidentID;
    var visitID;
+   var emailConfirmKey = '';
 
 
    // get submission by id
@@ -147,6 +148,22 @@ $(document).ready(function () {
    $(document).on('click', '#submit-visit', function (e) {
       e.preventDefault();
 
+      // generate random email confirm key
+      for (var i = 0; i < 35; i++) {
+         var RNG = Math.floor(Math.random() * 15);
+         if (RNG === 10) { RNG = 'a' } else if (RNG === 11) { RNG = 'b' } else if (RNG === 12) { RNG = 'c' }
+         else if (RNG === 13) { RNG = 'd' } else if (RNG === 14) { RNG = 'e' } else if (RNG === 15) { RNG = 'f' }
+         else if (RNG === 16) { RNG = 'g' } else if (RNG === 17) { RNG = 'h' } else if (RNG === 18) { RNG = 'i' }
+         else if (RNG === 19) { RNG = 'j' } else if (RNG === 20) { RNG = 'k' } else if (RNG === 21) { RNG = 'l' }
+         else if (RNG === 22) { RNG = 'm' } else if (RNG === 23) { RNG = 'n' } else if (RNG === 24) { RNG = 'o' }
+         else if (RNG === 25) { RNG = 'p' } else if (RNG === 26) { RNG = 'q' } else if (RNG === 27) { RNG = 'r' }
+         else if (RNG === 28) { RNG = 's' } else if (RNG === 29) { RNG = 't' } else if (RNG === 30) { RNG = 'u' }
+         else if (RNG === 31) { RNG = 'v' } else if (RNG === 32) { RNG = 'w' } else if (RNG === 33) { RNG = 'x' }
+         else if (RNG === 34) { RNG = 'y' } else if (RNG === 35) { RNG = 'z' }
+         emailConfirmKey += RNG;
+      }
+      console.log('emailConfirmKey:', emailConfirmKey)
+
       axios({
          url: "/api/visits",
          method: "POST",
@@ -158,6 +175,7 @@ $(document).ready(function () {
             visitEnd: $('#visitEnd').val(),
             activity: $('#activity').val(),
             communityServiceForm: $('#communityServiceForm').is(':checked'),
+            emailConfirmKey: emailConfirmKey,
             confirmed: false,
             UserId: $('#appointment-request-info').attr('data-userID'),
             ResidentId: chosenResidentID
@@ -186,6 +204,7 @@ $(document).ready(function () {
             visitEnd: $('#visitEnd').val(),
             activity: $('#activity').val(),
             communityServiceForm: $('#communityServiceForm').is(':checked'),
+            emailConfirmKey: emailConfirmKey,
             VisitId: visitID
          }
       })

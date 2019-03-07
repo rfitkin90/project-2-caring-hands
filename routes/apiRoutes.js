@@ -63,6 +63,7 @@ router.post("/visits", function (req, res) {
     visitEnd: req.body.visitEnd,
     activity: req.body.activity,
     communityServiceForm: req.body.communityServiceForm,
+    emailConfirmKey: req.body.emailConfirmKey,
     confirmed: req.body.confirmed,
     UserId: req.body.UserId,
     ResidentId: req.body.UserId
@@ -171,7 +172,7 @@ router.post('/sendemail/', function (req, res) {
     to: 'rfitkin90@gmail.com',
     from: 'noreply@caring-hands.com',
     subject: 'Confirm Caring Hands Appointment',
-    text: 'and easy to do anywhere, even with Node.js',
+    text: '',
     html: '<strong>what?</strong>',
   };
   sgMail.send(msg);

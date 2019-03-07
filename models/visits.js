@@ -15,6 +15,10 @@ module.exports = function (sequelize, DataTypes) {
          type: DataTypes.BOOLEAN,
          allowNull: false
       },
+      emailConfirmKey: {
+         type: DataTypes.STRING,
+         allowNull: false
+      },
       confirmed: {
          type: DataTypes.BOOLEAN,
          allowNull: false

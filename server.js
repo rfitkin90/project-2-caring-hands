@@ -197,6 +197,7 @@ db.sequelize.sync(syncOptions).then(function () {
       visitEnd: '2019-03-15T16:00',
       activity: 'Sew/Knitting',
       communityServiceForm: false,
+      emailConfirmKey: '0a0bd3e71bbd0647121cc75cad8b9d67207',
       confirmed: false,
       UserId: 1,
       ResidentId: 1
@@ -209,6 +210,7 @@ db.sequelize.sync(syncOptions).then(function () {
       visitEnd: '2019-04-15T17:00',
       activity: 'Music',
       communityServiceForm: false,
+      emailConfirmKey: 'daa4c924994c809347eb5848bd8831a6e40',
       confirmed: false,
       UserId: 2,
       ResidentId: 2
