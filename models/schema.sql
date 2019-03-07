@@ -75,9 +75,27 @@ VALUES ("2019-03-15 13:00:00", "2019-03-15 17:00:00", 60, "animals, music perfor
 INSERT INTO Requests (availabilityStart, availabilityEnd, visitDuration, activityPreferences, additionalInfo, communityServiceForm, UserId)
 VALUES ("2019-04-22 09:00:00", "2019-04-22 12:00:00", 90, "crocheting, knitting", "Requesting to see Barbara.", true, 2);
 
+INSERT INTO Requests (availabilityStart, availabilityEnd, visitDuration, activityPreferences, additionalInfo, communityServiceForm, UserId)
+VALUES ("2019-3-17 12:00:00, 2019-3-17 14:00:00", 120, "games, walking, knitting", "Requesting to see Kimi.", true, 1)
+
+INSERT INTO Requests (availabilityStart, availabilityEnd, visitDuration, activityPreferences, additionalInfo, communityServiceForm, UserId)
+VALUES ("2019-3-31 12:00:00, 2019-3-17 13:00:00", 60, "animals, music, movies, cooking", "Requesting to see Sally.", false, 2)
+
+INSERT INTO Requests (availabilityStart, availabilityEnd, visitDuration, activityPreferences, additionalInfo, communityServiceForm, UserId)
+VALUES ("2019-3-30 13:00:00, 2019-3-17 14:00:00", 60, "walking, music, movies, cooking", "Requesting to see Linda.", false, 1)
+
 -- EXAMPLE VISITS
 INSERT INTO Visits (visitStart, visitEnd, activities, communityServiceForm, confirmed, UserId, ResidentId)
 Values ("2019-03-09 09:00:00", "2019-03-09 10:00:00", "knitting", false, false, 2, 1);
 
 INSERT INTO Visits (visitStart, visitEnd, activities, communityServiceForm, confirmed, UserId, ResidentId)
 Values ("2019-03-09 09:00:00", "2019-03-09 10:00:00", "gardening", true, false, 1, 2);
+
+INSERT INTO Visits (visitStart, visitEnd, activities, communityServiceForm, confirmed, UserId, ResidentId)
+Values ("2019-03-08 10:00:00", "2019-03-09 11:00:00", "animals", false, false, 1, 2);
+
+INSERT INTO Visits (visitStart, visitEnd, activities, communityServiceForm, confirmed, UserId, ResidentId)
+Values ("2019-03-06 15:00:00", "2019-03-06 16:00:00", "music", true, true, 1, 2);
+
+INSERT INTO Visits (visitStart, visitEnd, activities, communityServiceForm, confirmed, UserId, ResidentId)
+Values ("2019-03-02 11:00:00", "2019-03-09 12:00:00", "cooking", true, false, 1, 2);

@@ -1,0 +1,1 @@
+Our mission at "Caring Hands" is to connect caring and loving people with senior citizens who might be lonely and just looking for someone to hang out with or chat with. We believe in safely connecting passionate, empathetic volunteers with the elderly community. Our user-friendly website will help you set up an activity and a time that is convenient for you and our seniors.
