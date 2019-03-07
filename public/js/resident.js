@@ -27,7 +27,8 @@ $(document).ready(function () {
                   <div class="card-body">
                      <h5 class="card-title">${elem.firstName}</h5>
                      <p class="card-text">${elem.additionalInfo}</p>
-                     <a href="../submissionForm.html" class="btn btn-primary">Schedule Visit</a>
+                     <a href="./submissionForm.html?r=${elem.firstName}" 
+                        class="btn btn-primary">Schedule Visit</a>
                   </div>
                </div>
             `);

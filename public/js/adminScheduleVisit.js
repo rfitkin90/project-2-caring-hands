@@ -49,6 +49,8 @@ $(document).ready(function () {
                   <p>Additional Info: ${subResp.data.additionalInfo}</p>
                   <p>Needs Community Service Form: ${subResp.data.communityServiceForm}</p>
                `);
+
+               $('#appointment-request-info').attr('data-userID', userResp.data.id);
             })
             .catch(function (err) {
                console.error(err);
@@ -89,20 +91,16 @@ $(document).ready(function () {
 
                   // append a card for each resident
                   $('#residents-div').append(`
-                     <div class="card resident-card" id="resident-${residentsElem.id}-card">
-
-                        <div class="card-header">
-                           <h4>${residentsElem.firstName}</h4>
-                        </div>
+                     <div class="card resident-card" id="resident-${residentsElem.id}-card"
+                        data-residentID="${residentsElem.id}">
 
                         <div class="card-body">
+                           <h4>${residentsElem.firstName}</h4><span>ID: ${residentsElem.id}</span>
                            <p>Activity Preferences: ${residentsElem.activityPreferences}</p>
-                        </div> 
-
-                        <div class="card-footer">
                            <p>Scheduled Visits</p>
                            <ul id="resident-${residentsElem.id}-visits"></ul>
                         </div>
+                        
                      </div>
                   `);
 
@@ -126,4 +124,45 @@ $(document).ready(function () {
       });
    ;
 
+   // prefill resident form with resident id
+   $(document).on('click', '.resident-card', function (e) {
+      e.preventDefault();
+      console.log($(this).attr('data-residentID'));
+
+      $('#resident-id').val($(this).attr('data-residentID'));
+   });
+
+   // submit visit
+   $(document).on('click', '#submit-visit', function (e) {
+      e.preventDefault();
+
+      axios({
+         url: "/api/visits",
+         method: "POST",
+         headers: {
+            Authorization: "Bearer " + token
+         },
+         data: {
+            visitStart: $('#visitStart').val(),
+            visitEnd: $('#visitEnd').val(),
+            activity: $('#activity').val(),
+            communityServiceForm: $('#communityServiceForm').is(':checked'),
+            confirmed: false,
+            UserId: $('#appointment-request-info').attr('data-userID'),
+            ResidentId: $('#resident-id').val()
+         }
+      })
+         .then(function (resp) {
+            console.log('submit request resp', resp);
+            console.log('userid', $('#appointment-request-info').attr('data-userID'));
+            console.log('residentid', $('#resident-id').val())
+         })
+         .catch(function (err) {
+            console.error(err);
+         });
+      ;
+
+   });
+
 });
+

@@ -57,29 +57,24 @@ router.get("/submissions", function (req, res) {
 
 //Update visits table ======> after administrator posts
 router.post("/visits", function (req, res) {
-  if (!req.tokenData) {
-    // restricting route to only autheticated users
-    res.status(403).send('Unauthorized');
-  }
-  if (req.tokenData.role !== 'admin') {
-    // restricting route to only admin users
-    res.status(403).send('Unauthorized');
-  }
   model.Visits.create({
     visitStart: req.body.visitStart,
     visitEnd: req.body.visitEnd,
-    visitDuration: req.body.visitDuration,
-    activities: req.body.activities,
+    activity: req.body.activity,
     communityServiceForm: req.body.communityServiceForm,
-    confirmed: req.body.confirmed
+    confirmed: req.body.confirmed,
+    UserId: req.body.UserId,
+    ResidentId: req.body.UserId
   })
     .then(function (dbData) {
       res.json(dbData);
+      console.log('dbData', dbData);
     })
     .catch(function (err) {
       console.log(err);
       throw err;
     });
+  ;
 })
 
 // Delete an requests by id
@@ -141,7 +136,20 @@ router.get('/submissions/:id', function (req, res) {
 
 // find visits by resident id
 router.get('/visits/:id', function (req, res) {
-  model.Visits.findAll({ where: { id: req.params.id } }).then(function (dbData) {
+  model.Visits.findAll({ where: { ResidentId: req.params.id } }).then(function (dbData) {
+    res.json(dbData);
+    console.log('appointment request info:', dbData);
+  })
+    .catch(function (err) {
+      console.log('submissions.get route err', err);
+      throw err;
+    });
+  ;
+});
+
+// find all visits
+router.get('/visitsResidents/:id', function (req, res) {
+  model.Visits.findAll({ where: { ResidentId: req.params.id } }).then(function (dbData) {
     res.json(dbData);
     console.log('appointment request info:', dbData);
   })

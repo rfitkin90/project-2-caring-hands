@@ -59,9 +59,9 @@ if (process.env.NODE_ENV === "test") {
 // });
 // Starting the server, syncing our models ------------------------------------/
 db.sequelize.sync(syncOptions).then(function () {
+  // ================================= example users ================================= //
   var salt = authHelpers.getSalt();
   var hash = authHelpers.getHash(salt, "123");
-  // ================================= example users ================================= //
   return db.User.create({
     email: 'jimbus@gmail.com',
     firstName: "jimbo",
@@ -81,6 +81,18 @@ db.sequelize.sync(syncOptions).then(function () {
       hash: hash,
       lastName: "scrimbo2",
       role: "user"
+    })
+  })
+  .then(function (resp) {
+    var salt = authHelpers.getSalt();
+    var hash = authHelpers.getHash(salt, "123");
+    return db.User.create({
+      email: 'FA.HUQ03@gmail.com',
+      firstName: "Farjana",
+      salt: salt,
+      hash: hash,
+      lastName: "Huq",
+      role: "admin"
     })
   })
   // ================================= example appointment requests ================================= //
@@ -132,13 +144,58 @@ db.sequelize.sync(syncOptions).then(function () {
       photo: 'http://www.commage.org/wp-content/uploads/2016/05/image-for-swiss-report-600x400.jpg'
     })
   })
+  .then(function (resp) {
+    // adds example resident to database
+    return db.Residents.create({
+      firstName: 'Beverly',
+      age: 82,
+      activityPreferences: 'Games,Sew/Knitting',
+      additionalInfo: 'Beverly is a retired school teacher. ' +
+        'She is a little forgetful but loves to play gin. She also loves to paint with water colors.',
+      photo: 'http://www.commage.org/wp-content/uploads/2016/05/image-for-swiss-report-600x400.jpg'
+    })
+  })
+  .then(function (resp) {
+    // adds example resident to database
+    return db.Residents.create({
+      firstName: 'Beverly',
+      age: 82,
+      activityPreferences: 'Games,Sew/Knitting',
+      additionalInfo: 'Beverly is a retired school teacher. ' +
+        'She is a little forgetful but loves to play gin. She also loves to paint with water colors.',
+      photo: 'http://www.commage.org/wp-content/uploads/2016/05/image-for-swiss-report-600x400.jpg'
+    })
+  })
+  .then(function (resp) {
+    // adds example resident to database
+    return db.Residents.create({
+      firstName: 'Beverly',
+      age: 82,
+      activityPreferences: 'Games,Sew/Knitting',
+      additionalInfo: 'Beverly is a retired school teacher. ' +
+        'She is a little forgetful but loves to play gin. She also loves to paint with water colors.',
+      photo: 'http://www.commage.org/wp-content/uploads/2016/05/image-for-swiss-report-600x400.jpg'
+    })
+  })
+  .then(function (resp) {
+    // adds example resident to database
+    return db.Residents.create({
+      firstName: 'Beverly',
+      age: 82,
+      activityPreferences: 'Games,Sew/Knitting',
+      additionalInfo: 'Beverly is a retired school teacher. ' +
+        'She is a little forgetful but loves to play gin. She also loves to paint with water colors.',
+      photo: 'http://www.commage.org/wp-content/uploads/2016/05/image-for-swiss-report-600x400.jpg'
+    })
+  })
+
   // ================================= example visits ================================= //
   .then(function (resp) {
     // adds example visit to database
     return db.Visits.create({
       visitStart: '2019-03-15T15:00',
       visitEnd: '2019-03-15T16:00',
-      activities: 'Sew/Knitting',
+      activity: 'Sew/Knitting',
       communityServiceForm: false,
       confirmed: false,
       UserId: 1,
@@ -150,7 +207,7 @@ db.sequelize.sync(syncOptions).then(function () {
     return db.Visits.create({
       visitStart: '2019-04-15T16:00',
       visitEnd: '2019-04-15T17:00',
-      activities: 'Music',
+      activity: 'Music',
       communityServiceForm: false,
       confirmed: false,
       UserId: 2,
