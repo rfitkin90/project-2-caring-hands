@@ -18,6 +18,19 @@ $(document).ready(function () {
          resp.data.forEach(elem => {
             console.log(`${elem.firstName}'s info`, elem);
 
+            // append their card to the flexbox
+            $('#residents-flexbox').append(`
+               <div class="card resident-card" style="width: 18rem;">
+                  <img class="card-img-top"
+                     src="${elem.photo}"
+                     height="150" alt="Card image cap" />
+                  <div class="card-body">
+                     <h5 class="card-title">${elem.firstName}</h5>
+                     <p class="card-text">${elem.additionalInfo}</p>
+                     <a href="../submissionForm.html" class="btn btn-primary">Schedule Visit</a>
+                  </div>
+               </div>
+            `);
 
          });
 
@@ -26,18 +39,5 @@ $(document).ready(function () {
          console.error(err);
       });
    ;
-
-{/* <div class="card" style="width: 18rem;">
-   <img class="card-img-top"
-      src="https://www.catholiccharitiesusa.org/wp-content/uploads/2018/04/Story_Meals-on-Wheels-for-Senior-Citizens-1024x512.jpg"
-      height="150" alt="Card image cap" />
-   <div class="card-body">
-      <h5 class="card-title">Maggie</h5>
-      <p class="card-text">Maggie loves to listen to music and hear a good story. She is very pleasant to sit
-      with and enjoys books.</p>
-      <a href="#" class="btn btn-primary">Schedule Visit</a>
-   </div>
-</div> */}
-
 
 });

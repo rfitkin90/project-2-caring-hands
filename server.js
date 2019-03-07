@@ -117,16 +117,19 @@ db.sequelize.sync(syncOptions).then(function () {
       activityPreferences: 'Music,Reading',
       additionalInfo: 'Maggie loves to listen to music and hear a good story. ' +
         'She is very pleasant to sit with and enjoys books.',
-      photo: 'https://www.catholiccharitiesusa.org/wp-content/uploads/2018/04/Story_Meals-on-Wheels-for-Senior-Citizens-1024x512.jpg'
+      photo: 'https://www.catholiccharitiesusa.org/wp-content/uploads/2018/04/' +
+        'Story_Meals-on-Wheels-for-Senior-Citizens-1024x512.jpg'
     })
   })
   .then(function (resp) {
     // adds example resident to database
     return db.Residents.create({
-      firstName: 'Barbara2',
-      age: 72,
-      activityPreferences: 'Reading,Sew/Knitting',
-      additionalInfo: 'Has alzheimers.'
+      firstName: 'Beverly',
+      age: 82,
+      activityPreferences: 'Games,Sew/Knitting',
+      additionalInfo: 'Beverly is a retired school teacher. ' +
+        'She is a little forgetful but loves to play gin. She also loves to paint with water colors.',
+      photo: 'http://www.commage.org/wp-content/uploads/2016/05/image-for-swiss-report-600x400.jpg'
     })
   })
   // ================================= example visits ================================= //

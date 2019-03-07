@@ -10,7 +10,7 @@ module.exports = function (sequelize, DataTypes) {
       activityPreferences: {
          type: DataTypes.STRING
       },
-      additionalnfo: {
+      additionalInfo: {
          type: DataTypes.STRING
       },
       photo: {
