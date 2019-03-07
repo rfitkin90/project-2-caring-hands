@@ -1,6 +1,5 @@
 var model = require("../models");
 var express = require("express");
-var mandrill = require('node-mandrill')('c6NAwDNPJC0IQo-EJz9caA');
 var router = express.Router();
 var sgMail = require('@sendgrid/mail');
 
@@ -170,10 +169,10 @@ router.post('/sendemail/', function (req, res) {
   sgMail.setApiKey(process.env.SENDGRID_API_KEY);
   const msg = {
     to: 'rfitkin90@gmail.com',
-    from: 'test@example.com',
-    subject: 'Sending with SendGrid is Fun',
+    from: 'noreply@caring-hands.com',
+    subject: 'Confirm Caring Hands Appointment',
     text: 'and easy to do anywhere, even with Node.js',
-    html: '<strong>and easy to do anywhere, even with Node.js</strong>',
+    html: '<strong>what?</strong>',
   };
   sgMail.send(msg);
   res.end();

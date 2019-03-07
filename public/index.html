@@ -22,43 +22,27 @@
 
 </head>
 
-<style>
-  body,
-  html {
-    text-align: center;
-    background-color: #E2D5C4;
-
-  }
-</style>
-
 
 <body>
 
-
   <!-- =============================================== Navbar =============================================== -->
   <nav class="navbar navbar-expand-md navbar-dark">
-      <div class = "col-md-2">
-        <h3><a class="nav-link" href="./index.html">Caring Hands</a></h3>
-      </div>
-    <!-- <span class="navbar-brand">
-        
-        
-    </span> -->
+    <span class="navbar-brand">
+      <h3><a class="nav-link" href="./index.html">Caring Hands</a></h3>
+    </span>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-
       <span class="navbar-toggler-icon"></span>
-
     </button>
-    <div class=" col-md-10 collapse navbar-collapse" id="collapsibleNavbar">
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
       <ul class="navbar-nav ml-auto">
         <li class="nav-item" id="approve-requests-li">
-          <a class="nav-link" href="./adminViewSubmissions.html">Approve Requests</a>
+          <a class="nav-link current-page-link" href="./adminViewSubmissions.html">Approve Requests</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="./submissionForm.html">Schedule Visit</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="./resident.html">Resident Info</a>
+            <a class="nav-link" href="./resident.html">Resident Info</a>
         </li>
         <li class="nav-item visible-anonymous">
           <a onclick="document.getElementById('id01').style.display='block'" class="nav-link" href="#"><i
@@ -77,7 +61,6 @@
       </ul>
     </div>
   </nav>
-  <!-- =============================================== End of Navbar =============================================== -->
 
   <!-- =============================================== Modals =============================================== -->
   <!-- Signup Modal -->

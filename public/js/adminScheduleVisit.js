@@ -15,6 +15,10 @@ $(document).ready(function () {
    console.log('userId', userId);
    console.log('submissionId', submissionId);
 
+   // set variable for to be populated with API responses
+   var chosenResidentID;
+   var visitID;
+
 
    // get submission by id
    axios({
@@ -124,12 +128,19 @@ $(document).ready(function () {
       });
    ;
 
-   // prefill resident form with resident id
+   // get chosen resident id
    $(document).on('click', '.resident-card', function (e) {
       e.preventDefault();
-      console.log($(this).attr('data-residentID'));
+      chosenResidentID = $(this).attr('data-residentID');
+      console.log('chosenResidentID', chosenResidentID);
+      $('.resident-card').css('border', 'none');
+      $(this).css({
+         'border-width': `${2}px`,
+         'border-style': 'solid',
+         'border-color': 'rgba(0, 132, 255, 0.63)'
+      });
 
-      $('#resident-id').val($(this).attr('data-residentID'));
+
    });
 
    // submit visit
@@ -149,13 +160,14 @@ $(document).ready(function () {
             communityServiceForm: $('#communityServiceForm').is(':checked'),
             confirmed: false,
             UserId: $('#appointment-request-info').attr('data-userID'),
-            ResidentId: $('#resident-id').val()
+            ResidentId: chosenResidentID
          }
       })
          .then(function (resp) {
-            console.log('submit request resp', resp);
+            console.log('visit resp', resp);
             console.log('userid', $('#appointment-request-info').attr('data-userID'));
-            console.log('residentid', $('#resident-id').val())
+            console.log('residentid', chosenResidentID)
+            visitID = resp.data.id;
          })
          .catch(function (err) {
             console.error(err);
@@ -167,16 +179,15 @@ $(document).ready(function () {
          method: "POST",
          headers: {
             Authorization: "Bearer " + token
+         },
+         data: {
+            userEmail: $('#user-info-email').text(),
+            visitStart: $('#visitStart').val(),
+            visitEnd: $('#visitEnd').val(),
+            activity: $('#activity').val(),
+            communityServiceForm: $('#communityServiceForm').is(':checked'),
+            VisitId: visitID
          }
-         // data: {
-         //    visitStart: $('#visitStart').val(),
-         //    visitEnd: $('#visitEnd').val(),
-         //    activity: $('#activity').val(),
-         //    communityServiceForm: $('#communityServiceForm').is(':checked'),
-         //    confirmed: false,
-         //    UserId: $('#appointment-request-info').attr('data-userID'),
-         //    ResidentId: $('#resident-id').val()
-         // }
       })
          .then(function (resp) {
             console.log(resp);
