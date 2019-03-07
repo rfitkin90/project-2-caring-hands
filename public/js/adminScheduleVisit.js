@@ -40,8 +40,8 @@ $(document).ready(function () {
 
                // populate the appointment request div w/ user & submission info
                $('#appointment-request-info').append(`
-                  <h3>${userResp.data.firstName} ${userResp.data.lastName}</h3>
-                  <p>${userResp.data.email}</p>
+                  <h3 id="user-info-name">${userResp.data.firstName} ${userResp.data.lastName}</h3>
+                  <p id="user-info-email">${userResp.data.email}</p>
                   <p>Availability Start: ${subResp.data.availabilityStart}</p>
                   <p>Availability End: ${subResp.data.availabilityEnd}</p>
                   <p>Visit Duration: ${subResp.data.visitDuration}</p>
@@ -161,6 +161,32 @@ $(document).ready(function () {
             console.error(err);
          });
       ;
+
+      axios({
+         url: "/api/sendemail",
+         method: "POST",
+         headers: {
+            Authorization: "Bearer " + token
+         }
+         // data: {
+         //    visitStart: $('#visitStart').val(),
+         //    visitEnd: $('#visitEnd').val(),
+         //    activity: $('#activity').val(),
+         //    communityServiceForm: $('#communityServiceForm').is(':checked'),
+         //    confirmed: false,
+         //    UserId: $('#appointment-request-info').attr('data-userID'),
+         //    ResidentId: $('#resident-id').val()
+         // }
+      })
+         .then(function (resp) {
+            console.log(resp);
+         })
+         .catch(function (err) {
+            console.error(err);
+         });
+      ;
+
+
 
    });
 
