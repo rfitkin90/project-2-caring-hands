@@ -1,4 +1,18 @@
+var token = localStorage.getItem("token");
+console.log(token);
 
+
+// get the parameters from the url string
+var url_string = window.location.href;
+var url = new URL(url_string);
+var residentFirstName = url.searchParams.get("r");
+
+console.log('res first name url param', residentFirstName);
+
+if (residentFirstName) {
+   console.log('prefilling info textfield');
+   $('#additionalInfo').text(`Requesting to visit ${residentFirstName}.`);
+}
 
 $('.checkbox').on('click', function () {
    var checkClass = $(this).attr('class');
@@ -23,8 +37,7 @@ $('#submit-visit-request').on('click', function (e) {
    e.preventDefault();
    var checkArr = [];
 
-   var token = localStorage.getItem("token");
-   console.log(token);
+
 
 
    for (var i = 1; i < 11; i++) {
