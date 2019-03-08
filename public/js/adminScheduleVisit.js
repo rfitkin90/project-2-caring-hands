@@ -216,7 +216,20 @@ $(document).ready(function () {
          });
       ;
 
-
+      // axios({
+      //    url: "api/visits/" + emailConfirmKey,
+      //    method: "DELETE",
+      //    headers: {
+      //       Authorization: "Bearer " + token
+      //    }
+      // })
+      //    .then(function (resp) {
+      //       console.log(resp);
+      //    })
+      //    .catch(function (err) {
+      //       console.error(err);
+      //    });
+      // ;
 
    });
 

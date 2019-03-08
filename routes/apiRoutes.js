@@ -71,6 +71,8 @@ router.post("/visits", function (req, res) {
     .then(function (dbData) {
       res.json(dbData);
       console.log('dbData', dbData);
+
+
     })
     .catch(function (err) {
       console.log(err);
@@ -78,6 +80,21 @@ router.post("/visits", function (req, res) {
     });
   ;
 })
+
+router.delete('/visits/:emailConfirmKey', function (req, res) {
+  // set timeout to delete visit if not confirmed w/in 4 days
+  setTimeout(function () {
+    model.Visits.destroy({ where: { emailConfirmKey: req.params.emailConfirmKey, confirmed: false } })
+      .then(function (dbData) {
+        res.json(dbData);
+      })
+      .catch(function (err) {
+        console.log(err);
+        throw err;
+      });
+    ;
+  }, 345600000);
+});
 
 // Delete an requests by id
 router.delete("/requests/:id", function (req, res) {
@@ -175,7 +192,13 @@ router.post('/sendemail/', function (req, res) {
     text: '',
     html: '<strong>what?</strong>',
   };
-  sgMail.send(msg);
+  sgMail.send(msg).then(function (emailData) {
+    res.json(emailData);
+  })
+    .catch(function (err) {
+      console.log('email err', err);
+      throw err;
+    });
   res.end();
   // or add res.json();
 })
