@@ -17,6 +17,7 @@ $(document).ready(function () {
 
    // set variable for to be populated with API responses
    var chosenResidentID;
+   var chosenResidentName;
    var visitID;
    var emailConfirmKey = '';
 
@@ -97,7 +98,8 @@ $(document).ready(function () {
                   // append a card for each resident
                   $('#residents-div').append(`
                      <div class="card resident-card" id="resident-${residentsElem.id}-card"
-                        data-residentID="${residentsElem.id}">
+                        data-residentID="${residentsElem.id}" 
+                        data-residentName="${residentsElem.firstName}">
 
                         <div class="card-body">
                            <h4>${residentsElem.firstName}</h4><span>ID: ${residentsElem.id}</span>
@@ -133,6 +135,7 @@ $(document).ready(function () {
    $(document).on('click', '.resident-card', function (e) {
       e.preventDefault();
       chosenResidentID = $(this).attr('data-residentID');
+      chosenResidentName = $(this).attr('data-residentName');
       console.log('chosenResidentID', chosenResidentID);
       $('.resident-card').css('border', 'none');
       $(this).css({
@@ -192,6 +195,7 @@ $(document).ready(function () {
          });
       ;
 
+      // send email
       axios({
          url: "/api/sendemail",
          method: "POST",
@@ -203,9 +207,9 @@ $(document).ready(function () {
             visitStart: $('#visitStart').val(),
             visitEnd: $('#visitEnd').val(),
             activity: $('#activity').val(),
+            residentName: chosenResidentName,
             communityServiceForm: $('#communityServiceForm').is(':checked'),
-            emailConfirmKey: emailConfirmKey,
-            VisitId: visitID
+            emailConfirmKey: emailConfirmKey
          }
       })
          .then(function (resp) {
@@ -216,20 +220,20 @@ $(document).ready(function () {
          });
       ;
 
-      // axios({
-      //    url: "api/visits/" + emailConfirmKey,
-      //    method: "DELETE",
-      //    headers: {
-      //       Authorization: "Bearer " + token
-      //    }
-      // })
-      //    .then(function (resp) {
-      //       console.log(resp);
-      //    })
-      //    .catch(function (err) {
-      //       console.error(err);
-      //    });
-      // ;
+      axios({
+         url: "api/visits/autodelete/" + emailConfirmKey,
+         method: "DELETE",
+         headers: {
+            Authorization: "Bearer " + token
+         }
+      })
+         .then(function (resp) {
+            console.log(resp);
+         })
+         .catch(function (err) {
+            console.error(err);
+         });
+      ;
 
    });
 

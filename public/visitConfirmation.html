@@ -42,7 +42,7 @@
           <a class="nav-link" href="./submissionForm.html">Schedule Visit</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="./resident.html">Resident Info</a>
+          <a class="nav-link" href="./resident.html">Resident Info</a>
         </li>
         <li class="nav-item visible-anonymous">
           <a onclick="document.getElementById('id01').style.display='block'" class="nav-link" href="#"><i
@@ -122,17 +122,30 @@
           <input type="checkbox" checked="checked" name="remember"> Remember me
         </label>
       </div>
+    </form>
+  </div>
+
+  <!-- main container -->
+  <div class="container">
+
+    <div class="card">
+      <div class="card-body">
+        <span id='redirect-msg'><span id="action-msg">Your appointment has been confirmed.</span> Redirecting to home
+          page
+          in <span id="redirect-timer">5</span> seconds...</span>
+      </div>
+    </div>
+
+  </div>
 
 
-
-
- 
 
   <!-- ========================================== Application Scripts ========================================== -->
 
   <script src="/js/cookies.js"></script>
   <script src="/js/authentication.js"></script>
   <script src="/js/signupAuthorisation.js"></script>
+  <script src="/js/visitConfirmation.js"></script>
 </body>
 
 

@@ -9,6 +9,36 @@
 </head>
 
 <body>
+
+
+   userEmail: $('#user-info-email').text(),
+   // visitStart: $('#visitStart').val(),
+   // visitEnd: $('#visitEnd').val(),
+   // activity: $('#activity').val(),
+   // communityServiceForm: $('#communityServiceForm').is(':checked'),
+   // emailConfirmKey: emailConfirmKey
+   residentName
+
+   <p>You have been shceduled for an appointment to see ${req.body.residentName} from ${req.body.visitStart} to
+      ${req.body.visitEnd} doing the following activity: ${req.body.activity}. If you requested a community service form, one will be provided to you at hte time of
+      your appointment.</p>
+   <p>To confirm your appointment, please click the following link:</p>
+   <a href="localhost:3000/visitConfirmation.html?k=${req.body.emailConfirmKey}&c=1"></a>
+   <p>To decline or cancel your appointment at any time, you may click the following link:</p>
+   <a href="localhost:3000/visitConfirmation.html?k=${req.body.emailConfirmKey}&c=0"></a>
+
+
+
+
+
+
+
+
+
+
+
+
+
    <script>
       var emailConfirmKey = '';
       // generate random email confirm key

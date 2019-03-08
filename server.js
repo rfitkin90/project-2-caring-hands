@@ -15,7 +15,11 @@ var jwtMiddleware = require('express-jwt-middleware');
 var jwtCheck = jwtMiddleware(process.env.JWT_SECRET);
 
 // ROUTES
-var apiRoutes = require("./routes/apiRoutes");
+var apiRoutesEmail = require("./routes/apiRoutesEmail");
+var apiRoutesResidents = require("./routes/apiRoutesResidents");
+var apiRoutesSubmissions = require("./routes/apiRoutesSubmissions");
+var apiRoutesUser = require("./routes/apiRoutesUser");
+var apiRoutesVisits = require("./routes/apiRoutesVisits");
 var htmlRoutes = require("./routes/htmlRoutes");
 var authRoutes = require("./routes/authRoutes");
 var db = require("./models");
@@ -40,7 +44,11 @@ app.set('view engine', 'jade');
 // Routes
 app.use("/auth", authRoutes);
 app.use(auth);
-app.use("/api", apiRoutes);
+app.use("/api", apiRoutesEmail);
+app.use("/api", apiRoutesResidents);
+app.use("/api", apiRoutesSubmissions);
+app.use("/api", apiRoutesUser);
+app.use("/api", apiRoutesVisits);
 // app.use(htmlRoutes);
 
 // app.use(jwtCheck);

@@ -72,25 +72,6 @@ button.edit {
 }
 
 
-<<<<<<< HEAD
-.carousel-item {
-  position: relative;
-  text-align: center;
-}
-
-.promoQuotes {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.colom-md-6 {
-
-  position: center;
-}
-=======
->>>>>>> d32098a01791ef992c524e67426fb69b465e4d77
 
 /* Responsive layout - makes a two column-layout instead of four columns */
 @media screen and (max-width: 800px) {
@@ -114,7 +95,7 @@ button.edit {
     max-height: 80px;
     position: center;
     padding-bottom: 80px;
-    margin-left: 350px;
+    /* margin-left: 350px; */
   }
 
   /* .navbar {

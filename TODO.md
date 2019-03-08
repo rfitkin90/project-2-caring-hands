@@ -12,6 +12,10 @@
 9. try to revamp blog into something else
 10. create edit residents functionality for admin
 
+- moment.js
+- admin edit residents
+- modals
+
 
 `Front end team`
 
