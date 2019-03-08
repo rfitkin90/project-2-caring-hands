@@ -80,3 +80,11 @@ ul.ks-cboxtags li input[type="checkbox"] {
 ul.ks-cboxtags li input[type="checkbox"]:focus+label {
    border: 2px solid #e9a1ff;
 }
+
+#submit-visit-request {
+   width: 76px;
+}
+
+#submit-confirm-modal {
+   z-index: 2;
+}

@@ -15,7 +15,7 @@
 - moment.js
 - admin edit residents
 - modals
-
+- deploy to heroku and populate database
 
 `Front end team`
 

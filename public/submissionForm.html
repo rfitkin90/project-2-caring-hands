@@ -130,6 +130,34 @@
       </form>
    </div>
 
+   <!-- submit request confirmation modal -->
+   <div class="modal" id="submit-confirm-modal">
+      <form class="modal-content animate">
+         <div class="imgcontainer">
+            <span onclick="document.getElementById('submit-confirm-modal').style.display='none'" class="close"
+               title="Close Modal">&times;</span>
+         </div>
+
+         <!-- Modal Header -->
+         <div class="modal-header">
+            <h4 class="modal-title">Visit Request Submitted</h4>
+         </div>
+
+         <!-- Modal body -->
+         <div class="modal-body">
+            After your request has been reviewed, you will receive an email with details on your appointment
+            regarding time, resident, and activities, as well as links for you to confirm or cancel.
+         </div>
+
+         <!-- Modal footer -->
+         <div class="modal-footer">
+            <button onclick="document.getElementById('submit-confirm-modal').style.display='none'" type="button"
+               class="btn btn-danger" data-dismiss="modal">Close</button>
+         </div>
+      </form>
+   </div>
+
+
 
    <div class="container">
       <h2>Submit Visit Request</h2>
@@ -217,7 +245,8 @@
             </label>
          </div>
 
-         <button type="submit" class="btn btn-primary" id="submit-visit-request" style="width:76px">Submit</button>
+         <button onclick="document.getElementById('submit-confirm-modal').style.display='block'" type="submit"
+            class="btn btn-primary" id="submit-visit-request">Submit</button>
       </form>
    </div>
 

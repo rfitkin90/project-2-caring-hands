@@ -129,6 +129,32 @@
       </form>
    </div>
 
+   <!-- email sent modal -->
+   <div id="id03" class="modal">
+      <form class="modal-content animate">
+         <div class="imgcontainer">
+            <span onclick="document.getElementById('id03').style.display='none'" class="close"
+               title="Close Modal">&times;</span>
+         </div>
+
+         <!-- Modal Header -->
+         <div class="modal-header">
+            <h4 class="modal-title">Visit Request Confirmed</h4>
+         </div>
+
+         <!-- Modal body -->
+         <div class="modal-body">
+            An email has been sent to the user for them to confirm their visit.
+         </div>
+
+         <!-- Modal footer -->
+         <div class="modal-footer">
+            <button onclick="document.getElementById('id03').style.display='none'" type="button" class="btn btn-danger"
+               data-dismiss="modal">Close</button>
+         </div>
+      </form>
+   </div>
+
    <!-- main page container -->
    <div class="container">
 
@@ -143,7 +169,7 @@
                   <!-- appointment request info appends here from api request -->
                </div>
             </div>
-            
+
             <h3 class='div-title' id="shedule-visit-title">Schedule Visit</h3>
             <form>
 
@@ -184,7 +210,8 @@
                   </label>
                </div>
 
-               <button type="submit" class="btn btn-primary" id="submit-visit" style="width:76px">Submit</button>
+               <button onclick="document.getElementById('id03').style.display='block'" type="submit"
+                  class="btn btn-primary" id="submit-visit" style="width:76px">Submit</button>
             </form>
 
          </div>

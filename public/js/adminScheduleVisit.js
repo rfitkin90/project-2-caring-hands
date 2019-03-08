@@ -102,7 +102,7 @@ $(document).ready(function () {
                         data-residentName="${residentsElem.firstName}">
 
                         <div class="card-body">
-                           <h4>${residentsElem.firstName}</h4><span>ID: ${residentsElem.id}</span>
+                           <h4>${residentsElem.firstName}</h4>
                            <p>Activity Preferences: ${residentsElem.activityPreferences}</p>
                            <p>Scheduled Visits</p>
                            <ul id="resident-${residentsElem.id}-visits"></ul>

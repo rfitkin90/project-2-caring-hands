@@ -40,13 +40,13 @@ $('#submit-visit-request').on('click', function (e) {
 
 
 
+   // get the which activities are checked and put them in a string
    for (var i = 1; i < 11; i++) {
       if ($(`#checkbox${i}`).attr('class') === 'checkbox checked') {
          var activity = $(`#checkbox${i}`).text();
          checkArr.push(activity);
       }
    }
-
    var checkArrString = checkArr.toString();
    console.log(checkArrString);
 
@@ -62,27 +62,34 @@ $('#submit-visit-request').on('click', function (e) {
    if (additionalInfo) additionalInfo.trim();
 
 
-   axios({
-      url: "/api/submissions",
-      method: "POST",
-      headers: {
-         Authorization: "Bearer " + token
-      },
-      data: {
-         availabilityStart: availabilityStart,
-         availabilityEnd: availabilityEnd,
-         visitDuration: visitDuration,
-         activityPreferences: checkArrString,
-         additionalInfo: additionalInfo,
-         communityServiceForm: communityServiceForm,
-      }
-   })
-      .then(function (resp) {
-         console.log('submit request resp', resp);
+   if (availabilityStart && availabilityEnd) {
+      axios({
+         url: "/api/submissions",
+         method: "POST",
+         headers: {
+            Authorization: "Bearer " + token
+         },
+         data: {
+            availabilityStart: availabilityStart,
+            availabilityEnd: availabilityEnd,
+            visitDuration: visitDuration,
+            activityPreferences: checkArrString,
+            additionalInfo: additionalInfo,
+            communityServiceForm: communityServiceForm,
+         }
       })
-      .catch(function (err) {
-         console.error(err);
-      });
-   ;
+         .then(function (resp) {
+            console.log('submit request resp', resp);
+         })
+         .catch(function (err) {
+            console.error(err);
+         });
+      ;
+   } else {
+      alert('Please specify availability.');
+      $('.modal').hide();
+   }
+
+
 
 });

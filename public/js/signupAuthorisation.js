@@ -6,6 +6,7 @@ $(document).ready(function () {
     var modal2 = document.getElementById('id02');
     var modal3 = document.getElementById('id03');
     var modal4 = document.getElementById('id04');
+    var modal5 = document.getElementById('submit-confirm-modal');
 
     // When the user clicks anywhere outside of the modal, close it
     window.onclick = function (event) {
@@ -17,6 +18,8 @@ $(document).ready(function () {
             modal3.style.display = "none";
         } else if (event.target == modal4) {
             modal4.style.display = "none";
+        } else if (event.target == modal5) {
+            modal5.style.display = "none";
         }
     }
 

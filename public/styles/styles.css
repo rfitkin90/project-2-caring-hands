@@ -71,6 +71,10 @@ button.edit {
   vertical-align: middle;
 }
 
+#login-submit {
+  width: 100%;
+}
+
 
 
 /* Responsive layout - makes a two column-layout instead of four columns */
