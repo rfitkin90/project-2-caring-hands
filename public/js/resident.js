@@ -48,7 +48,11 @@ $(document).ready(function () {
             if (payload.role === 'admin') {
                $(`#resident-${elem.id}-body`).append(`
                   <span onclick="document.getElementById('id04').style.display='block'" 
-                     class="btn btn-primary" id="edit-resident-button" data-residentID="${elem.id}" data-residentName = ${elem.firstName}>Edit</span>
+                     class="btn btn-primary" id="edit-resident-button"  data-residentName = ${elem.firstName}>Edit</span>
+               `);
+               $(`#resident-${elem.id}-body`).append(`
+               <span onclick="document.getElementById('id04').style.display='block'" 
+                  class="btn btn-primary" id="delete-resident-button" data-residentID="${elem.id}" style = "margin-top:5px">Delete</span>
                `);
             }
 
