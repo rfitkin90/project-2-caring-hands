@@ -220,22 +220,22 @@ $(document).ready(function () {
          });
       ;
 
-      axios({
-         url: "api/visits/autodelete/" + emailConfirmKey,
-         method: "DELETE",
-         headers: {
-            Authorization: "Bearer " + token
-         }
-      })
-         .then(function (resp) {
-            console.log(resp);
-         })
-         .catch(function (err) {
-            console.error(err);
-         });
-      ;
+   //    axios({
+   //       url: "api/visits/autodelete/" + emailConfirmKey,
+   //       method: "DELETE",
+   //       headers: {
+   //          Authorization: "Bearer " + token
+   //       }
+   //    })
+   //       .then(function (resp) {
+   //          console.log(resp);
+   //       })
+   //       .catch(function (err) {
+   //          console.error(err);
+   //       });
+   //    ;
 
-   });
+   // });
 
 });
 

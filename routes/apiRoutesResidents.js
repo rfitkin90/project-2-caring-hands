@@ -34,6 +34,18 @@ router.post("/residents", function (req, res) {
       });
    ;
 });
-
+//update resident's info to the database
+router.put('/residents', function (req, res) {
+   model.Residents.update(
+      { where: { firstName: req.params.firstName } })
+      .then(function (dbData) {
+         res.json(dbData);
+      })
+      .catch(function (err) {
+         console.log(err);
+         throw err;
+      });
+   ;
+});
 
 module.exports = router;

@@ -37,9 +37,6 @@ $('#submit-visit-request').on('click', function (e) {
    e.preventDefault();
    var checkArr = [];
 
-
-
-
    // get the which activities are checked and put them in a string
    for (var i = 1; i < 11; i++) {
       if ($(`#checkbox${i}`).attr('class') === 'checkbox checked') {
@@ -89,7 +86,5 @@ $('#submit-visit-request').on('click', function (e) {
       alert('Please specify availability.');
       $('.modal').hide();
    }
-
-
 
 });

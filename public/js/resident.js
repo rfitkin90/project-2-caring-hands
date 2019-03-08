@@ -48,7 +48,7 @@ $(document).ready(function () {
             if (payload.role === 'admin') {
                $(`#resident-${elem.id}-body`).append(`
                   <span onclick="document.getElementById('id04').style.display='block'" 
-                     class="btn btn-primary" data-residentID="${elem.id}">Edit</span>
+                     class="btn btn-primary" id="edit-resident-button" data-residentID="${elem.id}" data-residentName = ${elem.firstName}>Edit</span>
                `);
             }
 
@@ -72,7 +72,8 @@ $(document).ready(function () {
          $(this).attr({ 'class': 'checkbox unchecked' });
       }
    });
-
+   
+   //onclick function to add a new resident
    $(document).on('click', '#add-resident-submit', function (e) {
       e.preventDefault();
       // create empty array for check values
@@ -89,7 +90,7 @@ $(document).ready(function () {
       // create string out of array
       var checkArrString = checkArr.toString();
       console.log(checkArrString);
-
+      
       // get new resident values from form
       var residentName = $('#add-resident-name').val();
       var residentAge = $('#add-resident-age').val();
@@ -120,5 +121,64 @@ $(document).ready(function () {
       ;
 
    });
+
+   //onclick function to edit a resident's info
+   $(document).on('click','#edit-resident-button', function (e) {
+      e.preventDefault();
+      console.log("hello");
+     // var residentNameToEdit = $(this).attr("data-name");
+      var residentsNameToEdit = $(this).attr("data-residentName");
+     
+      $('#edit-resident-name').val(residentsNameToEdit);
+      //onclick function for edit button inside modal
+      $(document).on('click','#edit-resident-submit', function (e) {
+      
+     
+      // create empty array for check values
+      var checkArrEdit = [];
+
+      // check to see if each box is checked; push only the checked ones to array
+      for (var i = 1; i < 11; i++) {
+         if ($(`#chkbox${i}`).attr('class') === 'checkbox checked') {
+            var activity = $(`#chkbox${i}`).text();
+            checkArrEdit.push(activity);
+         }
+      }
+      // create string out of array
+      var checkArrString = checkArrEdit.toString();
+      console.log(checkArrString);
+
+      var residentName = residentsNameToEdit; 
+      var residentAge = $('#edit-resident-age').val();
+      var residentAdditionalInfo = $('#edit-resident-additional-info').val();
+      var residentPhoto = $('#edit-resident-photo').val();
+      
+      //update the current resident's info to database
+      axios({
+            url: "/api/residents",
+            method: "PUT",
+            headers: {
+               Authorization: "Bearer " + token
+            },
+            data: {
+               firstName: residentName,
+               age: residentAge,
+               activityPreferences: checkArrString,
+               additionalInfo: residentAdditionalInfo,
+               photo: residentPhoto
+            }
+         })
+            .then(function (resp) {
+               console.log("updated resident's data:", resp.data);
+            })
+            .catch(function (err) {
+               console.error(err);
+            });
+
+         });
+      ;
+    
+
+    });
 
 });
