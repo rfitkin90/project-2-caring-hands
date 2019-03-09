@@ -85,6 +85,13 @@ $('#submit-visit-request').on('click', function (e) {
             console.error(err);
          });
       ;
+
+      // clear form
+      $('#availabilityStart').val('');
+      $('#availabilityEnd').val('');
+      $('#visitDuration').val('');
+      $('#additionalInfo').val('');
+
    } else {
       alert('Please specify availability.');
       $('.modal').hide();

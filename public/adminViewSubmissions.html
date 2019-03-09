@@ -12,49 +12,13 @@
       integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
    <link rel="stylesheet" href="./styles/nav.login.css">
    <link rel="stylesheet" href="styles/styles.css" media="screen" title="no title">
+   <link rel="stylesheet" href="styles/adminViewSubmissions.css" media="screen" title="no title">
    <!-- Scripts -->
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
-
-   <style>
-      /* ================================= Pending Requests ================================= */
-      .pending-requests-card {
-         margin-top: 30px;
-         border: 2px solid rgb(136, 136, 136);
-      }
-
-      .pending-requests-card>.card-header {
-         background-color: rgb(194, 159, 113);
-         color: white;
-         text-align: center;
-      }
-
-      .pending-requests-card>.card-body {
-         background-color: rgb(231, 231, 231);
-      }
-
-      .individual-request {
-         width: 100%;
-      }
-
-      .individual-request:not(:last-child) {
-         margin-bottom: 10px;
-      }
-
-      .individual-request>.card-body {
-         color: black;
-         text-align: left;
-      }
-
-      @media screen and (min-width: 768px) {
-         .pending-requests-card>.card-body {
-            max-height: 606px;
-            overflow-y: scroll;
-         }
-      }
-   </style>
+   <script src="./js/moment-with-locales.js"></script>
 
 </head>
 
@@ -63,7 +27,7 @@
    <!-- =============================================== Navbar =============================================== -->
    <nav class="navbar navbar-expand-md navbar-dark">
       <span class="navbar-brand">
-         <h3><a class="nav-link" href="./index.html">Go Go Granny</a></h3>
+         <h3><a class="nav-link" href="./index.html">Caring Hands</a></h3>
       </span>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
          <span class="navbar-toggler-icon"></span>

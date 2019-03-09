@@ -19,9 +19,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
-
-
-
+  <script src="./js/moment-with-locales.js"></script>
   <style>
     .card-body {
       border: 1px solid black
@@ -31,17 +29,6 @@
       margin-top: 20px
     }
   </style>
-
-
-  <!-- <meta charset="UTF-8">
-  <title>Meet the Residents</title> -->
-  <!-- Latest compiled and minified CSS & JS -->
-
-  <!-- <link href="https://maxcdn.bootstrapcdn.com/bootswatch/4.0.0/flatly/bootstrap.min.css" rel="stylesheet">
-
-  <script src="https://code.jquery.com/jquery.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-  <link rel="stylesheet" href="styles/styles.css" media="screen" title="no title"> -->
 </head>
 
 <body>
@@ -158,24 +145,7 @@
       <div class="imgcontainer">
         <span onclick="document.getElementById('id03').style.display='none'" class="close"
           title="Close Modal">&times;</span>
-        <!-- <img src="img_avatar2.png" alt="Avatar" class="avatar"> -->
       </div>
-      <!-- firstName: {
-        type: DataTypes.STRING,
-        allowNull: false
-     },
-     age: {
-        type: DataTypes.INTEGER
-     },
-     activityPreferences: {
-        type: DataTypes.STRING
-     },
-     additionalInfo: {
-        type: DataTypes.STRING
-     },
-     photo: {
-        type: DataTypes.STRING
-     } -->
       <div class="container">
         <h3 style="text-align:center">Add Resident</h3>
 
@@ -186,7 +156,7 @@
 
         <div class="form-group">
           <label for="age"><b>Age</b></label>
-          <input class="form-control" id="add-resident-age" type="text" placeholder="" name="age" required>
+          <input class="form-control" id="add-resident-age" type="number" placeholder="" name="age" required>
         </div>
 
         <div class="form-group">
@@ -234,7 +204,8 @@
 
         <div class="form-group">
           <label for="photo"><b>Photo Link</b></label>
-          <input class="form-control" id="add-resident-photo" type="text" placeholder="286x150 pixels" name="photo" required>
+          <input class="form-control" id="add-resident-photo" type="text" placeholder="286x150 pixels" name="photo"
+            required>
         </div>
 
 
@@ -248,7 +219,7 @@
     </form>
   </div>
 
-  <!-- Edit Resident Modal
+  <!-- Edit Resident Modal -->
   <div id="id04" class="modal">
     <form class="modal-content animate">
       <div class="imgcontainer">
@@ -257,72 +228,76 @@
       </div>
 
       <div class="container">
-        <label for="fname"><b>First Name</b></label>
-        <input id="fname" type="text" placeholder="Jimbo" name="fname" required>
+        <h3 style="text-align:center">Edit Resident</h3>
 
-        <label for="lname"><b>Last Name</b></label>
-        <input id="lname" type="text" placeholder="Smith" name="lname" required>
+        <div class="form-group">
+          <label for="name"><b>Name</b></label>
+          <input class="form-control" id="edit-resident-name" type="text" placeholder="Jimbo" name="name" required>
+        </div>
 
-        <label for="email"><b>Email</b></label>
-        <input id="email" type="text" placeholder="jimbo.smith@gmail.com" name="email" required>
-
-        <label for="psw"><b>Password</b></label>
-        <input id="password" type="password" placeholder="Enter Password" name="psw" required>
-
-        <label for="cpsw"><b>Confirm Password</b></label>
-        <input id="confirmPassword" type="password" placeholder="Enter Password Again" name="cpsw" required>
+        <div class="form-group">
+          <label for="age"><b>Age</b></label>
+          <input class="form-control" id="edit-resident-age" type="number" placeholder="" name="age" required>
+        </div>
 
         <div class="form-group">
           <label for="activity-preferences">Activity Preferences</label>
-          
+
           <div class="checkcontainer">
             <ul class="ks-cboxtags">
-              <li><input type="checkbox" id="checkboxOne" value="Walking"><label for="checkboxOne"
-                  class="checkbox unchecked" id="checkbox1">Walking</label>
+              <li><input type="checkbox" id="checkboxOneEdit" value="Walking"><label for="checkboxOne"
+                  class="checkbox unchecked" id="checkbox1Edit">Walking</label>
               </li>
-              <li><input type="checkbox" id="checkboxTwo" value="Games"><label for="checkboxTwo"
-                  class="checkbox unchecked" id="checkbox2">Games</label>
+              <li><input type="checkbox" id="checkboxTwoEdit" value="Games"><label for="checkboxTwo"
+                  class="checkbox unchecked" id="checkbox2Edit">Games</label>
               </li>
-              <li><input type="checkbox" id="checkboxThree" value="Convserational"><label for="checkboxThree"
-                  class="checkbox unchecked" id="checkbox3">Have a chat</label></li>
-              <li><input type="checkbox" id="checkboxFour" value="Music"><label for="checkboxFour"
-                  class="checkbox unchecked" id="checkbox4">Music</label>
+              <li><input type="checkbox" id="checkboxThreeEdit" value="Convserational"><label for="checkboxThree"
+                  class="checkbox unchecked" id="checkbox3Edit">Have a chat</label></li>
+              <li><input type="checkbox" id="checkboxFourEdit" value="Music"><label for="checkboxFour"
+                  class="checkbox unchecked" id="checkbox4Edit">Music</label>
               </li>
-              <li><input type="checkbox" id="checkboxFive" value="Reading"><label for="checkboxFive"
-                  class="checkbox unchecked" id="checkbox5">Reading</label>
+              <li><input type="checkbox" id="checkboxFiveEdit" value="Reading"><label for="checkboxFive"
+                  class="checkbox unchecked" id="checkbox5Edit">Reading</label>
               </li>
-              <li><input type="checkbox" id="checkboxSix" value="Movie"><label for="checkboxSix"
-                  class="checkbox unchecked" id="checkbox6">Movies</label>
+              <li><input type="checkbox" id="checkboxSixEdit" value="Movie"><label for="checkboxSix"
+                  class="checkbox unchecked" id="checkbox6Edit">Movies</label>
               </li>
-              <li><input type="checkbox" id="checkboxSeven" value="Cook"><label for="checkboxSeven"
-                  class="checkbox unchecked" id="checkbox7">Cooking</label>
+              <li><input type="checkbox" id="checkboxSevenEdit" value="Cook"><label for="checkboxSeven"
+                  class="checkbox unchecked" id="checkbox7Edit">Cooking</label>
               </li>
-              <li><input type="checkbox" id="checkboxEight" id="checkbox8" value="Tech"><label for="checkboxEight"
-                  class="checkbox unchecked" id="checkbox8">Teach Technology</label>
+              <li><input type="checkbox" id="checkboxEightEdit" id="checkbox8" value="Tech"><label for="checkboxEight"
+                  class="checkbox unchecked" id="checkbox8Edit">Teach Technology</label>
               </li>
-              <li><input type="checkbox" id="checkboxNine" value="Pet"><label for="checkboxNine"
-                  class="checkbox unchecked" id="checkbox9">Bring your Pet</label>
+              <li><input type="checkbox" id="checkboxNineEdit" value="Pet"><label for="checkboxNine"
+                  class="checkbox unchecked" id="checkbox9Edit">Bring your Pet</label>
               </li>
-              <li><input type="checkbox" id="checkboxTen" value="Sew"><label for="checkboxTen"
-                  class="checkbox unchecked" id="checkbox10">Sew/Knitting</label>
+              <li><input type="checkbox" id="checkboxTenEdit" value="Sew"><label for="checkboxTen"
+                  class="checkbox unchecked" id="checkbox10Edit">Sew/Knitting</label>
               </li>
             </ul>
           </div>
         </div>
 
-        <button id="register-submit" type="submit">Register</button>
-        <label>
-          <input type="checkbox" checked="checked" name="remember"> Remember me
-        </label>
+        <div class="form-group">
+          <label for="additional-comments">Additional Info</label>
+          <textarea class="form-control" id="edit-resident-additional-info" rows="5"></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="photo"><b>Photo Link</b></label>
+          <input class="form-control" id="edit-resident-photo" type="text" placeholder="286x150 pixels" name="photo"
+            required>
+        </div>
+
+        <button id="edit-submit" type="submit">Submit</button>
       </div>
 
       <div class="container" style="background-color:#f1f1f1">
         <button type="button" onclick="document.getElementById('id04').style.display='none'"
           class="cancelbtn">Cancel</button>
-        <span class="psw">Forgot <a href="#">password?</a></span>
       </div>
     </form>
-  </div> -->
+  </div>
 
 
   <div class="container">

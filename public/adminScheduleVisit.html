@@ -18,6 +18,7 @@
    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
+   <script src="./js/moment-with-locales.js"></script>
 
 </head>
 
@@ -26,7 +27,7 @@
    <!-- =============================================== Navbar =============================================== -->
    <nav class="navbar navbar-expand-md navbar-dark">
       <span class="navbar-brand">
-         <h3><a class="nav-link" href="./index.html">Go Go Granny</a></h3>
+         <h3><a class="nav-link" href="./index.html">Caring Hands</a></h3>
       </span>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
          <span class="navbar-toggler-icon"></span>
@@ -165,6 +166,8 @@
             <h3 class='div-title'>Request Info</h3>
 
             <div class="card">
+               <div class="card-header" id="appointment-request-header">
+               </div>
                <div class="card-body" id="appointment-request-info">
                   <!-- appointment request info appends here from api request -->
                </div>

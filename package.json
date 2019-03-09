@@ -21,6 +21,7 @@
     "express-jwt-middleware": "^1.0.3",
     "jade": "^1.11.0",
     "jsonwebtoken": "^8.5.0",
+    "moment": "^2.24.0",
     "mongoose": "^5.4.15",
     "mysql2": "^1.5.3",
     "node-mandrill": "^1.0.1",

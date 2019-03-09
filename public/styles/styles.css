@@ -75,6 +75,21 @@ button.edit {
   width: 100%;
 }
 
+#carouselExampleIndicators {
+  position: relative;
+}
+
+#mission-statement {
+  background-color: rgba(255, 255, 255, 0.5);
+  color: black;
+  font-weight: bold;
+}
+
+.carousel-indicators {
+  position: absolute;
+  bottom: -40px;
+}
+
 
 
 /* Responsive layout - makes a two column-layout instead of four columns */
@@ -107,3 +122,16 @@ button.edit {
   } */
 }
 
+@media screen and (min-width: 768px) {
+  #mission-statement {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background-color: rgba(255, 255, 255, 0.5);
+    width: 50%;
+    color: black;
+    font-weight: bold;
+    max-height: 92%;
+    overflow: hidden;
+  }
+}

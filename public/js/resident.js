@@ -75,50 +75,75 @@ $(document).ready(function () {
 
    $(document).on('click', '#add-resident-submit', function (e) {
       e.preventDefault();
-      // create empty array for check values
-      var checkArr = [];
 
-      // check to see if each box is checked; push only the checked ones to array
-      for (var i = 1; i < 11; i++) {
-         if ($(`#checkbox${i}`).attr('class') === 'checkbox checked') {
-            var activity = $(`#checkbox${i}`).text();
-            checkArr.push(activity);
+      // check for valid entries
+      if ($('#add-resident-name').val() && Number($('#add-resident-age').val())) {
+         // create empty array for check values
+         var checkArr = [];
+
+         // check to see if each box is checked; push only the checked ones to array
+         for (var i = 1; i < 11; i++) {
+            if ($(`#checkbox${i}`).attr('class') === 'checkbox checked') {
+               var activity = $(`#checkbox${i}`).text();
+               checkArr.push(activity);
+            }
          }
+
+         // create string out of array
+         var checkArrString = checkArr.toString();
+         console.log(checkArrString);
+
+         // get new resident values from form
+         var residentName = $('#add-resident-name').val();
+         var residentAge = $('#add-resident-age').val();
+         var residentAdditionalInfo = $('#add-resident-additional-info').val();
+         var residentPhoto = $('#add-resident-photo').val();
+
+         // post new resident to database
+         axios({
+            url: "/api/residents",
+            method: "POST",
+            headers: {
+               Authorization: "Bearer " + token
+            },
+            data: {
+               firstName: residentName,
+               age: residentAge,
+               activityPreferences: checkArrString,
+               additionalInfo: residentAdditionalInfo,
+               photo: residentPhoto
+            }
+         })
+            .then(function (resp) {
+               console.log('new resident data:', resp.data);
+            })
+            .catch(function (err) {
+               console.error(err);
+            });
+         ;
+
+         location.reload();
+
+      } else if (!$('#add-resident-name').val()) {
+         alert('Please enter a resident name.');
+      } else {
+         alert('Please enter an age number.');
       }
 
-      // create string out of array
-      var checkArrString = checkArr.toString();
-      console.log(checkArrString);
+   });
 
-      // get new resident values from form
-      var residentName = $('#add-resident-name').val();
-      var residentAge = $('#add-resident-age').val();
-      var residentAdditionalInfo = $('#add-resident-additional-info').val();
-      var residentPhoto = $('#add-resident-photo').val();
-
-      // post new resident to database
-      axios({
-         url: "/api/residents",
-         method: "POST",
-         headers: {
-            Authorization: "Bearer " + token
-         },
-         data: {
-            firstName: residentName,
-            age: residentAge,
-            activityPreferences: checkArrString,
-            additionalInfo: residentAdditionalInfo,
-            photo: residentPhoto
-         }
-      })
-         .then(function (resp) {
-            console.log('new resident data:', resp.data);
-         })
-         .catch(function (err) {
-            console.error(err);
-         });
-      ;
-
+   // checkbox toggle
+   $('.checkbox').on('click', function () {
+      var checkClass = $(this).attr('class');
+   
+      // check the box
+      if (checkClass === 'checkbox unchecked') {
+         $(this).attr({ 'class': 'checkbox checked' });
+   
+         // uncheck the box
+      } else if (checkClass === 'checkbox checked') {
+         $(this).attr({ 'class': 'checkbox unchecked' });
+      }
    });
 
 });
