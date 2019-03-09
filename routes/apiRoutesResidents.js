@@ -34,6 +34,16 @@ router.post("/residents", function (req, res) {
       });
    ;
 });
-
-
+//update current resident
+router.put('/residents', function (req, res) {
+   model.Visits.update(req.body, { where: { firstName: req.params.firstName } })
+      .then(function (dbData) {
+         res.json(dbData);
+      })
+      .catch(function (err) {
+         console.log(err);
+         throw err;
+      });
+   ;
+});
 module.exports = router;

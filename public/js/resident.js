@@ -48,7 +48,8 @@ $(document).ready(function () {
             if (payload.role === 'admin') {
                $(`#resident-${elem.id}-body`).append(`
                   <span onclick="document.getElementById('id04').style.display='block'" 
-                     class="btn btn-primary" data-residentID="${elem.id}">Edit</span>
+                     class="btn btn-primary" id="edit-resident" data-residentID="${elem.id}" 
+                       data-residentName= "${elem.firstName}">Edit</span>
                `);
             }
 
@@ -144,6 +145,89 @@ $(document).ready(function () {
       } else if (checkClass === 'checkbox checked') {
          $(this).attr({ 'class': 'checkbox unchecked' });
       }
+   });
+
+   $(document).on('click','#edit-resident', function (e) {
+      e.preventDefault();
+      console.log('hello');
+
+      var residentNameEdited = $(this).attr('data-residentName');
+      //console.log("Resident to Edit" ,residentNameEdited);
+      $("#edit-resident-name").val(residentNameEdited);
+      
+      $('.checkbox').on('click', function () {
+         console.log("hello2");
+        var checkClass = $(this).attr('class');
+     
+        // check the box
+        if (checkClass === 'checkbox unchecked') {
+           $(this).attr({ 'class': 'checkbox checked' });
+     
+           // uncheck the box
+        } else if (checkClass === 'checkbox checked') {
+           $(this).attr({ 'class': 'checkbox unchecked' });
+        }
+          
+      //onclick for submit button inside modal
+      $(document).on('click','#edit-submit', function (e) {
+       // checkbox toggle
+       
+         // check for valid entries
+         if (Number($('#edit-resident-age').val())) {
+            // create empty array for check values
+            var checkArr = [];
+
+            // check to see if each box is checked; push only the checked ones to array
+            for (var i = 1; i < 11; i++) {
+               if ($(`#checkbox${i}Edit`).attr('class') === 'checkbox checked') {
+                  var activity = $(`#checkbox${i}`).text();
+                  checkArr.push(activity);
+               }
+            }
+
+            // create string out of array
+            var checkArrString = checkArr.toString();
+            console.log(checkArrString);
+
+            // get new resident values from form
+            var residentName = residentNameEdited;
+            var residentAge = $('#edit-resident-age').val();
+            var residentAdditionalInfo = $('#edit-resident-additional-info').val();
+            var residentPhoto = $('#edit-resident-photo').val();
+
+              // post new resident to database
+               axios({
+                  url: "/api/residents",
+                  method: "PUT",
+                  headers: {
+                     Authorization: "Bearer " + token
+                  },
+                  firstName: residentName,
+                  data: {
+                     age: residentAge,
+                     activityPreferences: checkArrString,
+                     additionalInfo: residentAdditionalInfo,
+                     photo: residentPhoto
+                  }
+                
+                  })
+                  .then(function (resp) {
+                     console.log('new resident data:', resp.data);
+                  })
+                  .catch(function (err) {
+                     console.error(err);
+                  });
+               
+               //location.reload();
+               } else {
+                  alert('Please enter an age number.');
+               }
+
+
+          });
+     });
+ 
+  
    });
 
 });
