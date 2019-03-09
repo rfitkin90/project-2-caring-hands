@@ -13,7 +13,7 @@ router.post('/sendemail/', function (req, res) {
   sgMail.setApiKey(process.env.SENDGRID_API_KEY);
   console.log('sendgrid api key set');
   const msg = {
-    to: 'rfitkin90@gmail.com',
+    to: req.body.userEmail,
     from: 'noreply@caring-hands.com',
     subject: 'Confirm Caring Hands Appointment',
     text: 'caring-hands',

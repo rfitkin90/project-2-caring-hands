@@ -3,19 +3,21 @@
    flex-wrap: wrap;
    justify-content: center;
    max-height: 700px;
-   overflow-y: scroll;
 }
 
 .resident-card {
    max-width: 45%;
    margin: 5px;
    max-height: 250px;
-   overflow-y: scroll;
+}
+
+#appointment-request-header {
+   background-color: rgb(153, 121, 79);
+   color: white;
 }
 
 #appointment-request-info {
    max-height: 300px;
-   overflow-y: scroll;
 }
 
 #shedule-visit-title {
@@ -24,4 +26,16 @@
 
 .div-title {
    text-align: center;
+}
+
+.resident-header {
+   background-color: rgb(153, 121, 79);
+   color: white;
+}
+
+/* scroll bars */
+
+
+.resident-card>.card-body, #residents-div, #appointment-request-info {
+   overflow-y: scroll;
 }

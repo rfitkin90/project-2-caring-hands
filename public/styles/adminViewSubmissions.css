@@ -1,0 +1,37 @@
+.pending-requests-card {
+   margin-top: 30px;
+   border: 2px solid rgb(136, 136, 136);
+}
+
+.pending-requests-card>.card-header {
+   background-color: rgb(194, 159, 113);
+   color: white;
+   text-align: center;
+}
+
+.pending-requests-card>.card-body {
+   background-color: rgb(231, 231, 231);
+}
+
+.individual-request {
+   width: 100%;
+}
+
+.individual-request:not(:last-child) {
+   margin-bottom: 10px;
+}
+
+.individual-request>.card-body {
+   color: black;
+   text-align: left;
+}
+
+@media screen and (min-width: 768px) {
+   .pending-requests-card>.card-body {
+      max-height: 606px;
+      overflow: hidden;
+   }
+   .pending-requests-card>.card-body:hover {
+      overflow-y: scroll;
+   }
+}

@@ -34,13 +34,13 @@ const auth = jwt({
 });
 
 
-
 // Middleware
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(express.static("public"));
 
 app.set('view engine', 'jade');
+
 // Routes
 app.use("/auth", authRoutes);
 app.use(auth);
@@ -51,7 +51,10 @@ app.use("/api", apiRoutesUser);
 app.use("/api", apiRoutesVisits);
 // app.use(htmlRoutes);
 
+
 // app.use(jwtCheck);
+
+
 
 var syncOptions = { force: false };
 
@@ -201,8 +204,47 @@ db.sequelize.sync(syncOptions).then(function () {
   .then(function (resp) {
     // adds example visit to database
     return db.Visits.create({
+      visitStart: '2019-05-15T15:00',
+      visitEnd: '2019-05-15T16:00',
+      activity: 'Sew/Knitting',
+      communityServiceForm: false,
+      emailConfirmKey: '0a0bd3e71bbd0647121cc75cad8b9d67207',
+      confirmed: false,
+      UserId: 1,
+      ResidentId: 1
+    })
+  })
+  .then(function (resp) {
+    // adds example visit to database
+    return db.Visits.create({
+      visitStart: '2019-04-15T15:00',
+      visitEnd: '2019-04-15T16:00',
+      activity: 'Sew/Knitting',
+      communityServiceForm: false,
+      emailConfirmKey: '0a0bd3e71bbd0647121cc75cad8b9d67207',
+      confirmed: false,
+      UserId: 1,
+      ResidentId: 1
+    })
+  })
+  .then(function (resp) {
+    // adds example visit to database
+    return db.Visits.create({
       visitStart: '2019-03-15T15:00',
       visitEnd: '2019-03-15T16:00',
+      activity: 'Sew/Knitting',
+      communityServiceForm: false,
+      emailConfirmKey: '0a0bd3e71bbd0647121cc75cad8b9d67207',
+      confirmed: false,
+      UserId: 1,
+      ResidentId: 1
+    })
+  })
+  .then(function (resp) {
+    // adds example visit to database
+    return db.Visits.create({
+      visitStart: '2019-02-15T15:00',
+      visitEnd: '2019-02-15T16:00',
       activity: 'Sew/Knitting',
       communityServiceForm: false,
       emailConfirmKey: '0a0bd3e71bbd0647121cc75cad8b9d67207',

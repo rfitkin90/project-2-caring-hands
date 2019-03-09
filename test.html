@@ -5,68 +5,58 @@
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-   <title>Document</title>
+   <title>Approve Requests</title>
+   <!-- Stylesheets -->
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+      integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+   <link rel="stylesheet" href="./styles/nav.login.css">
+   <link rel="stylesheet" href="styles/styles.css" media="screen" title="no title">
+   <!-- Scripts -->
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
+   <script src="./public/js/moment-with-locales.js"></script>
 </head>
 
 <body>
 
-
-   userEmail: $('#user-info-email').text(),
-   // visitStart: $('#visitStart').val(),
-   // visitEnd: $('#visitEnd').val(),
-   // activity: $('#activity').val(),
-   // communityServiceForm: $('#communityServiceForm').is(':checked'),
-   // emailConfirmKey: emailConfirmKey
-   residentName
-
-   <p>You have been shceduled for an appointment to see ${req.body.residentName} from ${req.body.visitStart} to
-      ${req.body.visitEnd} doing the following activity: ${req.body.activity}. If you requested a community service
-      form, one will be provided to you at hte time of
-      your appointment.</p>
-   <p>To confirm your appointment, please click the following link:</p>
-   <a href="localhost:3000/visitConfirmation.html?k=${req.body.emailConfirmKey}&c=1"></a>
-   <p>To decline or cancel your appointment at any time, you may click the following link:</p>
-   <a href="localhost:3000/visitConfirmation.html?k=${req.body.emailConfirmKey}&c=0"></a>
-
-
-
-
-
-
-
-
-
-
-
-
-
    <script>
-      var emailConfirmKey = '';
-      // generate random email confirm key
-      for (var i = 0; i < 35; i++) {
-         var RNG = Math.floor(Math.random() * 15);
-         if (RNG === 10) { RNG = 'a' } else if (RNG === 11) { RNG = 'b' } else if (RNG === 12) { RNG = 'c' }
-         else if (RNG === 13) { RNG = 'd' } else if (RNG === 14) { RNG = 'e' } else if (RNG === 15) { RNG = 'f' }
-         else if (RNG === 16) { RNG = 'g' } else if (RNG === 17) { RNG = 'h' } else if (RNG === 18) { RNG = 'i' }
-         else if (RNG === 19) { RNG = 'j' } else if (RNG === 20) { RNG = 'k' } else if (RNG === 21) { RNG = 'l' }
-         else if (RNG === 22) { RNG = 'm' } else if (RNG === 23) { RNG = 'n' } else if (RNG === 24) { RNG = 'o' }
-         else if (RNG === 25) { RNG = 'p' } else if (RNG === 26) { RNG = 'q' } else if (RNG === 27) { RNG = 'r' }
-         else if (RNG === 28) { RNG = 's' } else if (RNG === 29) { RNG = 't' } else if (RNG === 30) { RNG = 'u' }
-         else if (RNG === 31) { RNG = 'v' } else if (RNG === 32) { RNG = 'w' } else if (RNG === 33) { RNG = 'x' }
-         else if (RNG === 34) { RNG = 'y' } else if (RNG === 35) { RNG = 'z' }
-         emailConfirmKey += RNG;
-      }
-      console.log('emailConfirmKey:', emailConfirmKey)
+      $(document).ready(function () {
 
 
-      var monkey = 'bananaboi';
+         var momentString = '2019-04-15T16:00';
+         var momentYear = momentString.slice(0, 4);
+         var momentMonth = momentString.slice(5, 7);
+         var momentDay = momentString.slice(8, 10);
+         var momentHour = momentString.slice(11, 13);
+         var momentMinute = momentString.slice(14, 16);
+         console.log('year', momentYear);
+         console.log('month', momentMonth);
+         console.log('day', momentDay);
+         console.log('hour', momentHour);
+         console.log('minute', momentMinute);
 
-      if (monkey) {
-         console.log('sup');
-      }
+         var momentTest = moment().set({
+            'year': momentYear,
+            'month': momentMonth,
+            'date': momentDay,
+            'hour': momentHour,
+            'minute': momentMinute
+         });
 
+         console.log('momentTest:', moment(momentTest).format("dddd, MMMM Do YYYY, h:mm a"))
+         console.log(new Date);
+         // 2019-04-15T16:00
 
+         if (Number('asdf')) {
+            console.log('its a number')
+         }
 
+         console.log(Number('asdf'))
+
+      });
 
    </script>
 
