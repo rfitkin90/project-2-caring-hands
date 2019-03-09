@@ -52,8 +52,8 @@ router.get('/submissions/:id', function (req, res) {
 });
 
 // Delete an requests by id
-router.delete("/requests/:id", function (req, res) {
-   model.Requests.destroy({ where: { id: req.params.id, userID: req.tokenData.userID } }).then(function (dbData) {
+router.delete("/submissions/:id", function (req, res) {
+   model.Requests.destroy({ where: { id: req.params.id } }).then(function (dbData) {
       res.json(dbData);
    })
       .catch(function (err) {

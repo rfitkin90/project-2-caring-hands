@@ -32,6 +32,7 @@ $(document).ready(function () {
    })
       .then(function (subResp) {
 
+
          // get user by id
          axios({
             url: "/api/user/" + userId,
@@ -239,6 +240,25 @@ $(document).ready(function () {
 
                $('#visitStart').val('');
                $('#visitEnd').val('');
+
+               // delete the submission after it's been scheduled
+               axios({
+                  url: "api/submissions/" + submissionId,
+                  method: "DELETE",
+                  headers: {
+                     Authorization: "Bearer " + token
+                  }
+               })
+                  .then(function (resp) {
+                     console.log(resp);
+                  })
+                  .catch(function (err) {
+                     console.error(err);
+                  });
+               ;
+
+
+
 
             })
             .catch(function (err) {

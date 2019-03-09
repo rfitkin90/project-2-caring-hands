@@ -140,7 +140,7 @@ db.sequelize.sync(syncOptions).then(function () {
       activityPreferences: 'Music,Reading',
       additionalInfo: 'Maggie loves to listen to music and hear a good story. ' +
         'She is very pleasant to sit with and enjoys books.',
-      photo: 'https://www.catholiccharitiesusa.org/wp-content/uploads/2018/04/' +
+      photo: 'https://static.independent.co.uk/s3fs-public/thumbnails/image/2018/05/16/18/rosina-coleman.jpg?w968h681' +
         'Story_Meals-on-Wheels-for-Senior-Citizens-1024x512.jpg'
     })
   })
