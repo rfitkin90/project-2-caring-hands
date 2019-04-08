@@ -1,9 +1,9 @@
 {
   "development": {
-    "username": "root",
-    "password": "root",
-    "database": "info_db",
-    "host": "localhost",
+    "username": "ulinjmf7de5tn187",
+    "password": "r5vm2j21avwcpyio",
+    "database": "fi5zfpfaytzdwh4o",
+    "host": "tk3mehkfmmrhjg0b.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
     "dialect": "mysql",
     "port": 3306
   },

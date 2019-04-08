@@ -71,201 +71,201 @@ if (process.env.NODE_ENV === "test") {
 // Starting the server, syncing our models ------------------------------------/
 db.sequelize.sync(syncOptions).then(function () {
   // ================================= example users ================================= //
-  var salt = authHelpers.getSalt();
-  var hash = authHelpers.getHash(salt, "123");
-  return db.User.create({
-    email: 'jimbus@gmail.com',
-    firstName: "jimbo",
-    salt: salt,
-    hash: hash,
-    lastName: "scrimbo",
-    role: "admin"
-  })
+  // var salt = authHelpers.getSalt();
+  // var hash = authHelpers.getHash(salt, "123");
+  // return db.User.create({
+  //   email: 'jimbus@gmail.com',
+  //   firstName: "jimbo",
+  //   salt: salt,
+  //   hash: hash,
+  //   lastName: "scrimbo",
+  //   role: "admin"
+//   })
 })
-  .then(function (resp) {
-    var salt = authHelpers.getSalt();
-    var hash = authHelpers.getHash(salt, "123");
-    return db.User.create({
-      email: 'jimbus2@gmail.com',
-      firstName: "jimbo2",
-      salt: salt,
-      hash: hash,
-      lastName: "scrimbo2",
-      role: "user"
-    })
-  })
-  .then(function (resp) {
-    var salt = authHelpers.getSalt();
-    var hash = authHelpers.getHash(salt, "123");
-    return db.User.create({
-      email: 'FA.HUQ03@gmail.com',
-      firstName: "Farjana",
-      salt: salt,
-      hash: hash,
-      lastName: "Huq",
-      role: "admin"
-    })
-  })
-  // ================================= example appointment requests ================================= //
-  .then(function (resp) {
-    // adds example appointment request to database
-    return db.Requests.create({
-      availabilityStart: "2019-03-15T15:00",
-      availabilityEnd: "2019-03-15T18:00",
-      visitDuration: 60,
-      activityPreferences: "Reading,Teach Technology,Sew/Knitting",
-      additionalInfo: "Hello",
-      communityServiceForm: true,
-      UserId: 1
-    })
-  })
-  .then(function (resp) {
-    // adds example appointment request to database
-    return db.Requests.create({
-      availabilityStart: "2019-04-15T16:00",
-      availabilityEnd: "2019-04-15T19:00",
-      visitDuration: 120,
-      activityPreferences: "Walking,Games,Music",
-      additionalInfo: "Hello2",
-      communityServiceForm: true,
-      UserId: 2
-    })
-  })
-  // ================================= example residents ================================= //
-  .then(function (resp) {
-    // adds example resident to database
-    return db.Residents.create({
-      firstName: 'Maggie',
-      age: 70,
-      activityPreferences: 'Music,Reading',
-      additionalInfo: 'Maggie loves to listen to music and hear a good story. ' +
-        'She is very pleasant to sit with and enjoys books.',
-      photo: 'https://static.independent.co.uk/s3fs-public/thumbnails/image/2018/05/16/18/rosina-coleman.jpg?w968h681' +
-        'Story_Meals-on-Wheels-for-Senior-Citizens-1024x512.jpg'
-    })
-  })
-  .then(function (resp) {
-    // adds example resident to database
-    return db.Residents.create({
-      firstName: 'Beverly',
-      age: 82,
-      activityPreferences: 'Games,Sew/Knitting',
-      additionalInfo: 'Beverly is a retired school teacher. ' +
-        'She is a little forgetful but loves to play gin. She also loves to paint with water colors.',
-      photo: 'http://www.commage.org/wp-content/uploads/2016/05/image-for-swiss-report-600x400.jpg'
-    })
-  })
-  .then(function (resp) {
-    // adds example resident to database
-    return db.Residents.create({
-      firstName: 'Beverly',
-      age: 82,
-      activityPreferences: 'Games,Sew/Knitting',
-      additionalInfo: 'Beverly is a retired school teacher. ' +
-        'She is a little forgetful but loves to play gin. She also loves to paint with water colors.',
-      photo: 'http://www.commage.org/wp-content/uploads/2016/05/image-for-swiss-report-600x400.jpg'
-    })
-  })
-  .then(function (resp) {
-    // adds example resident to database
-    return db.Residents.create({
-      firstName: 'Beverly',
-      age: 82,
-      activityPreferences: 'Games,Sew/Knitting',
-      additionalInfo: 'Beverly is a retired school teacher. ' +
-        'She is a little forgetful but loves to play gin. She also loves to paint with water colors.',
-      photo: 'http://www.commage.org/wp-content/uploads/2016/05/image-for-swiss-report-600x400.jpg'
-    })
-  })
-  .then(function (resp) {
-    // adds example resident to database
-    return db.Residents.create({
-      firstName: 'Beverly',
-      age: 82,
-      activityPreferences: 'Games,Sew/Knitting',
-      additionalInfo: 'Beverly is a retired school teacher. ' +
-        'She is a little forgetful but loves to play gin. She also loves to paint with water colors.',
-      photo: 'http://www.commage.org/wp-content/uploads/2016/05/image-for-swiss-report-600x400.jpg'
-    })
-  })
-  .then(function (resp) {
-    // adds example resident to database
-    return db.Residents.create({
-      firstName: 'Beverly',
-      age: 82,
-      activityPreferences: 'Games,Sew/Knitting',
-      additionalInfo: 'Beverly is a retired school teacher. ' +
-        'She is a little forgetful but loves to play gin. She also loves to paint with water colors.',
-      photo: 'http://www.commage.org/wp-content/uploads/2016/05/image-for-swiss-report-600x400.jpg'
-    })
-  })
+  // .then(function (resp) {
+  //   var salt = authHelpers.getSalt();
+  //   var hash = authHelpers.getHash(salt, "123");
+  //   return db.User.create({
+  //     email: 'jimbus2@gmail.com',
+  //     firstName: "jimbo2",
+  //     salt: salt,
+  //     hash: hash,
+  //     lastName: "scrimbo2",
+  //     role: "user"
+  //   })
+  // })
+  // .then(function (resp) {
+  //   var salt = authHelpers.getSalt();
+  //   var hash = authHelpers.getHash(salt, "123");
+  //   return db.User.create({
+  //     email: 'FA.HUQ03@gmail.com',
+  //     firstName: "Farjana",
+  //     salt: salt,
+  //     hash: hash,
+  //     lastName: "Huq",
+  //     role: "admin"
+  //   })
+  // })
+  // // ================================= example appointment requests ================================= //
+  // .then(function (resp) {
+  //   // adds example appointment request to database
+  //   return db.Requests.create({
+  //     availabilityStart: "2019-03-15T15:00",
+  //     availabilityEnd: "2019-03-15T18:00",
+  //     visitDuration: 60,
+  //     activityPreferences: "Reading,Teach Technology,Sew/Knitting",
+  //     additionalInfo: "Hello",
+  //     communityServiceForm: true,
+  //     UserId: 1
+  //   })
+  // })
+  // .then(function (resp) {
+  //   // adds example appointment request to database
+  //   return db.Requests.create({
+  //     availabilityStart: "2019-04-15T16:00",
+  //     availabilityEnd: "2019-04-15T19:00",
+  //     visitDuration: 120,
+  //     activityPreferences: "Walking,Games,Music",
+  //     additionalInfo: "Hello2",
+  //     communityServiceForm: true,
+  //     UserId: 2
+  //   })
+  // })
+  // // ================================= example residents ================================= //
+  // .then(function (resp) {
+  //   // adds example resident to database
+  //   return db.Residents.create({
+  //     firstName: 'Maggie',
+  //     age: 70,
+  //     activityPreferences: 'Music,Reading',
+  //     additionalInfo: 'Maggie loves to listen to music and hear a good story. ' +
+  //       'She is very pleasant to sit with and enjoys books.',
+  //     photo: 'https://static.independent.co.uk/s3fs-public/thumbnails/image/2018/05/16/18/rosina-coleman.jpg?w968h681' +
+  //       'Story_Meals-on-Wheels-for-Senior-Citizens-1024x512.jpg'
+  //   })
+  // })
+  // .then(function (resp) {
+  //   // adds example resident to database
+  //   return db.Residents.create({
+  //     firstName: 'Beverly',
+  //     age: 82,
+  //     activityPreferences: 'Games,Sew/Knitting',
+  //     additionalInfo: 'Beverly is a retired school teacher. ' +
+  //       'She is a little forgetful but loves to play gin. She also loves to paint with water colors.',
+  //     photo: 'http://www.commage.org/wp-content/uploads/2016/05/image-for-swiss-report-600x400.jpg'
+  //   })
+  // })
+  // .then(function (resp) {
+  //   // adds example resident to database
+  //   return db.Residents.create({
+  //     firstName: 'Beverly',
+  //     age: 82,
+  //     activityPreferences: 'Games,Sew/Knitting',
+  //     additionalInfo: 'Beverly is a retired school teacher. ' +
+  //       'She is a little forgetful but loves to play gin. She also loves to paint with water colors.',
+  //     photo: 'http://www.commage.org/wp-content/uploads/2016/05/image-for-swiss-report-600x400.jpg'
+  //   })
+  // })
+  // .then(function (resp) {
+  //   // adds example resident to database
+  //   return db.Residents.create({
+  //     firstName: 'Beverly',
+  //     age: 82,
+  //     activityPreferences: 'Games,Sew/Knitting',
+  //     additionalInfo: 'Beverly is a retired school teacher. ' +
+  //       'She is a little forgetful but loves to play gin. She also loves to paint with water colors.',
+  //     photo: 'http://www.commage.org/wp-content/uploads/2016/05/image-for-swiss-report-600x400.jpg'
+  //   })
+  // })
+  // .then(function (resp) {
+  //   // adds example resident to database
+  //   return db.Residents.create({
+  //     firstName: 'Beverly',
+  //     age: 82,
+  //     activityPreferences: 'Games,Sew/Knitting',
+  //     additionalInfo: 'Beverly is a retired school teacher. ' +
+  //       'She is a little forgetful but loves to play gin. She also loves to paint with water colors.',
+  //     photo: 'http://www.commage.org/wp-content/uploads/2016/05/image-for-swiss-report-600x400.jpg'
+  //   })
+  // })
+  // .then(function (resp) {
+  //   // adds example resident to database
+  //   return db.Residents.create({
+  //     firstName: 'Beverly',
+  //     age: 82,
+  //     activityPreferences: 'Games,Sew/Knitting',
+  //     additionalInfo: 'Beverly is a retired school teacher. ' +
+  //       'She is a little forgetful but loves to play gin. She also loves to paint with water colors.',
+  //     photo: 'http://www.commage.org/wp-content/uploads/2016/05/image-for-swiss-report-600x400.jpg'
+  //   })
+  // })
 
-  // ================================= example visits ================================= //
-  .then(function (resp) {
-    // adds example visit to database
-    return db.Visits.create({
-      visitStart: '2019-05-15T15:00',
-      visitEnd: '2019-05-15T16:00',
-      activity: 'Sew/Knitting',
-      communityServiceForm: false,
-      emailConfirmKey: '0a0bd3e71bbd0647121cc75cad8b9d67207',
-      confirmed: false,
-      UserId: 1,
-      ResidentId: 1
-    })
-  })
-  .then(function (resp) {
-    // adds example visit to database
-    return db.Visits.create({
-      visitStart: '2019-04-15T15:00',
-      visitEnd: '2019-04-15T16:00',
-      activity: 'Sew/Knitting',
-      communityServiceForm: false,
-      emailConfirmKey: '0a0bd3e71bbd0647121cc75cad8b9d67207',
-      confirmed: false,
-      UserId: 1,
-      ResidentId: 1
-    })
-  })
-  .then(function (resp) {
-    // adds example visit to database
-    return db.Visits.create({
-      visitStart: '2019-03-15T15:00',
-      visitEnd: '2019-03-15T16:00',
-      activity: 'Sew/Knitting',
-      communityServiceForm: false,
-      emailConfirmKey: '0a0bd3e71bbd0647121cc75cad8b9d67207',
-      confirmed: false,
-      UserId: 1,
-      ResidentId: 1
-    })
-  })
-  .then(function (resp) {
-    // adds example visit to database
-    return db.Visits.create({
-      visitStart: '2019-02-15T15:00',
-      visitEnd: '2019-02-15T16:00',
-      activity: 'Sew/Knitting',
-      communityServiceForm: false,
-      emailConfirmKey: '0a0bd3e71bbd0647121cc75cad8b9d67207',
-      confirmed: false,
-      UserId: 1,
-      ResidentId: 1
-    })
-  })
-  .then(function (resp) {
-    // adds example visit to database
-    return db.Visits.create({
-      visitStart: '2019-04-15T16:00',
-      visitEnd: '2019-04-15T17:00',
-      activity: 'Music',
-      communityServiceForm: false,
-      emailConfirmKey: 'daa4c924994c809347eb5848bd8831a6e40',
-      confirmed: false,
-      UserId: 2,
-      ResidentId: 2
-    })
-  })
+  // // ================================= example visits ================================= //
+  // .then(function (resp) {
+  //   // adds example visit to database
+  //   return db.Visits.create({
+  //     visitStart: '2019-05-15T15:00',
+  //     visitEnd: '2019-05-15T16:00',
+  //     activity: 'Sew/Knitting',
+  //     communityServiceForm: false,
+  //     emailConfirmKey: '0a0bd3e71bbd0647121cc75cad8b9d67207',
+  //     confirmed: false,
+  //     UserId: 1,
+  //     ResidentId: 1
+  //   })
+  // })
+  // .then(function (resp) {
+  //   // adds example visit to database
+  //   return db.Visits.create({
+  //     visitStart: '2019-04-15T15:00',
+  //     visitEnd: '2019-04-15T16:00',
+  //     activity: 'Sew/Knitting',
+  //     communityServiceForm: false,
+  //     emailConfirmKey: '0a0bd3e71bbd0647121cc75cad8b9d67207',
+  //     confirmed: false,
+  //     UserId: 1,
+  //     ResidentId: 1
+  //   })
+  // })
+  // .then(function (resp) {
+  //   // adds example visit to database
+  //   return db.Visits.create({
+  //     visitStart: '2019-03-15T15:00',
+  //     visitEnd: '2019-03-15T16:00',
+  //     activity: 'Sew/Knitting',
+  //     communityServiceForm: false,
+  //     emailConfirmKey: '0a0bd3e71bbd0647121cc75cad8b9d67207',
+  //     confirmed: false,
+  //     UserId: 1,
+  //     ResidentId: 1
+  //   })
+  // })
+  // .then(function (resp) {
+  //   // adds example visit to database
+  //   return db.Visits.create({
+  //     visitStart: '2019-02-15T15:00',
+  //     visitEnd: '2019-02-15T16:00',
+  //     activity: 'Sew/Knitting',
+  //     communityServiceForm: false,
+  //     emailConfirmKey: '0a0bd3e71bbd0647121cc75cad8b9d67207',
+  //     confirmed: false,
+  //     UserId: 1,
+  //     ResidentId: 1
+  //   })
+  // })
+  // .then(function (resp) {
+  //   // adds example visit to database
+  //   return db.Visits.create({
+  //     visitStart: '2019-04-15T16:00',
+  //     visitEnd: '2019-04-15T17:00',
+  //     activity: 'Music',
+  //     communityServiceForm: false,
+  //     emailConfirmKey: 'daa4c924994c809347eb5848bd8831a6e40',
+  //     confirmed: false,
+  //     UserId: 2,
+  //     ResidentId: 2
+  //   })
+  // })
   // ================================= start server ================================= //
   .then(function (resp) {
     app.listen(PORT, function () {

@@ -38,9 +38,9 @@ router.post('/sendemail/', function (req, res) {
       html: `
       <p>You have been shceduled for an appointment to see ${req.body.residentName} from ${req.body.visitStart} to ${req.body.visitEnd} doing the following activity: ${req.body.activity}. If you requested a community service form, one will be provided to you at hte time of your appointment.</p>
       <p>To confirm your appointment, please click the following link:</p>
-      <a href="https://young-reaches-88967.herokuapp.com/visitConfirmation.html?k=${req.body.emailConfirmKey}&c=1">https://young-reaches-88967.herokuapp.com/visitConfirmation.html?k=${req.body.emailConfirmKey}&c=1</a>
+      <a href="https://mysterious-journey-53622.herokuapp.com/visitConfirmation.html?k=${req.body.emailConfirmKey}&c=1">https://mysterious-journey-53622.herokuapp.com/visitConfirmation.html?k=${req.body.emailConfirmKey}&c=1</a>
       <p>To decline or cancel your appointment at any time, you may click the following link:</p>
-      <a href="https://young-reaches-88967.herokuapp.com/visitConfirmation.html?k=${req.body.emailConfirmKey}&c=0">https://young-reaches-88967.herokuapp.com/visitConfirmation.html?k=${req.body.emailConfirmKey}&c=0</a>
+      <a href="https://mysterious-journey-53622.herokuapp.com/visitConfirmation.html?k=${req.body.emailConfirmKey}&c=0">https://mysterious-journey-53622.herokuapp.com/visitConfirmation.html?k=${req.body.emailConfirmKey}&c=0</a>
     `,
     };
     sgMail.send(msg);

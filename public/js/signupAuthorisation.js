@@ -50,7 +50,7 @@ $(document).ready(function () {
                         email: resp.data.email,
                         userID: resp.data.userID
                     });
-                    location.href = '/';
+                    window.location.href = '/';
                 }
                 console.log(resp);
                 // window.location.assign("/login");
